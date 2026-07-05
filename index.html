@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mana Family — Un rythme pour la famille</title>
+<meta name="description" content="Le système de cercles familiaux vivants. La Présence fait vivre. La Mémoire fait durer.">
+<meta property="og:title" content="Mana Family — Un rythme pour la famille">
+<meta property="og:description" content="Pas de flux. Pas de chiffres rouges. Une constellation qui respire au rythme de vos soins.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --nuit: #0b131f;
+    --or: #e5b842;
+    --or-doux: rgba(229, 184, 66, 0.55);
+    --lin: #eae6df;
+    --encre: #edf1f6;
+    --brume: #93a3b8;
+    --filet: rgba(234, 230, 223, 0.12);
+    --serif: 'Iowan Old Style', 'Palatino', 'Caslon', Georgia, serif;
+    --sans: 'Inter', 'Avenir Next', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: radial-gradient(ellipse at 50% -10%, #16233a, var(--nuit) 60%);
+    color: var(--encre);
+    font-family: var(--sans);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  ::selection { background: var(--or); color: var(--nuit); }
+
+  header {
+    max-width: 960px; margin: 0 auto;
+    padding: 1.6rem 1.4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .marque { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--lin); }
+  .marque .e { color: var(--or); }
+  header a.code {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brume); text-decoration: none;
+    border-bottom: 1px dotted var(--filet); padding-bottom: 2px;
+    transition: color 0.3s ease;
+  }
+  header a.code:hover { color: var(--or); }
+
+  main { max-width: 680px; margin: 0 auto; padding: 3rem 1.4rem 4rem; text-align: center; }
+
+  /* L'astre qui respire */
+  .astre-scene { position: relative; width: 130px; height: 130px; margin: 2.5rem auto 3rem; display: flex; align-items: center; justify-content: center; }
+  .astre-halo {
+    position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(229,184,66,0.4) 0%, rgba(229,184,66,0) 70%);
+    filter: blur(10px);
+    animation: respiration 12s ease-in-out infinite;
+  }
+  .astre-coeur {
+    position: relative; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--or); box-shadow: 0 0 16px 4px rgba(229,184,66,0.6);
+  }
+  @keyframes respiration {
+    0%, 100% { opacity: 0.35; transform: scale(0.95); }
+    50%      { opacity: 0.8;  transform: scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) { .astre-halo { animation: none; } }
+
+  h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    letter-spacing: 0.01em; line-height: 1.2;
+    color: #f5edd8; margin: 0 0 0.8rem;
+  }
+  .devise { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--or-doux); margin: 0 0 2.6rem; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; margin-bottom: 1.2rem; }
+  .btn-or {
+    display: inline-block; padding: 0.8rem 2rem; border-radius: 999px;
+    background: var(--or); color: var(--nuit); font-weight: 600; text-decoration: none;
+    letter-spacing: 0.03em;
+    box-shadow: 0 0 18px rgba(229,184,66,0.25);
+    transition: all 0.4s ease;
+  }
+  .btn-or:hover { background: #f1cc67; box-shadow: 0 0 28px rgba(229,184,66,0.45); }
+  .btn-doux {
+    display: inline-block; padding: 0.8rem 1.4rem;
+    color: var(--brume); text-decoration: none; font-size: 0.9rem;
+    border-bottom: 1px dotted var(--filet);
+    transition: color 0.3s ease;
+  }
+  .btn-doux:hover { color: var(--lin); }
+  .note-mer { font-size: 0.78rem; color: var(--brume); font-style: italic; opacity: 0.8; margin-bottom: 4rem; }
+
+  section { text-align: left; border-top: 1px dotted var(--filet); padding: 3.2rem 0 1rem; }
+  h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: #f5edd8; margin: 0 0 1.2rem; }
+  .sur-titre {
+    display: block; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--or-doux); margin-bottom: 0.6rem; font-family: var(--sans); font-weight: 500;
+  }
+  p { color: rgba(237, 241, 246, 0.78); margin: 0.9rem 0; }
+  strong { color: #f8f3e4; }
+  em { color: var(--lin); }
+
+  .loi { margin-bottom: 2rem; }
+  .loi h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--lin); margin: 0 0 0.4rem; font-weight: 600; }
+  .loi h3 .puce { color: var(--or); margin-right: 0.5rem; }
+  .loi p { font-size: 0.92rem; color: rgba(237, 241, 246, 0.65); margin: 0; }
+
+  .tissage { list-style: none; padding: 0; margin: 1.4rem 0; }
+  .tissage li { padding: 0.55rem 0; border-bottom: 1px dotted var(--filet); font-size: 0.95rem; color: rgba(237,241,246,0.78); }
+  .tissage .prix { font-family: var(--serif); color: var(--or); display: inline-block; min-width: 5.2rem; }
+
+  .grande-citation {
+    font-family: var(--serif); font-size: 1.25rem; font-style: italic; line-height: 1.6;
+    color: #f5edd8; text-align: center;
+    padding: 2.4rem 1rem;
+    border-top: 1px solid rgba(229,184,66,0.3);
+    border-bottom: 1px solid rgba(229,184,66,0.3);
+    margin: 3rem 0;
+  }
+  .grande-citation::before { content: '✦'; display: block; font-style: normal; color: var(--or); font-size: 0.8rem; margin-bottom: 1rem; text-shadow: 0 0 12px rgba(229,184,66,0.6); }
+
+  footer {
+    max-width: 960px; margin: 0 auto;
+    padding: 2rem 1.4rem 2.6rem;
+    border-top: 1px dotted var(--filet);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem;
+    font-size: 0.72rem; letter-spacing: 0.06em; color: var(--brume); opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="marque"><span class="e">✦</span> Mana Family</span>
+  <a class="code" href="https://github.com/gilletaurelien-art/family" target="_blank" rel="noopener">le code ⚓</a>
+</header>
+
+<main>
+  <div class="astre-scene">
+    <div class="astre-halo"></div>
+    <div class="astre-coeur"></div>
+  </div>
+
+  <h1>Un rythme pour la famille.</h1>
+  <p class="devise">« La Présence fait vivre. La Mémoire fait durer. »</p>
+
+  <div class="actions">
+    <a class="btn-or" href="livre-blanc.html">Lire le Livre blanc</a>
+    <a class="btn-doux" href="#constitution">La Constitution</a>
+  </div>
+  <p class="note-mer">L'application navigue en mer d'essai, dans une vraie famille. Ouverture prochaine.</p>
+
+  <section>
+    <span class="sur-titre">Le geste</span>
+    <h2>L'interface qui repose l'attention.</h2>
+    <p>Mana Family refuse les codes des réseaux sociaux. Ici, il n'y a pas de flux infini à faire défiler, pas de compteurs de non-lus, pas de chiffres rouges, pas d'injonction à la performance.</p>
+    <p>L'écran d'accueil est un ciel : une <strong>constellation</strong> où vos proches dérivent doucement, comme des navires au mouillage. Quand un geste de soin est posé — une fièvre signalée à la grand-mère qui garde le petit demain, un souvenir déposé — l'astre concerné s'éclaire d'une <strong>lueur</strong> tiède qui respire. C'est tout. Vous savez que quelqu'un a veillé, et vous pouvez refermer votre téléphone.</p>
+    <p>Quinze secondes. Aucun bouton pressé. L'application a rempli sa mission.</p>
+  </section>
+
+  <section id="constitution">
+    <span class="sur-titre">⚓ La Constitution</span>
+    <h2>Cinq lois, gravées avant la première ligne de code.</h2>
+
+    <div class="loi">
+      <h3><span class="puce">✦</span>La mémoire brute est inaliénable</h3>
+      <p>Ce que votre famille confie au temps n'expire jamais, sur aucune formule, gratuite ou payante. Aucune famille ne lira jamais « vos souvenirs seront supprimés ».</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Le silence est un état légitime</h3>
+      <p>Une constellation peut être active, présente, ou au repos. L'application ne vous relancera jamais : quand rien ne se passe, le ciel dit simplement « La constellation se repose. » — et il attend, comme une maison attend le retour de ceux qui l'habitent.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Chaque astre est souverain de sa lumière</h3>
+      <p>Toute personne peut voiler sa mémoire aux autres cercles sans rien détruire de sa propre archive, et refuser de figurer dans un objet — même déjà payé. Le droit de l'astre l'emporte toujours sur le droit du portefeuille.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>La lueur est asymétrique</h3>
+      <p>On voit que quelqu'un a veillé. On ne voit jamais qui n'a pas veillé. La présence est un cadeau, jamais une dette — veiller n'est pas surveiller.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Le regret n'est jamais un levier</h3>
+      <p>Aucune notification, aucune relance, aucun e-mail ne dira « avant qu'il soit trop tard ». Cette phrase appartient aux familles. Nous n'utiliserons jamais le regret comme moteur de croissance.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sur-titre">Le tissage</span>
+    <h2>On ne paie jamais l'accès à sa famille.</h2>
+    <p>La structure entière — les trois Cercles, tous les membres, toutes les transmissions, la mémoire complète — est gratuite, pour toujours. Ce qui se paie, c'est l'artisanat qu'on ajoute par-dessus :</p>
+    <ul class="tissage">
+      <li><span class="prix">0 €</span> la famille existe et se souvient</li>
+      <li><span class="prix">9 €/mois</span> la mémoire devient un récit</li>
+      <li><span class="prix">39 €/mois</span> la lignée devient un patrimoine</li>
+      <li><span class="prix">artefacts</span> le patrimoine devient un héritage qu'on tient dans les mains</li>
+    </ul>
+    <p>Et chaque offre payante peut être un cadeau — l'argent circule ici comme la mémoire : d'une génération vers la suivante.</p>
+  </section>
+
+  <div class="grande-citation">
+    Prendre soin, c'est aimer.<br>
+    Mana Family est la forme que prend cette loi<br>quand elle s'applique à une famille.
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Mana Family — un projet de l'écosystème MANA</span>
+  <span>Conçu en haute mer ✦</span>
+</footer>
+
+</body>
+</html>
