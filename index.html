@@ -50,19 +50,15 @@
   main { max-width: 680px; margin: 0 auto; padding: 3rem 1.4rem 4rem; text-align: center; }
 
   /* L'astre qui respire */
-  .astre-scene { position: relative; width: 130px; height: 130px; margin: 2.5rem auto 3rem; display: flex; align-items: center; justify-content: center; }
-  /* L'astre AU REPOS : la vitrine met en scène le troisième état.
-     La présence respire en 12 s ; le repos, en 24 s — deux fois plus lent. */
+  /* La déesse — à l'entrée. Un halo d'or respire derrière elle (le repos, 24 s). */
+  .astre-scene { position: relative; width: 240px; margin: 1.6rem auto 2.4rem; display: flex; align-items: center; justify-content: center; }
   .astre-halo {
-    position: absolute; width: 100px; height: 100px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(229,184,66,0.3) 0%, rgba(229,184,66,0) 70%);
-    filter: blur(10px);
+    position: absolute; width: 210px; height: 210px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(229,184,66,0.24) 0%, rgba(229,184,66,0) 68%);
+    filter: blur(16px);
     animation: respiration 24s ease-in-out infinite;
   }
-  .astre-coeur {
-    position: relative; width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(248, 249, 250, 0.45); box-shadow: 0 0 12px rgba(248,249,250,0.3);
-  }
+  .deesse { position: relative; z-index: 1; width: 208px; height: auto; }
   @keyframes respiration {
     0%, 100% { opacity: 0.25; transform: scale(0.95); }
     50%      { opacity: 0.65; transform: scale(1.08); }
@@ -160,7 +156,7 @@
 <main>
   <div class="astre-scene">
     <div class="astre-halo"></div>
-    <div class="astre-coeur"></div>
+    <img src="deesse.png" alt="Mana" class="deesse" />
   </div>
 
   <p class="etat-repos">La constellation se repose.</p>
