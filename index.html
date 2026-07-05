@@ -51,19 +51,26 @@
 
   /* L'astre qui respire */
   .astre-scene { position: relative; width: 130px; height: 130px; margin: 2.5rem auto 3rem; display: flex; align-items: center; justify-content: center; }
+  /* L'astre AU REPOS : la vitrine met en scène le troisième état.
+     La présence respire en 12 s ; le repos, en 24 s — deux fois plus lent. */
   .astre-halo {
     position: absolute; width: 100px; height: 100px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(229,184,66,0.4) 0%, rgba(229,184,66,0) 70%);
+    background: radial-gradient(circle, rgba(229,184,66,0.3) 0%, rgba(229,184,66,0) 70%);
     filter: blur(10px);
-    animation: respiration 12s ease-in-out infinite;
+    animation: respiration 24s ease-in-out infinite;
   }
   .astre-coeur {
-    position: relative; width: 12px; height: 12px; border-radius: 50%;
-    background: var(--or); box-shadow: 0 0 16px 4px rgba(229,184,66,0.6);
+    position: relative; width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(248, 249, 250, 0.45); box-shadow: 0 0 12px rgba(248,249,250,0.3);
   }
   @keyframes respiration {
-    0%, 100% { opacity: 0.35; transform: scale(0.95); }
-    50%      { opacity: 0.8;  transform: scale(1.1); }
+    0%, 100% { opacity: 0.25; transform: scale(0.95); }
+    50%      { opacity: 0.65; transform: scale(1.08); }
+  }
+  .etat-repos {
+    font-family: var(--serif); font-style: italic;
+    color: var(--brume); font-size: 0.95rem;
+    margin: -1.6rem 0 2.6rem;
   }
   @media (prefers-reduced-motion: reduce) { .astre-halo { animation: none; } }
 
@@ -108,6 +115,18 @@
   .loi h3 .puce { color: var(--or); margin-right: 0.5rem; }
   .loi p { font-size: 0.92rem; color: rgba(237, 241, 246, 0.65); margin: 0; }
 
+  .cercles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; margin: 1.6rem 0 1rem; }
+  .cercle-carte {
+    background: rgba(234, 230, 223, 0.03);
+    border: 1px solid var(--filet);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem;
+  }
+  .cercle-num { display: block; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or-doux); margin-bottom: 0.4rem; }
+  .cercle-nom { display: block; font-family: var(--serif); font-style: italic; color: var(--lin); margin-bottom: 0.4rem; }
+  .cercle-carte p { font-size: 0.84rem; color: rgba(237,241,246,0.6); margin: 0; }
+  .cercles-note { font-size: 0.84rem; color: var(--brume); font-style: italic; }
+
   .tissage { list-style: none; padding: 0; margin: 1.4rem 0; }
   .tissage li { padding: 0.55rem 0; border-bottom: 1px dotted var(--filet); font-size: 0.95rem; color: rgba(237,241,246,0.78); }
   .tissage .prix { font-family: var(--serif); color: var(--or); display: inline-block; min-width: 5.2rem; }
@@ -144,6 +163,8 @@
     <div class="astre-coeur"></div>
   </div>
 
+  <p class="etat-repos">La constellation se repose.</p>
+
   <h1>Un rythme pour la famille.</h1>
   <p class="devise">« La Présence fait vivre. La Mémoire fait durer. »</p>
 
@@ -159,6 +180,30 @@
     <p>Mana Family refuse les codes des réseaux sociaux. Ici, il n'y a pas de flux infini à faire défiler, pas de compteurs de non-lus, pas de chiffres rouges, pas d'injonction à la performance.</p>
     <p>L'écran d'accueil est un ciel : une <strong>constellation</strong> où vos proches dérivent doucement, comme des navires au mouillage. Quand un geste de soin est posé — une fièvre signalée à la grand-mère qui garde le petit demain, un souvenir déposé — l'astre concerné s'éclaire d'une <strong>lueur</strong> tiède qui respire. C'est tout. Vous savez que quelqu'un a veillé, et vous pouvez refermer votre téléphone.</p>
     <p>Quinze secondes. Aucun bouton pressé. L'application a rempli sa mission.</p>
+  </section>
+
+  <section>
+    <span class="sur-titre">La structure</span>
+    <h2>Trois couches de profondeur dans le temps.</h2>
+    <p>Un Cercle n'est pas une taille de groupe : c'est une profondeur familiale. Et le graphe est centré sur les <strong>personnes</strong>, jamais sur un foyer — un enfant de deux maisons garde une seule continuité, entière.</p>
+    <div class="cercles">
+      <div class="cercle-carte">
+        <span class="cercle-num">Cercle 1 — Nucléaire</span>
+        <span class="cercle-nom">La cellule de vie</span>
+        <p>Le quotidien : parents, co-parents, enfants. La base vivante de toute famille.</p>
+      </div>
+      <div class="cercle-carte">
+        <span class="cercle-num">Cercle 2 — Élargi</span>
+        <span class="cercle-nom">La mémoire vivante</span>
+        <p>La dimension intergénérationnelle : grands-parents, figures de soutien. La famille dans sa durée.</p>
+      </div>
+      <div class="cercle-carte">
+        <span class="cercle-num">Cercle 3 — Étendu</span>
+        <span class="cercle-nom">Le réseau familial</span>
+        <p>Cousins, oncles, tantes, branches élargies. La famille comme réseau vivant complet.</p>
+      </div>
+    </div>
+    <p class="cercles-note">Les trois Cercles sont ouverts à toutes les familles, gratuitement, dès le premier jour. La structure est un droit, pas un produit.</p>
   </section>
 
   <section id="constitution">
@@ -185,6 +230,10 @@
       <h3><span class="puce">✦</span>Le regret n'est jamais un levier</h3>
       <p>Aucune notification, aucune relance, aucun e-mail ne dira « avant qu'il soit trop tard ». Cette phrase appartient aux familles. Nous n'utiliserons jamais le regret comme moteur de croissance.</p>
     </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Les enfants sont des astres, pas des utilisateurs</h3>
+      <p>Aucun usage social, aucun scoring, aucune comparaison ; accès uniquement via les adultes. Et à ses dix-huit ans, l'enfant reçoit la propriété pleine de sa continuité — la famille lui remet sa mémoire comme on remet un héritage.</p>
+    </div>
   </section>
 
   <section>
@@ -207,8 +256,8 @@
 </main>
 
 <footer>
-  <span>© 2026 Mana Family — un projet de l'écosystème MANA</span>
-  <span>Conçu en haute mer ✦</span>
+  <span>© 2026 Mana Family — un projet de l'écosystème MANA · Constitution v2.8</span>
+  <span>« Prendre soin, c'est aimer. » ✦</span>
 </footer>
 
 </body>
