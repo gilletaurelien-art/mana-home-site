@@ -39,14 +39,6 @@
   }
   .marque { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--lin); }
   .marque .e { color: var(--or); }
-  header a.code {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--brume); text-decoration: none;
-    border-bottom: 1px dotted var(--filet); padding-bottom: 2px;
-    transition: color 0.3s ease;
-  }
-  header a.code:hover { color: var(--or); }
-  .header-liens { display: flex; flex-direction: column; align-items: flex-end; gap: 0.55rem; }
   header a.entrer {
     font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--or); text-decoration: none;
@@ -60,22 +52,17 @@
 
   /* L'astre qui respire */
   /* La déesse — à l'entrée. Un halo d'or respire derrière elle (le repos, 24 s). */
-  .astre-scene { position: relative; width: 240px; margin: 1.6rem auto 2.4rem; display: flex; align-items: center; justify-content: center; }
+  .astre-scene { position: relative; width: min(82vw, 460px); margin: 1.4rem auto 2rem; display: flex; align-items: center; justify-content: center; }
   .astre-halo {
-    position: absolute; width: 210px; height: 210px; border-radius: 50%;
+    position: absolute; width: min(74vw, 400px); height: min(74vw, 400px); border-radius: 50%;
     background: radial-gradient(circle, rgba(229,184,66,0.24) 0%, rgba(229,184,66,0) 68%);
-    filter: blur(16px);
+    filter: blur(20px);
     animation: respiration 24s ease-in-out infinite;
   }
-  .deesse { position: relative; z-index: 1; width: 208px; height: auto; }
+  .deesse { position: relative; z-index: 1; width: min(80vw, 440px); height: auto; }
   @keyframes respiration {
     0%, 100% { opacity: 0.25; transform: scale(0.95); }
     50%      { opacity: 0.65; transform: scale(1.08); }
-  }
-  .etat-repos {
-    font-family: var(--serif); font-style: italic;
-    color: var(--brume); font-size: 0.95rem;
-    margin: -1.6rem 0 2.6rem;
   }
   @media (prefers-reduced-motion: reduce) { .astre-halo { animation: none; } }
 
@@ -159,10 +146,7 @@
 
 <header>
   <span class="marque"><span class="e">✦</span> Mana Family</span>
-  <div class="header-liens">
-    <a class="code" href="https://github.com/gilletaurelien-art/family" target="_blank" rel="noopener">le code ⚓</a>
-    <a class="entrer" href="https://app.manahome.org">Se connecter →</a>
-  </div>
+  <a class="entrer" href="https://app.manahome.org">Se connecter →</a>
 </header>
 
 <main>
@@ -170,8 +154,6 @@
     <div class="astre-halo"></div>
     <img src="deesse.png" alt="Mana" class="deesse" />
   </div>
-
-  <p class="etat-repos">La constellation se repose.</p>
 
   <h1>Un rythme pour la famille.</h1>
   <p class="devise">« La Présence fait vivre. La Mémoire fait durer. »</p>
