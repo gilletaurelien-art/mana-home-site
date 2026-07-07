@@ -135,9 +135,20 @@
 
   /* Schéma écosystème */
   .schema{margin-top:2rem;text-align:center}
-  .schema-racine{display:inline-block;font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:.1em;
-    padding:.8rem 2.2rem;border-radius:999px;background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;
-    box-shadow:0 8px 24px rgba(90,60,230,.25)}
+  /* Racine = l'encadré déesse (la maison mère) */
+  .schema-mere{display:inline-flex;align-items:center;gap:1.1rem;text-align:left;text-decoration:none;
+    background:var(--carte);border:1px solid var(--filet);border-radius:20px;padding:1rem 1.6rem 1rem 1.1rem;
+    box-shadow:0 14px 40px rgba(90,60,230,.13);max-width:460px;transition:border-color .25s,transform .25s}
+  .schema-mere:hover{border-color:var(--violet);transform:translateY(-2px)}
+  .schema-mere-face{width:64px;height:64px;flex:none;border-radius:50%;object-fit:cover;object-position:center;
+    background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid rgba(192,64,232,.25);
+    box-shadow:0 0 18px rgba(124,77,255,.25)}
+  .schema-mere-tete{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+  .schema-mere-nom{font-weight:700;font-size:1rem;letter-spacing:.14em;color:var(--encre)}
+  .schema-mere-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#7c3aed}
+  .schema-mere-devise{display:block;margin-top:.2rem;font-style:italic;font-size:.88rem;line-height:1.5;
+    background:linear-gradient(110deg,var(--bleu),var(--degrade-mi),var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
   .schema-fleche{font-size:1.4rem;color:var(--violet);opacity:.6;margin:.6rem 0}
   .schema-cadre{border:1px dashed rgba(43,63,199,.35);border-radius:20px;padding:1.6rem 1.2rem 1.2rem;position:relative;background:rgba(43,63,199,.02)}
   .schema-cadre-titre{position:absolute;top:-0.8rem;left:50%;transform:translateX(-50%);background:var(--ecume);
@@ -146,7 +157,9 @@
   .schema-carte{display:block;text-decoration:none;background:var(--carte);border:1px solid var(--filet);border-radius:14px;
     padding:1rem .9rem;transition:border-color .25s,transform .25s}
   .schema-carte:hover{border-color:var(--violet);transform:translateY(-2px)}
-  .schema-emoji{display:block;font-size:1.5rem;margin-bottom:.35rem}
+  .schema-icone{display:flex;justify-content:center;margin-bottom:.45rem}
+  .schema-icone svg{width:22px;height:22px;stroke:var(--degrade-mi);stroke-width:1.6;fill:none;
+    stroke-linecap:round;stroke-linejoin:round}
   .schema-nom{display:block;font-family:var(--serif);font-weight:700;font-size:.98rem;color:var(--encre)}
   .schema-role{display:block;font-size:.8rem;color:var(--brume);margin-top:.2rem}
 
@@ -332,33 +345,47 @@
     <span class="sur">La carte</span>
     <h2>L'écosystème, d'un coup d'œil.</h2>
     <div class="schema">
-      <span class="schema-racine">MANAHOME</span>
+      <a class="schema-mere" href="https://manahome.org">
+        <img class="schema-mere-face" src="deesse-mana.png" alt="Mana, le visage de l'univers">
+        <span>
+          <span class="schema-mere-tete">
+            <span class="schema-mere-nom">MANAHOME.org</span>
+            <span class="schema-mere-tag">L'assistance</span>
+          </span>
+          <span class="schema-mere-devise">«&nbsp;Rendre le soin visible, durable et transmissible.&nbsp;»</span>
+        </span>
+      </a>
       <div class="schema-fleche">▼</div>
       <div class="schema-cadre">
         <span class="schema-cadre-titre">Écosystème Temposystem</span>
         <div class="schema-grille">
           <a class="schema-carte" href="https://temposystem.eu">
-            <span class="schema-emoji">☀️</span>
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
             <span class="schema-nom">TEMPOSYSTEM.eu</span>
             <span class="schema-role">Le cœur</span>
           </a>
           <a class="schema-carte" href="https://temposystem.fr">
-            <span class="schema-emoji">🧠</span>
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg></span>
             <span class="schema-nom">TEMPOSYSTEM.fr</span>
             <span class="schema-role">L'orchestre</span>
           </a>
           <a class="schema-carte" href="https://manatimebank.org">
-            <span class="schema-emoji">🌍</span>
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
             <span class="schema-nom">ManaTimeBank.org</span>
             <span class="schema-role">Le concept international</span>
           </a>
           <a class="schema-carte" href="https://mana.bzh">
-            <span class="schema-emoji">🧪</span>
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
             <span class="schema-nom">Mana.bzh</span>
             <span class="schema-role">Le laboratoire breton</span>
           </a>
+          <a class="schema-carte" href="https://manafamily.org">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span class="schema-nom">ManaFamily.org</span>
+            <span class="schema-role">Les cercles familiaux</span>
+          </a>
           <a class="schema-carte" href="https://alliancemana.org">
-            <span class="schema-emoji">🏛</span>
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
             <span class="schema-nom">AllianceMANA.org</span>
             <span class="schema-role">Gouvernance &amp; principes</span>
           </a>
