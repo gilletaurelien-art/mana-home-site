@@ -4,18 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mana Family — Livre blanc v2.8</title>
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --nuit: #0b131f;
-    --cale: #101a29;
-    --or: #e5b842;
-    --or-doux: rgba(229, 184, 66, 0.55);
-    --lin: #eae6df;
-    --encre: #edf1f6;
-    --brume: #93a3b8;
-    --horizon: #2b5275;
-    --filet: rgba(234, 230, 223, 0.14);
-    --serif: 'Iowan Old Style', 'Palatino', 'Caslon', Georgia, serif;
+    --nuit: #f8f9fa;            /* clarté d'abord : fond Écume */
+    --cale: #ffffff;
+    --or: #8b3fc0;              /* accent réaffecté : violet MANA */
+    --or-doux: rgba(139, 63, 192, 0.55);
+    --lin: #3c3560;
+    --encre: #2a2440;
+    --brume: #6b6b84;
+    --horizon: #7c6fe0;
+    --filet: rgba(58, 43, 227, 0.16);
+    --serif: 'Philosopher', 'Iowan Old Style', 'Palatino', Georgia, serif;
     --sans: 'Inter', 'Avenir Next', -apple-system, 'Segoe UI', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
@@ -38,7 +39,7 @@
     justify-content: center;
     text-align: center;
     padding: 4rem 1.5rem 3rem;
-    background: radial-gradient(ellipse at 50% 20%, #16233a, var(--nuit) 65%);
+    background: radial-gradient(ellipse at 50% 20%, #eef0ff, var(--nuit) 65%);
     position: relative;
     page-break-after: always;
   }
@@ -49,7 +50,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     margin: 1.2rem 0 0.4rem;
-    color: #f5edd8;
+    color: #26224a;
   }
   .sous-titre {
     font-family: var(--serif);
@@ -80,7 +81,7 @@
     font-family: var(--serif);
     font-size: 1.7rem;
     font-weight: 600;
-    color: #f5edd8;
+    color: #26224a;
     margin: 0 0 1.4rem;
     line-height: 1.3;
   }
@@ -105,7 +106,7 @@
   section + section { border-top: 1px dotted var(--filet); }
 
   p { margin: 0.9rem 0; }
-  strong { color: #f8f3e4; }
+  strong { color: #26224a; }
   em { color: var(--lin); }
   ul { padding-left: 1.2rem; margin: 0.9rem 0; }
   li { margin: 0.4rem 0; }
@@ -119,11 +120,11 @@
     font-family: var(--serif);
     font-size: 1.3rem;
     line-height: 1.55;
-    color: #f5edd8;
-    background: rgba(234, 230, 223, 0.03);
+    color: #26224a;
+    background: rgba(58, 43, 227, 0.04);
     border: none;
-    border-top: 1px solid rgba(229, 184, 66, 0.35);
-    border-bottom: 1px solid rgba(229, 184, 66, 0.35);
+    border-top: 1px solid rgba(139, 63, 192, 0.35);
+    border-bottom: 1px solid rgba(139, 63, 192, 0.35);
     position: relative;
   }
   .loi::before {
@@ -132,7 +133,7 @@
     color: var(--or);
     font-size: 0.85rem;
     margin-bottom: 0.8rem;
-    text-shadow: 0 0 12px rgba(229, 184, 66, 0.6);
+    text-shadow: 0 0 12px rgba(139, 63, 192, 0.6);
   }
   .citation {
     margin: 1.4rem 0;
@@ -148,7 +149,7 @@
   /* Cartes de formule */
   .formules { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.6rem 0; }
   .formule {
-    background: rgba(234, 230, 223, 0.035);
+    background: rgba(58, 43, 227, 0.04);
     border: 1px solid var(--filet);
     border-radius: 16px;
     padding: 1.3rem 1.5rem;
@@ -179,10 +180,10 @@
     color: var(--brume);
     text-align: left;
     padding: 0.6rem 0.8rem;
-    border-bottom: 1px solid rgba(229, 184, 66, 0.35);
+    border-bottom: 1px solid rgba(139, 63, 192, 0.35);
   }
   td { padding: 0.75rem 0.8rem; border-bottom: 1px dotted var(--filet); vertical-align: top; }
-  td:first-child { font-family: var(--serif); color: #f5edd8; white-space: nowrap; }
+  td:first-child { font-family: var(--serif); color: #26224a; white-space: nowrap; }
   td:nth-child(2) { color: var(--or); white-space: nowrap; }
 
   /* Listes de principes */
