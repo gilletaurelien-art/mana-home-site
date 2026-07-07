@@ -8,145 +8,152 @@
 <meta property="og:title" content="Mana Family — Un rythme pour la famille">
 <meta property="og:description" content="Pas de flux. Pas de chiffres rouges. Une constellation qui respire au rythme de vos soins.">
 <meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --nuit: #0b131f;
-    --or: #e5b842;
-    --or-doux: rgba(229, 184, 66, 0.55);
-    --lin: #eae6df;
-    --encre: #edf1f6;
-    --brume: #93a3b8;
-    --filet: rgba(234, 230, 223, 0.12);
-    --serif: 'Iowan Old Style', 'Palatino', 'Caslon', Georgia, serif;
-    --sans: 'Inter', 'Avenir Next', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  :root{
+    /* Tokens de la référence manafrance.org */
+    --bleu:#2B3FC7; --violet:#C040E8;
+    --ecume:#F7F8FA; --carte:#FFFFFF;
+    --encre:#0B1220; --brume:#6B7280; --filet:#E8EAF0;
+    --header-bg:rgba(247,248,250,.8);
+    --wp-a:rgb(43 63 199 / 0.08); --wp-b:rgb(192 64 232 / 0.06);
+    --wp-top:#FFFFFF; --wp-grid:rgb(11 18 32 / 0.035);
+    --serif:'Philosopher', 'Iowan Old Style', Georgia, serif;
+    --sans:'Inter','Avenir Next',-apple-system,'SF Pro','Segoe UI',system-ui,sans-serif;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: radial-gradient(ellipse at 50% -10%, #16233a, var(--nuit) 60%);
-    color: var(--encre);
-    font-family: var(--sans);
-    line-height: 1.7;
-    min-height: 100vh;
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ecume:#0B1220; --carte:#121A2C;
+      --encre:#EDF1F6; --brume:#9CA3AF; --filet:rgba(148,163,255,.16);
+      --header-bg:rgba(11,18,32,.8);
+      --wp-a:rgb(43 63 199 / 0.18); --wp-b:rgb(192 64 232 / 0.12);
+      --wp-top:#0E1526; --wp-grid:rgb(237 241 246 / 0.04);
+    }
   }
-  ::selection { background: var(--or); color: var(--nuit); }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--encre);line-height:1.7;
+    background:var(--ecume);min-height:100vh}
 
-  header {
-    max-width: 960px; margin: 0 auto;
-    padding: 1.6rem 1.4rem;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .marque { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--lin); }
-  .marque .e { color: var(--or); }
-  header a.entrer {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--or); text-decoration: none;
-    border: 1px solid var(--or-doux); border-radius: 999px;
-    padding: 0.34rem 0.9rem;
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  }
-  header a.entrer:hover { background: var(--or); color: var(--nuit); border-color: var(--or); }
+  /* Le wallpaper signature (porté de manafrance.org) */
+  .mana-wallpaper{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+    background:
+      radial-gradient(ellipse 700px 600px at 78% 8%, var(--wp-a), transparent 65%),
+      radial-gradient(ellipse 520px 420px at 88% 32%, var(--wp-b), transparent 60%),
+      linear-gradient(180deg, var(--wp-top) 0%, var(--ecume) 100%)}
+  .mana-wallpaper::before{position:absolute;inset:0;content:"";
+    background-image:url('Logo_MANA_Symbol_logo.png');background-repeat:no-repeat;
+    background-position:right -90px center;background-size:min(58vw,620px);opacity:.055}
+  .mana-wallpaper::after{position:absolute;inset:0;content:"";
+    background-image:linear-gradient(var(--wp-grid) 1px,transparent 1px),linear-gradient(90deg,var(--wp-grid) 1px,transparent 1px);
+    background-size:88px 88px;-webkit-mask-image:radial-gradient(circle at 50% 45%,black,transparent 72%);mask-image:radial-gradient(circle at 50% 45%,black,transparent 72%);opacity:.5}
+  .mana-wallpaper-orbit{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+    border:1px solid rgb(43 63 199 / 0.16);border-radius:9999px;box-shadow:0 0 80px rgb(192 64 232 / 0.08)}
+  .mana-wallpaper-orbit.o1{width:min(72vw,880px);height:min(34vw,410px);animation:drift-orbit 42s ease-in-out infinite}
+  .mana-wallpaper-orbit.o2{width:min(58vw,690px);height:min(27vw,320px);border-color:rgb(192 64 232 / 0.16);animation:drift-orbit 55s ease-in-out infinite reverse}
+  .mana-wallpaper-orbit.o3{width:min(44vw,520px);height:min(20vw,235px);border-color:rgb(43 63 199 / 0.11);animation:breathe-orbit 18s ease-in-out infinite}
+  @keyframes drift-orbit{0%,100%{transform:translate(-50%,-50%) rotate(-4deg) scale(1)}50%{transform:translate(-50%,-50%) rotate(4deg) scale(1.03)}}
+  @keyframes breathe-orbit{0%,100%{opacity:.56;transform:translate(-50%,-50%) scale(.96)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+  @media (prefers-reduced-motion:reduce){.mana-wallpaper-orbit{animation:none}}
+  header,main,footer{position:relative;z-index:1}
+  ::selection{background:var(--violet);color:#fff}
+  a{color:inherit}
+  .grad{background:linear-gradient(90deg,var(--bleu),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-  main { max-width: 680px; margin: 0 auto; padding: 3rem 1.4rem 4rem; text-align: center; }
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:var(--header-bg);border-bottom:1px solid var(--filet)}
+  .nav{max-width:1080px;margin:0 auto;padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .mark{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+  .mark img{height:28px;width:28px;object-fit:contain}
+  .mark span{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
+  .nav .entrer{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--violet);text-decoration:none;
+    border:1px solid var(--violet);border-radius:999px;padding:.34rem .9rem;
+    transition:background .3s ease,color .3s ease}
+  .nav .entrer:hover{background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;border-color:transparent}
 
-  /* L'astre qui respire */
-  /* La déesse — à l'entrée. Un halo d'or respire derrière elle (le repos, 24 s). */
-  .astre-scene { position: relative; width: min(82vw, 460px); margin: 1.4rem auto 2rem; display: flex; align-items: center; justify-content: center; }
-  .astre-halo {
-    position: absolute; width: min(74vw, 400px); height: min(74vw, 400px); border-radius: 50%;
-    background: radial-gradient(circle, rgba(229,184,66,0.24) 0%, rgba(229,184,66,0) 68%);
-    filter: blur(20px);
-    animation: respiration 24s ease-in-out infinite;
-  }
-  .deesse { position: relative; z-index: 1; width: min(80vw, 440px); height: auto; }
-  @keyframes respiration {
-    0%, 100% { opacity: 0.25; transform: scale(0.95); }
-    50%      { opacity: 0.65; transform: scale(1.08); }
-  }
-  @media (prefers-reduced-motion: reduce) { .astre-halo { animation: none; } }
+  main{max-width:680px;margin:0 auto;padding:3rem 1.4rem 4rem;text-align:center}
 
-  h1 {
-    font-family: var(--serif); font-weight: 600;
-    font-size: clamp(2.1rem, 6vw, 3.4rem);
-    letter-spacing: 0.01em; line-height: 1.2;
-    color: #f5edd8; margin: 0 0 0.8rem;
-  }
-  .devise { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--or-doux); margin: 0 0 2.6rem; }
+  /* La déesse — à l'entrée. Un halo respire derrière elle (le repos, 24 s). */
+  .astre-scene{position:relative;width:min(82vw,460px);margin:1.4rem auto 2rem;display:flex;align-items:center;justify-content:center}
+  .astre-halo{position:absolute;width:min(74vw,400px);height:min(74vw,400px);border-radius:50%;
+    background:radial-gradient(circle, rgba(124,77,255,.20) 0%, rgba(124,77,255,0) 68%);
+    filter:blur(20px);animation:respiration 24s ease-in-out infinite}
+  .deesse{position:relative;z-index:1;width:min(80vw,440px);height:auto;filter:drop-shadow(0 0 12px rgba(90,60,230,.18))}
+  @keyframes respiration{0%,100%{opacity:.25;transform:scale(.95)}50%{opacity:.65;transform:scale(1.08)}}
+  @media (prefers-reduced-motion:reduce){.astre-halo{animation:none}}
 
-  .actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; margin-bottom: 1.2rem; }
-  .btn-or {
-    display: inline-block; padding: 0.8rem 2rem; border-radius: 999px;
-    background: var(--or); color: var(--nuit); font-weight: 600; text-decoration: none;
-    letter-spacing: 0.03em;
-    box-shadow: 0 0 18px rgba(229,184,66,0.25);
-    transition: all 0.4s ease;
-  }
-  .btn-or:hover { background: #f1cc67; box-shadow: 0 0 28px rgba(229,184,66,0.45); }
-  .btn-doux {
-    display: inline-block; padding: 0.8rem 1.4rem;
-    color: var(--brume); text-decoration: none; font-size: 0.9rem;
-    border-bottom: 1px dotted var(--filet);
-    transition: color 0.3s ease;
-  }
-  .btn-doux:hover { color: var(--lin); }
-  .note-mer { font-size: 0.78rem; color: var(--brume); font-style: italic; opacity: 0.8; margin-bottom: 4rem; }
+  h1{font-family:var(--serif);font-weight:700;
+    font-size:clamp(2.1rem,6vw,3.4rem);
+    letter-spacing:.01em;line-height:1.2;margin:0 0 .8rem}
+  .devise{font-family:var(--serif);font-style:italic;font-size:1.1rem;margin:0 0 2.6rem}
 
-  section { text-align: left; border-top: 1px dotted var(--filet); padding: 3.2rem 0 1rem; }
-  h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: #f5edd8; margin: 0 0 1.2rem; }
-  .sur-titre {
-    display: block; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--or-doux); margin-bottom: 0.6rem; font-family: var(--sans); font-weight: 500;
-  }
-  p { color: rgba(237, 241, 246, 0.78); margin: 0.9rem 0; }
-  strong { color: #f8f3e4; }
-  em { color: var(--lin); }
+  .actions{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;align-items:center;margin-bottom:1.2rem}
+  .btn{display:inline-block;padding:.8rem 2rem;border-radius:999px;
+    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;text-decoration:none;
+    letter-spacing:.03em;font-size:.95rem;
+    box-shadow:0 6px 18px rgba(90,60,230,.22);transition:filter .2s,transform .2s}
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-doux{display:inline-block;padding:.8rem 1.4rem;
+    color:var(--brume);text-decoration:none;font-size:.9rem;
+    border-bottom:1px dotted var(--filet);transition:color .3s ease}
+  .btn-doux:hover{color:var(--violet)}
+  .note-mer{font-size:.78rem;color:var(--brume);font-style:italic;opacity:.85;margin-bottom:4rem}
 
-  .loi { margin-bottom: 2rem; }
-  .loi h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--lin); margin: 0 0 0.4rem; font-weight: 600; }
-  .loi h3 .puce { color: var(--or); margin-right: 0.5rem; }
-  .loi p { font-size: 0.92rem; color: rgba(237, 241, 246, 0.65); margin: 0; }
+  section{text-align:left;border-top:1px solid var(--filet);padding:3.2rem 0 1rem}
+  h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--encre);margin:0 0 1.2rem}
+  .sur-titre{display:block;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--violet);opacity:.75;margin-bottom:.6rem;font-family:var(--sans);font-weight:500}
+  p{color:var(--encre);opacity:.86;margin:.9rem 0}
+  strong{color:var(--encre)}
+  em{color:var(--encre)}
 
-  .cercles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; margin: 1.6rem 0 1rem; }
-  .cercle-carte {
-    background: rgba(234, 230, 223, 0.03);
-    border: 1px solid var(--filet);
-    border-radius: 14px;
-    padding: 1.1rem 1.2rem;
-  }
-  .cercle-num { display: block; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or-doux); margin-bottom: 0.4rem; }
-  .cercle-nom { display: block; font-family: var(--serif); font-style: italic; color: var(--lin); margin-bottom: 0.4rem; }
-  .cercle-carte p { font-size: 0.84rem; color: rgba(237,241,246,0.6); margin: 0; }
-  .cercles-note { font-size: 0.84rem; color: var(--brume); font-style: italic; }
+  .loi{margin-bottom:2rem}
+  .loi h3{font-family:var(--serif);font-size:1.1rem;color:var(--encre);margin:0 0 .4rem;font-weight:700}
+  .loi h3 .puce{color:var(--violet);margin-right:.5rem}
+  .loi p{font-size:.92rem;color:var(--brume);margin:0}
 
-  .tissage { list-style: none; padding: 0; margin: 1.4rem 0; }
-  .tissage li { padding: 0.55rem 0; border-bottom: 1px dotted var(--filet); font-size: 0.95rem; color: rgba(237,241,246,0.78); }
-  .tissage .prix { font-family: var(--serif); color: var(--or); display: inline-block; min-width: 5.2rem; }
+  .cercles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.9rem;margin:1.6rem 0 1rem}
+  .cercle-carte{background:var(--carte);border:1px solid var(--filet);border-radius:14px;padding:1.1rem 1.2rem}
+  .cercle-num{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-bottom:.4rem}
+  .cercle-nom{display:block;font-family:var(--serif);font-style:italic;color:var(--encre);margin-bottom:.4rem}
+  .cercle-carte p{font-size:.84rem;color:var(--brume);margin:0}
+  .cercles-note{font-size:.84rem;color:var(--brume);font-style:italic}
 
-  .grande-citation {
-    font-family: var(--serif); font-size: 1.25rem; font-style: italic; line-height: 1.6;
-    color: #f5edd8; text-align: center;
-    padding: 2.4rem 1rem;
-    border-top: 1px solid rgba(229,184,66,0.3);
-    border-bottom: 1px solid rgba(229,184,66,0.3);
-    margin: 3rem 0;
-  }
-  .grande-citation::before { content: '✦'; display: block; font-style: normal; color: var(--or); font-size: 0.8rem; margin-bottom: 1rem; text-shadow: 0 0 12px rgba(229,184,66,0.6); }
+  .tissage{list-style:none;padding:0;margin:1.4rem 0}
+  .tissage li{padding:.55rem 0;border-bottom:1px dotted var(--filet);font-size:.95rem;color:var(--encre)}
+  .tissage .prix{font-family:var(--serif);font-weight:700;display:inline-block;min-width:5.2rem;
+    background:linear-gradient(90deg,var(--bleu),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-  footer {
-    max-width: 960px; margin: 0 auto;
-    padding: 2rem 1.4rem 2.6rem;
-    border-top: 1px dotted var(--filet);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem;
-    font-size: 0.72rem; letter-spacing: 0.06em; color: var(--brume); opacity: 0.75;
-  }
+  .grande-citation{font-family:var(--serif);font-size:1.25rem;font-style:italic;line-height:1.6;
+    color:var(--encre);text-align:center;
+    padding:2.4rem 1rem;
+    border-top:1px solid rgba(43,63,199,.3);
+    border-bottom:1px solid rgba(43,63,199,.3);
+    margin:3rem 0}
+  .grande-citation::before{content:'✦';display:block;font-style:normal;color:var(--violet);font-size:.8rem;margin-bottom:1rem;text-shadow:0 0 12px rgba(192,64,232,.5)}
+
+  footer{max-width:960px;margin:0 auto;
+    padding:2rem 1.4rem 2.6rem;
+    border-top:1px solid var(--filet);
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;
+    font-size:.72rem;letter-spacing:.06em;color:var(--brume)}
 </style>
 </head>
 <body>
 
+<div class="mana-wallpaper" aria-hidden="true">
+  <div class="mana-wallpaper-orbit o1"></div>
+  <div class="mana-wallpaper-orbit o2"></div>
+  <div class="mana-wallpaper-orbit o3"></div>
+</div>
+
 <header>
-  <span class="marque"><span class="e">✦</span> Mana Family</span>
-  <a class="entrer" href="https://manafamily.org">Se connecter →</a>
+  <nav class="nav">
+    <a class="mark" href="index.html">
+      <img src="Logo_MANA_Symbol_logo.png" alt="MANA">
+      <span>MANA Family</span>
+    </a>
+    <a class="entrer" href="https://manafamily.org">Se connecter →</a>
+  </nav>
 </header>
 
 <main>
@@ -155,11 +162,11 @@
     <img src="deesse.png" alt="Mana" class="deesse" />
   </div>
 
-  <h1>Un rythme pour la famille.</h1>
-  <p class="devise">« La Présence fait vivre. La Mémoire fait durer. »</p>
+  <h1 class="grad">Un rythme pour la famille.</h1>
+  <p class="devise grad">« La Présence fait vivre. La Mémoire fait durer. »</p>
 
   <div class="actions">
-    <a class="btn-or" href="livre-blanc.html">Lire le Livre blanc</a>
+    <a class="btn" href="livre-blanc.html">Lire le Livre blanc</a>
     <a class="btn-doux" href="#constitution">La Constitution</a>
   </div>
   <p class="note-mer">L'application navigue en mer d'essai, dans une vraie famille. Ouverture prochaine.</p>
