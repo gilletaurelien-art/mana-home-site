@@ -72,8 +72,7 @@
 /* Logo au cœur — enfant du core animé : il hérite du pulse (brillance +
    échelle) et rayonne donc exactement au même rythme que le centre. */
 .mana-wallpaper-core-logo{
-  width:62%;height:62%;object-fit:contain;opacity:.9;
-  filter:drop-shadow(0 0 16px rgb(192 64 232 / 0.35)) drop-shadow(0 0 34px rgb(43 63 199 / 0.22));
+  width:62%;height:62%;object-fit:contain;opacity:.2;filter:none;
 }
 
 /* Lignes de mondes */
