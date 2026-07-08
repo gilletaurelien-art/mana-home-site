@@ -132,6 +132,8 @@
 
   /* Mondes */
   .mondes{display:grid;gap:1rem;margin-top:1.5rem}
+  /* Intertitre de la grille : sépare les deux espaces vécus des fondations institutionnelles */
+  .mondes-inter{margin:1.1rem 0 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous)}
   .monde{display:block;text-decoration:none;background:var(--carte);border:1px solid var(--filet);border-radius:16px;padding:1.4rem 1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s}
   .monde:hover{border-color:var(--violet);transform:translateY(-2px);box-shadow:0 10px 30px rgba(90,60,230,.08)}
   .monde-tete{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
@@ -320,9 +322,9 @@
   <section id="mondes">
     <div class="mondes-intro">
       <div>
-        <span class="sur">Les applications</span>
-        <h2>Le Monde de MANA</h2>
-        <p class="lead">Prendre soin, c'est <strong>transmettre</strong>, <strong>relier</strong>, <strong>orchestrer</strong>, <strong>protéger</strong>, <strong>reconnaître</strong>. Chaque application porte l'un de ces gestes — son nom, son territoire, sa vie propre, et la même boussole dans le monde de MANA.</p>
+        <span class="sur">L'application</span>
+        <h2>Une maison, deux espaces</h2>
+        <p class="lead">Prendre soin, c'est <strong>transmettre</strong>, <strong>relier</strong>, <strong>reconnaître</strong>. Une seule application porte ces gestes — un seul compte, une seule porte d'entrée. Et sous le plancher, des fondations qui <strong>orchestrent</strong> et <strong>protègent</strong>, sans jamais se montrer.</p>
       </div>
       <div class="scene">
         <div class="halo"></div>
@@ -334,16 +336,17 @@
     </div>
     <div class="mondes">
       <div>
-        <a class="monde" href="https://manafamily.org">
-          <span class="monde-tete"><span class="monde-nom">MANA Family</span><span class="monde-verbe grad">Transmettre.</span><span class="monde-etat">Ouvert →</span></span>
-          <p>Les cercles familiaux vivants. On y dépose des souvenirs, on veille les uns sur les autres, on garde la mémoire de la famille vivante — sans flux, sans compteurs, sans injonction. Une lueur douce dit qui a pris soin ; jamais qui ne l'a pas fait.</p>
+        <a class="monde" href="https://mana.bzh/proches">
+          <span class="monde-tete"><span class="monde-nom">Les Proches</span><span class="monde-verbe grad">Transmettre.</span><span class="monde-etat">Entrer →</span></span>
+          <p>L'espace famille de MANA — les cercles familiaux vivants. On y dépose des souvenirs, on veille les uns sur les autres, on garde la mémoire de la famille vivante — sans flux, sans compteurs, sans injonction. Une lueur douce dit qui a pris soin ; jamais qui ne l'a pas fait.</p>
         </a>
-        <a class="monde-plus" href="mana-family.html">En savoir plus sur MANA Family →</a>
+        <a class="monde-plus" href="mana-family.html">En savoir plus sur les Proches (MANA Family) →</a>
       </div>
-      <a class="monde" href="https://manafrance.org">
-        <span class="monde-tete"><span class="monde-nom">MANA France</span><span class="monde-verbe grad">Relier.</span><span class="monde-etat">Ouvert →</span></span>
-        <p>L'entraide entre voisins d'un même territoire. Donner une heure, recevoir un coup de main, reconnaître le temps partagé — la solidarité qui circule et renforce le bassin de vie. Le chapitre citoyen de Mana.</p>
+      <a class="monde" href="https://mana.bzh">
+        <span class="monde-tete"><span class="monde-nom">Le Territoire</span><span class="monde-verbe grad">Relier.</span><span class="monde-etat">Entrer →</span></span>
+        <p>L'espace citoyen de MANA — l'entraide entre voisins d'un même territoire. Donner une heure, recevoir un coup de main, reconnaître le temps partagé — la solidarité qui circule et renforce le bassin de vie.</p>
       </a>
+      <p class="mondes-inter">Les fondations — pour les partenaires &amp; institutions</p>
       <a class="monde" href="https://temposystem.eu">
         <span class="monde-tete"><span class="monde-nom">TempoSystem</span><span class="monde-verbe grad">Orchestrer.</span><span class="monde-etat">En coulisse →</span></span>
         <p>La partition discrète du temps que les êtres se consacrent. La comptabilité juste des heures données et reçues, l'infrastructure invisible qui fait tourner l'entraide. Elle joue en coulisse ; on ne la voit jamais.</p>
