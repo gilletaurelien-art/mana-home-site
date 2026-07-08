@@ -165,6 +165,7 @@
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .schema-fleche{font-size:1.4rem;color:var(--violet);opacity:.6;margin:.6rem 0}
   .schema-cadre{border:1px dashed rgba(43,63,199,.35);border-radius:20px;padding:1.6rem 1.2rem 1.2rem;position:relative;background:rgba(43,63,199,.02)}
+  .schema-cadre + .schema-cadre{margin-top:1.1rem}
   .schema-cadre-titre{position:absolute;top:-0.8rem;left:50%;transform:translateX(-50%);background:var(--ecume);
     padding:0 .9rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
   .schema-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem}
@@ -329,6 +330,60 @@
     </div>
   </section>
 
+  <!-- SCHÉMA — l'écosystème d'un coup d'œil -->
+  <section id="ecosysteme">
+    <span class="sur">La carte</span>
+    <h2>L'écosystème, d'un coup d'œil.</h2>
+    <div class="schema">
+      <a class="schema-mere" href="https://manahome.org">
+        <img class="schema-mere-face" src="deesse-mana.png" alt="Mana, le visage de l'univers">
+        <span>
+          <span class="schema-mere-tete">
+            <span class="schema-mere-nom">MANAHOME.org</span>
+            <span class="schema-mere-tag">L'assistance</span>
+          </span>
+          <span class="schema-mere-devise">«&nbsp;Rendre le soin visible, durable et transmissible.&nbsp;»</span>
+        </span>
+      </a>
+      <div class="schema-fleche">▼</div>
+      <div class="schema-cadre">
+        <span class="schema-cadre-titre">Pour les utilisateurs</span>
+        <div class="schema-grille">
+          <a class="schema-carte" href="https://mana.bzh/proches">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span class="schema-nom">Les Proches</span>
+            <span class="schema-role">L'espace famille</span>
+          </a>
+          <a class="schema-carte" href="https://mana.bzh">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="schema-nom">Le Territoire</span>
+            <span class="schema-role">L'espace citoyen</span>
+          </a>
+        </div>
+      </div>
+      <div class="schema-cadre">
+        <span class="schema-cadre-titre">Pour les partenaires</span>
+        <div class="schema-grille">
+          <a class="schema-carte" href="https://temposystem.fr">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg></span>
+            <span class="schema-nom">TempoSystem</span>
+            <span class="schema-role">L'orchestre du temps</span>
+          </a>
+          <a class="schema-carte" href="https://alliancemana.org">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+            <span class="schema-nom">Alliance MANA</span>
+            <span class="schema-role">Gouvernance &amp; principes</span>
+          </a>
+          <a class="schema-carte" href="https://manatimebank.org">
+            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+            <span class="schema-nom">MANA TimeBank</span>
+            <span class="schema-role">Reconnaissance du temps donné</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LES MONDES -->
   <section id="mondes">
     <div class="mondes-intro">
@@ -358,7 +413,7 @@
         <p>L'espace citoyen de MANA — l'entraide entre voisins d'un même territoire. Donner une heure, recevoir un coup de main, reconnaître le temps partagé — la solidarité qui circule et renforce le bassin de vie.</p>
       </a>
       <p class="mondes-inter">Les fondations — pour les partenaires &amp; institutions</p>
-      <a class="monde" href="https://temposystem.eu">
+      <a class="monde" href="https://temposystem.fr">
         <span class="monde-tete"><span class="monde-nom">TempoSystem</span><span class="monde-verbe grad">Orchestrer.</span><span class="monde-etat">En coulisse →</span></span>
         <p>La partition discrète du temps que les êtres se consacrent. La comptabilité juste des heures données et reçues, l'infrastructure invisible qui fait tourner l'entraide. Elle joue en coulisse ; on ne la voit jamais.</p>
       </a>
@@ -372,62 +427,6 @@
       </a>
     </div>
   </section>
-
-  <!-- SCHÉMA — l'écosystème d'un coup d'œil -->
-  <section id="ecosysteme">
-    <span class="sur">La carte</span>
-    <h2>L'écosystème, d'un coup d'œil.</h2>
-    <div class="schema">
-      <a class="schema-mere" href="https://manahome.org">
-        <img class="schema-mere-face" src="deesse-mana.png" alt="Mana, le visage de l'univers">
-        <span>
-          <span class="schema-mere-tete">
-            <span class="schema-mere-nom">MANAHOME.org</span>
-            <span class="schema-mere-tag">L'assistance</span>
-          </span>
-          <span class="schema-mere-devise">«&nbsp;Rendre le soin visible, durable et transmissible.&nbsp;»</span>
-        </span>
-      </a>
-      <div class="schema-fleche">▼</div>
-      <div class="schema-cadre">
-        <span class="schema-cadre-titre">Écosystème Temposystem</span>
-        <div class="schema-grille">
-          <a class="schema-carte" href="https://temposystem.eu">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
-            <span class="schema-nom">TEMPOSYSTEM.eu</span>
-            <span class="schema-role">Le cœur</span>
-          </a>
-          <a class="schema-carte" href="https://temposystem.fr">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg></span>
-            <span class="schema-nom">TEMPOSYSTEM.fr</span>
-            <span class="schema-role">L'orchestre</span>
-          </a>
-          <a class="schema-carte" href="https://manatimebank.org">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
-            <span class="schema-nom">ManaTimeBank.org</span>
-            <span class="schema-role">Le concept international</span>
-          </a>
-          <a class="schema-carte" href="https://mana.bzh">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
-            <span class="schema-nom">Mana.bzh</span>
-            <span class="schema-role">Le laboratoire breton</span>
-          </a>
-          <a class="schema-carte" href="https://manafamily.org">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-            <span class="schema-nom">ManaFamily.org</span>
-            <span class="schema-role">Les cercles familiaux</span>
-          </a>
-          <a class="schema-carte" href="https://alliancemana.org">
-            <span class="schema-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-            <span class="schema-nom">AllianceMANA.org</span>
-            <span class="schema-role">Gouvernance &amp; principes</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MANIFESTE -->
   <!-- LECTURE — livre blanc & constitution -->
   <section id="lecture">
     <span class="sur">Pour comprendre</span>
