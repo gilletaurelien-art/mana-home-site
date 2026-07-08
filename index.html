@@ -44,9 +44,9 @@
   .mark-lines{display:flex;flex-direction:column;line-height:1.15}
   .mark-name{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
   .nav ul{list-style:none;display:flex;gap:1.75rem;margin:0;padding:0;font-size:13px;letter-spacing:.025em}
-  .nav a{text-decoration:none;color:var(--brume);transition:color .15s}
+  .nav a{text-decoration:none;color:var(--brume);transition:color .15s;white-space:nowrap}
   .nav a:hover{color:var(--encre)}
-  @media(max-width:760px){.nav ul{display:none}}
+  @media(max-width:920px){.nav ul{display:none}}
   /* Actions du nav — les deux portes : l'app (se connecter) et l'extranet partenaire.
      Hors du <ul> pour rester visibles sur mobile. */
   .nav-actions{display:flex;align-items:center;gap:.55rem;flex-shrink:0}
@@ -95,7 +95,9 @@
   .sur::before{content:"";display:inline-block;width:40px;height:1px;background:var(--bleu);flex:none}
   .hero .sur{justify-content:flex-start}
   @media(max-width:820px){.hero .sur{justify-content:center}}
-  h2,#objet h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.15;margin:0 0 1.2rem;color:var(--encre)}
+  h2,#manifeste h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.15;margin:0 0 1.2rem;color:var(--encre)}
+  /* Second mouvement du manifeste : la grammaire du soin, sous les deux cartes */
+  .grammaire-titre{margin-top:4.5rem}
   p{color:var(--texte);font-size:1.125rem;line-height:1.625}
   .lead{max-width:52ch;font-size:clamp(1.125rem,2vw,1.25rem)}
 
@@ -251,10 +253,10 @@
       </span>
     </a>
     <ul>
-      <li><a href="#mondes">Les mondes</a></li>
       <li><a href="#manifeste">Manifeste</a></li>
-      <li><a href="#lecture">Lecture</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#mondes">L'application</a></li>
+      <li><a href="#lecture">Livres blancs</a></li>
+      <li><a href="#contact">Nous écrire</a></li>
       <li><a href="https://constitution.manahome.org">Constitution</a></li>
     </ul>
     <div class="nav-actions">
@@ -282,10 +284,10 @@
 
 <main>
   <!-- OBJET — les deux piliers -->
-  <section id="objet">
-    <span class="sur">L'objet de MANA Home</span>
-    <h1>Une seule application, sous une même Constitution.</h1>
-    <p class="lead">D'un côté, <strong>la Constitution</strong> : le texte fondateur qui garantit les droits numériques de la personne — attention, dignité, mémoire — et que chaque membre signe à son arrivée. De l'autre, <strong>l'application MANA</strong> : une seule maison pour prendre soin, des proches comme du territoire — un seul compte, deux espaces. <strong>MANA Home — l'Alliance MANA —</strong> est la maison mère qui veille à ce que l'une ne s'écarte jamais de l'autre.</p>
+  <section id="manifeste">
+    <span class="sur">Le manifeste</span>
+    <h1>Une application et une Constitution.</h1>
+    <p class="lead">D'un côté, <strong>la Constitution</strong> : le texte fondateur qui garantit les droits numériques de la personne — attention, dignité, mémoire — et que chaque membre signe à son arrivée. De l'autre, <strong>l'application MANA</strong> : une seule maison pour prendre soin, des proches comme du territoire.</p>
     <div class="objet-duo">
 
       <article class="socle">
@@ -315,6 +317,15 @@
         <a class="btn ghost" href="https://mana.bzh">Entrer dans l'application →</a>
       </article>
 
+    </div>
+
+    <!-- Second mouvement — la grammaire du soin, les trois forces -->
+    <h2 class="grammaire-titre">La grammaire du soin.</h2>
+    <p class="lead">Partout où l'on prend soin les uns des autres, trois forces sont à l'œuvre. L'application MANA les porte dans ses deux espaces — les Proches et le Territoire, chacun à sa manière.</p>
+    <div class="piliers">
+      <div class="pilier"><h3 class="grad">La Présence</h3><p>Ce qui fait vivre. Le geste porté à l'autre, ici et maintenant — le moteur.</p></div>
+      <div class="pilier"><h3 class="grad">La Mémoire</h3><p>Ce qui fait durer. Ce que l'on transmet et qui ne s'efface pas — le volant d'inertie.</p></div>
+      <div class="pilier"><h3 class="grad">Le Lien</h3><p>Ce qui relie. La gravité discrète qui tient l'ensemble et lui donne son sens.</p></div>
     </div>
   </section>
 
@@ -417,17 +428,6 @@
   </section>
 
   <!-- MANIFESTE -->
-  <section id="manifeste">
-    <span class="sur">Le manifeste</span>
-    <h2>La grammaire du soin.</h2>
-    <p class="lead">Partout où l'on prend soin les uns des autres, trois forces sont à l'œuvre. L'application MANA les porte dans ses deux espaces — les Proches et le Territoire, chacun à sa manière.</p>
-    <div class="piliers">
-      <div class="pilier"><h3 class="grad">La Présence</h3><p>Ce qui fait vivre. Le geste porté à l'autre, ici et maintenant — le moteur.</p></div>
-      <div class="pilier"><h3 class="grad">La Mémoire</h3><p>Ce qui fait durer. Ce que l'on transmet et qui ne s'efface pas — le volant d'inertie.</p></div>
-      <div class="pilier"><h3 class="grad">Le Lien</h3><p>Ce qui relie. La gravité discrète qui tient l'ensemble et lui donne son sens.</p></div>
-    </div>
-  </section>
-
   <!-- LECTURE — livre blanc & constitution -->
   <section id="lecture">
     <span class="sur">Pour comprendre</span>
