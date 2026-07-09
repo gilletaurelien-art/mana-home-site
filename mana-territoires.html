@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mana Territoires — La solidarité qui circule</title>
+<meta name="description" content="L'entraide entre voisins d'un même territoire. Donner une heure, recevoir un coup de main, reconnaître le temps partagé.">
+<meta property="og:title" content="Mana Territoires — La solidarité qui circule">
+<meta property="og:description" content="Le temps donné ne se perd jamais. Une solidarité qui circule, du voisin au bassin de vie.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mana-wallpaper.css">
+<style>
+  :root{
+    /* Tokens de la référence manafrance.org */
+    --bleu:#2B3FC7; --violet:#C040E8; --degrade-mi:#8B35D6;
+    --ecume:#F7F8FA; --carte:#FFFFFF;
+    --encre:#0B1220; --texte:#3A4466; --brume:#6B7280; --filet:#E8EAF0;
+    --sous:#2234B0;
+    --header-bg:rgba(255,255,255,.95);
+    --wp-a:rgb(43 63 199 / 0.08); --wp-b:rgb(192 64 232 / 0.06);
+    --wp-top:#FFFFFF; --wp-grid:rgb(11 18 32 / 0.035);
+    --serif:'Philosopher', 'Iowan Old Style', Georgia, serif;
+    --sans:'Philosopher', 'Iowan Old Style', Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ecume:#0B1220; --carte:#121A2C;
+      --encre:#EDF1F6; --texte:#B9C2D8; --brume:#9CA3AF; --filet:rgba(148,163,255,.16);
+      --sous:#C0C8F8;
+      --header-bg:rgba(11,18,32,.85);
+      --wp-a:rgb(43 63 199 / 0.18); --wp-b:rgb(192 64 232 / 0.12);
+      --wp-top:#0E1526; --wp-grid:rgb(237 241 246 / 0.04);
+    }
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--encre);line-height:1.7;
+    background:var(--ecume);min-height:100vh}
+
+  :root{--wp-bottom:var(--ecume);--wp-y:63%}
+
+  .mana-wallpaper-core{
+    border-color:rgb(192 64 232 / .12);
+    background:
+      radial-gradient(circle, rgb(192 64 232 / .10) 0 42%, rgb(43 63 199 / .06) 62%, transparent 74%),
+      var(--ecume);
+    box-shadow:0 0 60px rgb(43 63 199 / .08), 0 0 120px rgb(192 64 232 / .06);
+  }
+  .mana-wallpaper-core-logo{opacity:.34}
+
+  header,main,footer{position:relative;z-index:1}
+  ::selection{background:#C0C8F8;color:#0B1220}
+  a{color:inherit}
+  .grad{background:linear-gradient(110deg,var(--bleu) 0%,var(--degrade-mi) 50%,var(--violet) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:var(--header-bg);border-bottom:1px solid var(--filet)}
+  .nav{max-width:1080px;margin:0 auto;padding:0 1.4rem;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .mark{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+  .mark img{height:28px;width:28px;object-fit:contain}
+  .mark span{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
+  .nav .entrer{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--violet);text-decoration:none;
+    border:1px solid var(--violet);border-radius:999px;padding:.34rem .9rem;
+    transition:background .3s ease,color .3s ease}
+  .nav .entrer:hover{background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;border-color:transparent}
+
+  main{max-width:680px;margin:0 auto;padding:3rem 1.4rem 4rem;text-align:center}
+
+  .astre-scene{position:relative;width:min(82vw,460px);margin:1.4rem auto 2rem;display:flex;align-items:center;justify-content:center}
+  .astre-halo{position:absolute;width:min(74vw,400px);height:min(74vw,400px);border-radius:50%;
+    background:radial-gradient(circle, rgba(124,77,255,.20) 0%, rgba(124,77,255,0) 68%);
+    filter:blur(20px);animation:respiration 24s ease-in-out infinite}
+  .deesse{position:relative;z-index:1;width:min(80vw,440px);height:auto;filter:drop-shadow(0 0 12px rgba(90,60,230,.18))}
+  @keyframes respiration{0%,100%{opacity:.25;transform:scale(.95)}50%{opacity:.65;transform:scale(1.08)}}
+  @media (prefers-reduced-motion:reduce){.astre-halo{animation:none}}
+
+  h1{font-family:var(--serif);font-weight:700;
+    font-size:clamp(2.5rem,6vw,4rem);
+    letter-spacing:-.02em;line-height:1.04;margin:0 0 .8rem}
+  .devise{font-family:var(--serif);font-style:italic;font-size:clamp(1.125rem,2vw,1.35rem);color:var(--texte);margin:0 0 2.6rem}
+
+  .actions{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;align-items:center;margin-bottom:1.2rem}
+  .btn{display:inline-block;padding:.8rem 2rem;border-radius:999px;
+    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;text-decoration:none;
+    letter-spacing:.03em;font-size:.95rem;
+    box-shadow:0 6px 18px rgba(90,60,230,.22);transition:filter .2s,transform .2s}
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-doux{display:inline-block;padding:.8rem 1.4rem;
+    color:var(--brume);text-decoration:none;font-size:.9rem;
+    border-bottom:1px dotted var(--filet);transition:color .3s ease}
+  .btn-doux:hover{color:var(--violet)}
+  .note-mer{font-size:.78rem;color:var(--brume);font-style:italic;opacity:.85;margin-bottom:4rem}
+
+  section{text-align:left;border-top:1px solid var(--filet);padding:3.2rem 0 1rem}
+  h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,2.6rem);font-weight:400;line-height:1.15;color:var(--encre);margin:0 0 1.2rem}
+  .sur-titre{display:flex;align-items:center;gap:1rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--sous);margin-bottom:1rem;font-weight:700}
+  .sur-titre::before{content:"";display:inline-block;width:40px;height:1px;background:var(--bleu);flex:none}
+  p{color:var(--texte);font-size:1.125rem;line-height:1.625;margin:.9rem 0}
+  strong{color:var(--encre)}
+  em{color:var(--encre)}
+
+  .loi{margin-bottom:2rem}
+  .loi h3{font-family:var(--serif);font-size:1.1rem;color:var(--encre);margin:0 0 .4rem;font-weight:700}
+  .loi h3 .puce{color:var(--violet);margin-right:.5rem}
+  .loi p{font-size:.92rem;color:var(--brume);margin:0}
+
+  .cercles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.9rem;margin:1.6rem 0 1rem}
+  .cercle-carte{background:var(--carte);border:1px solid var(--filet);border-radius:14px;padding:1.1rem 1.2rem}
+  .cercle-num{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-bottom:.4rem}
+  .cercle-nom{display:block;font-family:var(--serif);font-style:italic;color:var(--encre);margin-bottom:.4rem}
+  .cercle-carte p{font-size:.84rem;color:var(--brume);margin:0}
+  .cercles-note{font-size:.84rem;color:var(--brume);font-style:italic}
+
+  .grande-citation{font-family:var(--serif);font-size:1.25rem;font-style:italic;line-height:1.6;
+    color:var(--encre);text-align:center;
+    padding:2.4rem 1rem;
+    border-top:1px solid rgba(43,63,199,.3);
+    border-bottom:1px solid rgba(43,63,199,.3);
+    margin:3rem 0}
+  .grande-citation::before{content:'✦';display:block;font-style:normal;color:var(--violet);font-size:.8rem;margin-bottom:1rem;text-shadow:0 0 12px rgba(192,64,232,.5)}
+
+  footer{max-width:960px;margin:0 auto;
+    padding:2rem 1.4rem 2.6rem;
+    border-top:1px solid var(--filet);
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;
+    font-size:.72rem;letter-spacing:.06em;color:var(--brume)}
+</style>
+</head>
+<body>
+
+<div class="mana-wallpaper" aria-hidden="true">
+  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-one"></div>
+  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-two"></div>
+  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-three"></div>
+  <div class="mana-wallpaper-core">
+    <img src="Logo_MANA_Symbol_logo.png" alt="" class="mana-wallpaper-core-logo">
+  </div>
+  <div class="mana-world-line mana-world-line-one"></div>
+  <div class="mana-world-line mana-world-line-two"></div>
+  <div class="mana-world-line mana-world-line-three"></div>
+</div>
+
+<header>
+  <nav class="nav">
+    <a class="mark" href="index.html">
+      <img src="Logo_MANA_Symbol_logo.png" alt="MANA">
+      <span>MANA Territoires</span>
+    </a>
+    <a class="entrer" href="https://mana.bzh">Entrer →</a>
+  </nav>
+</header>
+
+<main>
+  <div class="astre-scene">
+    <div class="astre-halo"></div>
+    <img src="deesse.png" alt="Mana" class="deesse" />
+  </div>
+
+  <h1 class="grad">La solidarité qui circule.</h1>
+  <p class="devise grad">« Le temps donné ne se perd jamais. »</p>
+
+  <div class="actions">
+    <a class="btn" href="https://mana.bzh">Entrer dans l'application</a>
+    <a class="btn-doux" href="#constitution">La Constitution</a>
+  </div>
+  <p class="note-mer">L'application navigue en bêta bretonne (mana.bzh). Ouverture prochaine.</p>
+
+  <section>
+    <span class="sur-titre">Le geste</span>
+    <h2>Une heure donnée, un lien qui se tisse.</h2>
+    <p>MANA Territoires refuse les codes des réseaux sociaux. Ici, pas de flux infini à faire défiler, pas de likes, pas de compteurs, pas d'injonction à la performance.</p>
+    <p>On propose une heure — un trajet, un coup de main, une présence — et un voisin la reçoit. Le temps partagé est <strong>reconnu</strong>, jamais dû : celui qui donne ne crée pas de dette, celui qui reçoit ne s'endette pas. La solidarité circule, d'une personne à l'autre, et le bassin de vie en sort plus vivant.</p>
+    <p>Donner du temps, c'est en créer.</p>
+  </section>
+
+  <section>
+    <span class="sur-titre">La structure</span>
+    <h2>Du voisin au bassin de vie.</h2>
+    <p>Le Territoire n'est pas une carte administrative : c'est une profondeur de proximité. On s'entraide d'abord près de chez soi, puis le cercle s'élargit — jusqu'à la solidarité d'une région entière.</p>
+    <div class="cercles">
+      <div class="cercle-carte">
+        <span class="cercle-num">Échelle 1 — Le voisinage</span>
+        <span class="cercle-nom">La porte à côté</span>
+        <p>L'entraide directe, de proche en proche. Rendre service à qui vit tout près, sans intermédiaire.</p>
+      </div>
+      <div class="cercle-carte">
+        <span class="cercle-num">Échelle 2 — Le bassin de vie</span>
+        <span class="cercle-nom">La commune vivante</span>
+        <p>Le tissu local : voisins, associations, communes. Là où le temps donné fait tenir une communauté.</p>
+      </div>
+      <div class="cercle-carte">
+        <span class="cercle-num">Échelle 3 — Le territoire</span>
+        <span class="cercle-nom">La solidarité à grande échelle</span>
+        <p>La région, les institutions, les mécènes. La générosité qui circule d'un bout à l'autre d'un espace commun.</p>
+      </div>
+    </div>
+    <p class="cercles-note">L'accès est ouvert à tous, gratuitement, dès le premier jour. L'entraide est un droit, pas un produit.</p>
+  </section>
+
+  <section id="constitution">
+    <span class="sur-titre">⚓ La Constitution</span>
+    <h2>Cinq principes, gravés avant la première ligne de code.</h2>
+
+    <div class="loi">
+      <h3><span class="puce">✦</span>Le temps donné est reconnu, jamais exigé</h3>
+      <p>« Lorsqu'il est donné, il est reconnu » — jamais « il faut donner ». Aucune relance, aucune pression : le geste reste libre, toujours.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Pas de score, pas de classement</h3>
+      <p>Personne n'est mieux noté qu'un autre. On ne compare pas les personnes ; on rend visible ce qui a été offert, sans jamais en faire un palmarès.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>La réciprocité sans dette</h3>
+      <p>Donner est un cadeau, pas une créance. Le temps circule comme la gratitude — d'une personne à l'autre — et personne ne se retrouve « débiteur » de son voisin.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>L'attention ne se capte pas</h3>
+      <p>Pas d'algorithme d'engagement, pas de notifications qui rappellent « avant qu'il soit trop tard ». Une bonne application est une application qu'on peut refermer sans culpabiliser.</p>
+    </div>
+    <div class="loi">
+      <h3><span class="puce">✦</span>Personne n'est un profil à vendre</h3>
+      <p>Vos données ne sont pas un actif. Rien de ce que vous confiez au territoire n'est marchandé, revendu ni utilisé pour vous capter. C'est écrit avant la première ligne de code.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sur-titre">Le modèle</span>
+    <h2>L'entraide entre voisins ne se paie pas.</h2>
+    <p>Donner et recevoir du temps est <strong>gratuit</strong>, pour toujours. Le mana est abondant : ce n'est pas un solde qu'on accumule, c'est une gratitude qui circule. Le statut, ici, c'est la générosité — pas le compteur.</p>
+    <p>Ce qui fait vivre le service ne repose jamais sur un péage citoyen : il tient par l'<strong>adhésion</strong> de ceux qui veulent soutenir, et par les <strong>partenaires</strong> — communes, institutions, mécènes — qui ancrent la démarche dans le territoire. Jamais en rançonnant le lien entre voisins.</p>
+  </section>
+
+  <div class="grande-citation">
+    Rendre service, c'est se relier.<br>
+    MANA Territoires est la forme que prend ce geste<br>quand il s'applique à tout un bassin de vie.
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 MANA Territoires — un projet de l'écosystème MANA</span>
+  <span>« Le temps donné ne se perd jamais. » ✦</span>
+</footer>
+
+</body>
+</html>
