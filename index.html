@@ -589,5 +589,114 @@
   })();
 </script>
 
+<!-- ============ Chatbot Mana — la Déesse (or) ============ -->
+<style>
+  #mb-btn{position:fixed;bottom:20px;right:20px;z-index:60;display:flex;align-items:center;gap:12px;
+    background:rgba(23,19,42,.92);backdrop-filter:blur(8px);border:1px solid rgba(228,197,131,.4);
+    border-radius:999px;padding:8px 18px 8px 8px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 30px rgba(228,197,131,.15);
+    font-family:var(--serif);color:#F4EFE4;transition:box-shadow .2s,transform .2s}
+  #mb-btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,0,0,.4),0 0 40px rgba(228,197,131,.28)}
+  .mb-orb{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(228,197,131,.6);
+    box-shadow:0 0 18px rgba(228,197,131,.4);flex:none;background:#17132a}
+  #mb-btn .mb-cta{font-size:13px;font-weight:700;line-height:1.15;text-align:left}
+  #mb-btn .mb-cta small{display:block;font-weight:400;font-size:11px;color:#E4C583}
+  #mb-panel{position:fixed;bottom:92px;right:20px;z-index:60;width:min(92vw,380px);max-height:min(72vh,620px);
+    display:none;flex-direction:column;overflow:hidden;border-radius:20px;
+    background:linear-gradient(180deg,#1b1636,#141026);border:1px solid rgba(228,197,131,.35);
+    box-shadow:0 24px 70px rgba(0,0,0,.5);font-family:var(--serif);color:#F4EFE4}
+  #mb-panel.open{display:flex}
+  .mb-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(228,197,131,.2)}
+  .mb-head b{font-size:15px}.mb-head span{display:block;font-size:11px;color:#C9A46A}
+  .mb-close{margin-left:auto;background:none;border:0;color:#C9A46A;cursor:pointer;font-size:22px;line-height:1}
+  .mb-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+  .mb-row{display:flex;align-items:flex-end;gap:10px}
+  .mb-row.me{justify-content:flex-end}
+  .mb-av{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(228,197,131,.55);flex:none}
+  .mb-bub{max-width:78%;font-size:13.5px;line-height:1.55;padding:10px 13px;border-radius:16px}
+  .mb-row .mb-bub{background:rgba(255,255,255,.06);border:1px solid rgba(228,197,131,.18);border-bottom-left-radius:5px;color:#EFE9DC}
+  .mb-row.me .mb-bub{background:linear-gradient(135deg,#E4C583,#C9A227);color:#17132a;font-weight:600;border-bottom-right-radius:5px}
+  .mb-foot{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(228,197,131,.2)}
+  .mb-foot input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(228,197,131,.25);border-radius:999px;
+    padding:10px 16px;color:#F4EFE4;font-family:var(--serif);font-size:13.5px;outline:none}
+  .mb-foot input::placeholder{color:rgba(244,239,228,.4)}
+  .mb-foot input:focus{border-color:#E4C583}
+  .mb-send{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;flex:none;
+    background:linear-gradient(135deg,#E4C583,#C9A227);color:#17132a;font-size:15px;display:flex;align-items:center;justify-content:center}
+  .mb-send:disabled{opacity:.4;cursor:default}
+  .mb-dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#C9A46A;margin:0 1px;animation:mbb 1s infinite}
+  .mb-dots span:nth-child(2){animation-delay:.15s}.mb-dots span:nth-child(3){animation-delay:.3s}
+  @keyframes mbb{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+  @media(prefers-reduced-motion:reduce){.mb-dots span{animation:none}}
+</style>
+
+<button id="mb-btn" aria-label="Parlez à Mana">
+  <img class="mb-orb" src="deesse-gold-face.png" alt="Mana, la Déesse">
+  <span class="mb-cta">Une question&nbsp;?<small>Parlez à Mana</small></span>
+</button>
+
+<div id="mb-panel" role="dialog" aria-label="Mana">
+  <div class="mb-head">
+    <img class="mb-orb" style="width:38px;height:38px" src="deesse-gold-face.png" alt="">
+    <div><b>Mana</b><span>La maison mère</span></div>
+    <button class="mb-close" aria-label="Fermer">&times;</button>
+  </div>
+  <div class="mb-body" id="mb-body"></div>
+  <div class="mb-foot">
+    <input id="mb-input" placeholder="Parlez à Mana…" autocomplete="off">
+    <button class="mb-send" id="mb-send" aria-label="Envoyer">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('mb-btn'), panel=document.getElementById('mb-panel'),
+      body=document.getElementById('mb-body'), input=document.getElementById('mb-input'),
+      send=document.getElementById('mb-send'), closeBtn=panel.querySelector('.mb-close');
+
+  // Moteur de DÉMONSTRATION — voix de Mana (la Déesse). À brancher sur l'IA plus tard.
+  function reply(q){
+    var t=q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    var h=function(){for(var i=0;i<arguments.length;i++){if(t.indexOf(arguments[i])>-1)return true;}return false;};
+    if(h('bonjour','salut','coucou','bonsoir','hello')) return "Salutations. Je suis Mana, la voix de la maison mère. Ici veille une famille de mondes citoyens. Dites-moi ce que vous cherchez — je vous guide.";
+    if(h('mondes','application','sites','univers','ecosysteme','famille de mondes')) return "Notre famille compte plusieurs mondes : MANA France (les territoires), Mana Bretagne, Mana Family (les cercles familiaux), TEMPOSYSTEM (le moteur), Mana Time Bank et Alliance MANA. Lequel vous appelle ?";
+    if(h('constitution','droit','ethique','serment','donnee','rgpd')) return "Avant toute chose, il y a un serment : la Constitution des droits numériques de la personne. Elle protège votre dignité et vos données. Chaque membre la signe à son arrivée.";
+    if(h('soin','care','aidant','prendre soin','entraide','solidarite')) return "Prendre soin, ensemble : voilà notre raison d'etre. Rendre visible le temps donné, relier les proches et les aidants. C'est le cœur battant de notre maison.";
+    if(h('family','famille','proche','memoire','cercle')) return "Mana Family réunit vos cercles — présence, mémoire, entraide. Je peux vous y conduire : manafamily.org.";
+    if(h('france','territoire','commune','association','collectivite','maire')) return "MANA France porte l'univers vers les territoires et les collectivités : manafrance.org.";
+    if(h('rejoindre','participer','comment','commencer','inscrire')) return "Chaque monde a sa porte. Dites-moi ce qui vous touche — les territoires, la famille, l'entraide — et je vous oriente vers le bon seuil.";
+    if(h('mana','qui es','c est quoi','cest quoi','quoi')) return "MANA rend le soin visible, durable et transmissible. Une famille de mondes citoyens, réunis sous une même Constitution. Ici, la maison mère.";
+    if(h('merci','super','genial','parfait','bravo')) return "C'est un honneur de vous accompagner. Revenez quand vous le souhaitez — la maison est toujours ouverte.";
+    if(h('au revoir','aurevoir','bye','a bientot','ciao')) return "Que le soin vous accompagne. À bientôt, sous la même Constitution.";
+    return "Belle quête. Je veille sur tout ce qui touche au soin, aux mondes de MANA et à notre Constitution. Reformulez votre question, et je vous éclaire.";
+  }
+
+  function scroll(){ body.scrollTop=body.scrollHeight; }
+  function orb(){ var a=document.createElement('img'); a.className='mb-av'; a.src='deesse-gold-face.png'; a.alt='Mana'; return a; }
+  function addMe(txt){ var r=document.createElement('div'); r.className='mb-row me'; var b=document.createElement('div'); b.className='mb-bub'; b.textContent=txt; r.appendChild(b); body.appendChild(r); scroll(); }
+  function addMana(txt){ var r=document.createElement('div'); r.className='mb-row'; var b=document.createElement('div'); b.className='mb-bub'; b.textContent=txt; r.appendChild(orb()); r.appendChild(b); body.appendChild(r); scroll(); }
+
+  var busy=false;
+  function submit(){
+    var q=input.value.trim(); if(!q||busy) return;
+    input.value=''; addMe(q); busy=true;
+    var r=document.createElement('div'); r.className='mb-row'; r.id='mb-dots';
+    var b=document.createElement('div'); b.className='mb-bub mb-dots'; b.innerHTML='<span></span><span></span><span></span>';
+    r.appendChild(orb()); r.appendChild(b); body.appendChild(r); scroll();
+    setTimeout(function(){ var d=document.getElementById('mb-dots'); if(d) d.remove(); addMana(reply(q)); busy=false; }, 650);
+  }
+
+  btn.addEventListener('click', function(){
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){
+      if(!body.childElementCount) addMana("Salutations, je suis Mana. Ici, la maison mère de notre univers. Que puis-je pour vous ?");
+      input.focus();
+    }
+  });
+  closeBtn.addEventListener('click', function(){ panel.classList.remove('open'); });
+  send.addEventListener('click', submit);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter') submit(); });
+})();
+</script>
+
 </body>
 </html>
