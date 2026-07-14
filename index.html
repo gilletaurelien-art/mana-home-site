@@ -144,7 +144,7 @@
   .hero .sub{max-width:34ch;margin:0 auto 2rem;font-size:clamp(1.15rem,2.2vw,1.4rem);
     line-height:1.55;color:var(--texte)}
   .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
-  .hero-frame{width:100%;max-width:940px;margin:0 auto;border-radius:26px;overflow:hidden;
+  .hero-frame{width:100%;max-width:940px;margin:0 auto clamp(2rem,4vw,3rem);border-radius:26px;overflow:hidden;
     box-shadow:var(--ombre);border:1px solid var(--filet)}
   .hero-frame img{display:block;width:100%;height:auto}
   @media(max-width:560px){.hero-frame{border-radius:18px}}
@@ -281,14 +281,14 @@
 <!-- ===== 1 · HERO — qu'est-ce que c'est ? ===== -->
 <section class="hero" aria-label="MANA — prendre soin, ensemble">
   <div class="wrap">
+    <div class="hero-frame">
+      <img class="zoomable" src="manamaison.jpg" alt="Une maison, deux espaces : Les Proches — veiller et transmettre — et Le Territoire — s'entraider — autour de la Maison MANA.">
+    </div>
     <h1>Prendre soin,<br>ensemble.</h1>
-    <p class="sub">Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.</p>
+    <p class="sub">Une seule application pour veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment.</p>
     <div class="hero-cta">
       <a class="btn" href="https://mana.bzh">Rejoindre gratuitement</a>
       <a class="btn ghost" href="#espaces">Découvrir MANA</a>
-    </div>
-    <div class="hero-frame">
-      <img class="zoomable" src="hero-ensemble.jpg" alt="Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres — donner, recevoir, transmettre.">
     </div>
   </div>
 </section>
