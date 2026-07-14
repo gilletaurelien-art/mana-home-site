@@ -55,14 +55,24 @@
 <style>
   :root{
     color-scheme: light; /* le site reste en mode jour, quel que soit le réglage système */
-    /* Tokens de la référence manafrance.org */
-    --bleu:#2B3FC7; --violet:#C040E8; --degrade-mi:#8B35D6;
-    --ecume:#F7F8FA; --carte:#FFFFFF;
-    --encre:#0B1220; --texte:#3A4466; --brume:#6B7280; --filet:#E8EAF0;
-    --sous:#2234B0;
-    --header-bg:rgba(255,255,255,.95);
-    --wp-a:rgb(43 63 199 / 0.08); --wp-b:rgb(192 64 232 / 0.06);
-    --wp-top:#FFFFFF; --wp-grid:rgb(11 18 32 / 0.035);
+    /* PALETTE NATURE — vert, sable, terre, eau de rivière, eau de mer.
+       On garde les anciens noms de tokens (--bleu/--violet…) mais on leur donne
+       des valeurs naturelles : tout le site (gradients, boutons, filets) suit. */
+    --mer:#1E6E82;        /* eau de mer — bleu-vert profond */
+    --riviere:#2FA98C;    /* eau de rivière — turquoise clair */
+    --mousse:#3E9E6E;     /* vert mousse / feuille */
+    --sable:#E7D6B0;      /* sable */
+    --terre:#9A6A44;      /* terre / écorce */
+    --soleil:#E8A44C;     /* soleil — accent chaud */
+    --corail:#E27A5F;     /* corail — accent secondaire */
+    /* Alias vers l'ancien système de noms → dégradé mer → rivière → mousse */
+    --bleu:var(--mer); --violet:var(--mousse); --degrade-mi:var(--riviere);
+    --ecume:#FAF6EA; --carte:#FFFFFF;
+    --encre:#1B3A2E; --texte:#3C4A40; --brume:#6E7B70; --filet:#E7E1D0;
+    --sous:#216B54;
+    --header-bg:rgba(250,246,234,.9);
+    --wp-a:rgb(46 125 91 / 0.07); --wp-b:rgb(154 106 68 / 0.05);
+    --wp-top:#FDFBF4; --wp-grid:rgb(27 58 46 / 0.03);
     --serif:'Philosopher', 'Iowan Old Style', Georgia, serif;
     --sans:'Philosopher', 'Iowan Old Style', Georgia, serif;
   }
@@ -74,7 +84,7 @@
      que ses variables (mode jour via :root — le mode nuit est désactivé). */
   :root{--wp-bottom:var(--ecume)}
   header,main,footer{position:relative;z-index:1}
-  ::selection{background:#C0C8F8;color:#0B1220}
+  ::selection{background:#BFE3D0;color:#1B3A2E}
   a{color:inherit}
   .grad{background:linear-gradient(110deg,var(--bleu) 0%,var(--degrade-mi) 50%,var(--violet) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -93,42 +103,29 @@
      Hors du <ul> pour rester visibles sur mobile. */
   .nav-actions{display:flex;align-items:center;gap:.55rem;flex-shrink:0}
   .nav-btn{display:inline-block;padding:.45rem .95rem;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.02em;white-space:nowrap;
-    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff !important;box-shadow:0 4px 14px rgba(90,60,230,.22);transition:filter .2s,transform .2s}
+    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff !important;box-shadow:0 4px 14px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
   .nav-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
   .nav-btn.ghost{background:none;color:var(--violet) !important;border:1px solid var(--violet);box-shadow:none}
   @media(max-width:480px){.nav-btn{padding:.4rem .75rem;font-size:11.5px}}
 
-  /* HERO NUIT — la déesse en pleine lumière sur la nuit (décor fixe, pas un mode) */
-  .hero-nuit{position:relative;z-index:1;overflow:hidden;min-height:min(88vh,720px);
-    display:grid;place-items:center;padding:3rem 1.4rem 4.5rem;
-    background:radial-gradient(ellipse 90% 70% at 50% 32%, #2c2461 0%, #1a1440 45%, #0b0920 100%)}
-  .hero-nuit .halo-nuit{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
-    width:min(78vw,640px);aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle, rgba(178,33,224,.34) 0%, rgba(124,77,255,.18) 45%, transparent 70%);
-    filter:blur(28px);animation:halo 7s ease-in-out infinite}
-  .hero-nuit .deesse-nuit{position:relative;height:min(56vh,470px);max-width:90vw;object-fit:contain;
-    filter:drop-shadow(0 0 22px rgba(205,169,255,.55)) drop-shadow(0 0 70px rgba(124,77,255,.38));
-    -webkit-mask-image:radial-gradient(ellipse 72% 72% at 50% 50%, black 52%, transparent 76%);
-    mask-image:radial-gradient(ellipse 72% 72% at 50% 50%, black 52%, transparent 76%);
-    animation:breathe 6.5s ease-in-out infinite}
-  .hero-nuit .tw{background:#e8dcff;box-shadow:0 0 8px #cda9ff, 0 0 18px rgba(178,33,224,.6)}
-  .hero-nuit .tw.d{top:30%;left:24%;animation-delay:.5s}
-  .hero-nuit .tw.e{top:62%;left:30%;animation-delay:1.3s}
-  .hero-nuit .tw.f{top:18%;left:72%;animation-delay:2.1s}
-  /* Le mot de Mana, sous elle */
-  .hero-nuit .hero-mot{position:relative;text-align:center;max-width:36rem;margin-top:.4rem;padding-bottom:2.5rem}
-  .hero-nuit .hero-mot p{margin:0 0 .55rem;color:#e9e2f7}
-  .hero-nuit .salut{font-family:var(--serif);font-size:clamp(1.35rem,2.6vw,1.8rem)}
-  .hero-nuit .salut strong{color:#fff;text-shadow:0 0 14px rgba(205,169,255,.8)}
-  .hero-nuit .mission{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.6;color:#c9bde4}
-  .hero-nuit .mission .brille{color:#CDA9FF;text-shadow:0 0 12px rgba(178,33,224,.55)}
-  .hero-nuit .envoi{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:#a99cc9;margin-top:1rem}
-  .hero-nuit .signe{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:1rem;
-    color:#fff;text-shadow:0 0 14px rgba(205,169,255,.7);margin-top:.15rem}
-  /* Le bas de la nuit se fond dans l'écume de la page */
-  .hero-nuit::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;
-    background:linear-gradient(to top, var(--ecume), transparent);pointer-events:none}
-  @media(prefers-reduced-motion:reduce){.hero-nuit .deesse-nuit,.hero-nuit .halo-nuit{animation:none}}
+  /* HERO NATURE — prendre soin, ensemble, dehors. L'illustration au cœur. */
+  .hero-nature{position:relative;z-index:1;text-align:center;padding:2.4rem 1.4rem 2.5rem;
+    background:radial-gradient(120% 85% at 50% 0%, #FCF8EC 0%, var(--ecume) 62%)}
+  .hero-nature .hero-title{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6vw,4rem);
+    line-height:1.03;letter-spacing:-.015em;color:var(--encre);margin:1.6rem 0 .9rem}
+  .hero-nature .brille{background:linear-gradient(110deg,var(--mer),var(--riviere) 55%,var(--mousse));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-nature .lead{margin:0 auto 1.7rem;max-width:46ch;color:var(--texte)}
+  .hero-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+  /* Le cadre de l'illustration — comme une fenêtre ouverte sur le dehors */
+  .hero-frame{position:relative;max-width:1040px;margin:0 auto;border-radius:28px;overflow:hidden;
+    border:1px solid rgba(46,125,91,.14);
+    box-shadow:0 34px 80px rgba(27,58,46,.20), 0 6px 16px rgba(27,58,46,.08)}
+  .hero-frame img{display:block;width:100%;height:auto}
+  /* Le bas de l'illustration se fond doucement dans la crème de la page */
+  .hero-frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;pointer-events:none;
+    background:linear-gradient(to top, rgba(250,246,234,.75), transparent)}
+  @media(max-width:560px){.hero-frame{border-radius:20px}}
 
   main{max-width:1080px;margin:0 auto;padding:0 1.4rem}
   section{padding:4rem 0;border-top:1px solid var(--filet)}
@@ -159,8 +156,9 @@
   @media(max-width:820px){.mondes-intro{grid-template-columns:1fr;gap:1.5rem;text-align:center}}
   @media(max-width:820px){.mondes-intro .scene{order:-1}}
   .scene{position:relative;justify-self:center;width:min(45vw,315px)}
-  .halo{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(124,77,255,.18),rgba(124,77,255,0) 68%);filter:blur(16px);animation:halo 7s ease-in-out infinite}
-  .deesse{position:relative;width:100%;display:block;filter:drop-shadow(0 0 12px rgba(90,60,230,.18));animation:breathe 6.5s ease-in-out infinite}
+  .halo{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(47,169,140,.18),rgba(47,169,140,0) 68%);filter:blur(16px);animation:halo 7s ease-in-out infinite}
+  /* Déesse au trait — teintée vers le vert/eau pour épouser la palette nature */
+  .deesse{position:relative;width:100%;display:block;filter:hue-rotate(210deg) saturate(.7) drop-shadow(0 0 12px rgba(46,125,91,.18));animation:breathe 6.5s ease-in-out infinite}
   .tw{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation:tw 3s ease-in-out infinite}
   .tw.a{top:24%;left:56%}.tw.b{top:38%;left:70%;animation-delay:.9s}.tw.c{top:54%;left:62%;animation-delay:1.7s}
   @keyframes breathe{0%,100%{transform:scale(.99) translateY(2px)}50%{transform:scale(1.03) translateY(-5px)}}
@@ -179,7 +177,7 @@
   /* Intertitre de la grille : sépare les deux espaces vécus des fondations institutionnelles */
   .mondes-inter{margin:1.1rem 0 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous)}
   .monde{display:block;text-decoration:none;background:var(--carte);border:1px solid var(--filet);border-radius:16px;padding:1.4rem 1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s}
-  .monde:hover{border-color:var(--violet);transform:translateY(-2px);box-shadow:0 10px 30px rgba(90,60,230,.08)}
+  .monde:hover{border-color:var(--violet);transform:translateY(-2px);box-shadow:0 10px 30px rgba(46,125,91,.08)}
   .monde-tete{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
   .monde-nom{font-family:var(--serif);font-size:1.3rem;color:var(--encre)}
   .monde-verbe{font-family:var(--serif);font-style:italic;font-size:1.05rem}
@@ -194,19 +192,19 @@
   /* Racine = l'encadré déesse (la maison mère) */
   .schema-mere{display:inline-flex;align-items:center;gap:1.1rem;text-align:left;text-decoration:none;
     background:var(--carte);border:1px solid var(--filet);border-radius:20px;padding:1rem 1.6rem 1rem 1.1rem;
-    box-shadow:0 14px 40px rgba(90,60,230,.13);max-width:460px;transition:border-color .25s,transform .25s}
+    box-shadow:0 14px 40px rgba(46,125,91,.13);max-width:460px;transition:border-color .25s,transform .25s}
   .schema-mere:hover{border-color:var(--violet);transform:translateY(-2px)}
   .schema-mere-face{width:64px;height:64px;flex:none;border-radius:50%;object-fit:cover;object-position:center;
-    background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid rgba(192,64,232,.25);
-    box-shadow:0 0 18px rgba(124,77,255,.25)}
+    background:linear-gradient(135deg,#EAF6F0,#DCEFE6);border:1px solid rgba(46,125,91,.25);
+    box-shadow:0 0 18px rgba(47,169,140,.25)}
   .schema-mere-tete{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
   .schema-mere-nom{font-weight:700;font-size:1rem;letter-spacing:.14em;color:var(--encre)}
-  .schema-mere-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#7c3aed}
+  .schema-mere-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#216B54}
   .schema-mere-devise{display:block;margin-top:.2rem;font-style:italic;font-size:.88rem;line-height:1.5;
     background:linear-gradient(110deg,var(--bleu),var(--degrade-mi),var(--violet));
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .schema-fleche{font-size:1.4rem;color:var(--violet);opacity:.6;margin:.6rem 0}
-  .schema-cadre{border:1px dashed rgba(43,63,199,.35);border-radius:20px;padding:1.6rem 1.2rem 1.2rem;position:relative;background:rgba(43,63,199,.02)}
+  .schema-cadre{border:1px dashed rgba(46,125,91,.35);border-radius:20px;padding:1.6rem 1.2rem 1.2rem;position:relative;background:rgba(46,125,91,.02)}
   .schema-cadre + .schema-cadre{margin-top:1.1rem}
   .schema-cadre-titre{position:absolute;top:-0.8rem;left:50%;transform:translateX(-50%);background:var(--ecume);
     padding:0 .9rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
@@ -229,7 +227,7 @@
   .encart{background:var(--carte);border:1px solid var(--filet);border-radius:18px;padding:1.6rem}
   .encart h3{font-family:var(--serif);font-size:1.25rem;margin:0 0 .5rem}
   .encart p{font-size:.92rem;color:var(--brume);margin:0 0 1.1rem}
-  .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:999px;background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;font-size:.9rem;text-decoration:none;box-shadow:0 6px 18px rgba(90,60,230,.22);transition:filter .2s,transform .2s}
+  .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:999px;background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;font-size:.9rem;text-decoration:none;box-shadow:0 6px 18px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
   .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
   .btn.ghost{background:none;color:var(--violet);border:1px solid var(--violet);box-shadow:none}
 
@@ -237,7 +235,7 @@
   .objet-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
   @media(max-width:820px){.objet-duo{grid-template-columns:1fr}}
   .socle{position:relative;display:flex;flex-direction:column;background:var(--carte);border:1px solid var(--filet);border-radius:22px;padding:2rem;transition:border-color .25s,transform .25s,box-shadow .25s}
-  .socle:hover{border-color:var(--violet);transform:translateY(-3px);box-shadow:0 16px 40px rgba(90,60,230,.10)}
+  .socle:hover{border-color:var(--violet);transform:translateY(-3px);box-shadow:0 16px 40px rgba(46,125,91,.10)}
   .socle-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous)}
   /* La couche partenaire (TempoSystem, Alliance, TimeBank) — distincte du récit citoyen */
   .part-pro{font-size:.85rem;color:var(--brume);border-top:1px dashed var(--filet);padding-top:.9rem;margin-top:.4rem}
@@ -251,7 +249,7 @@
   /* Signataires vivants — chaque membre signe la Constitution à l'onboarding */
   .signataires{display:flex;align-items:center;gap:.8rem;margin:.2rem 0 1.3rem;padding:.7rem .9rem;border:1px solid var(--filet);border-radius:14px;background:var(--ecume)}
   .sig-piles{display:flex;flex:none}
-  .sig-piles span{width:26px;height:26px;border-radius:50%;border:2px solid var(--carte);margin-left:-8px;background:linear-gradient(135deg,var(--bleu),var(--violet));box-shadow:0 2px 6px rgba(90,60,230,.25)}
+  .sig-piles span{width:26px;height:26px;border-radius:50%;border:2px solid var(--carte);margin-left:-8px;background:linear-gradient(135deg,var(--bleu),var(--violet));box-shadow:0 2px 6px rgba(46,125,91,.25)}
   .sig-piles span:first-child{margin-left:0}
   .sig-piles .more{background:var(--carte);color:var(--sous);font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center}
   .sig-txt{font-size:.82rem;line-height:1.4;color:var(--brume)}
@@ -314,18 +312,17 @@
   </nav>
 </header>
 
-<!-- HERO NUIT — la déesse qui brille, pleine largeur -->
-<section class="hero-nuit" aria-label="Mana, le visage de l'univers">
-  <div class="halo-nuit"></div>
-  <img class="deesse-nuit" src="deesse-mana-nuit.png" alt="Mana, le visage de l'univers">
-  <div class="hero-mot">
-    <p class="salut">Salutations &amp; <strong>Bienvenue</strong></p>
-    <p class="mission">J'existe pour <span class="brille">valoriser les personnes aidantes</span> et pour veiller à transmettre leurs messages, durablement.</p>
-    <p class="envoi">Bien à vous,</p>
-    <p class="signe">— MANA</p>
+<!-- HERO NATURE — prendre soin, ensemble, dehors -->
+<section class="hero-nature" aria-label="MANA — prendre soin, ensemble">
+  <div class="hero-frame">
+    <img src="hero-ensemble.jpg" alt="MANA — Le temps de l'entraide devient notre richesse commune : donner, recevoir, transmettre. Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres.">
   </div>
-  <span class="tw a"></span><span class="tw b"></span><span class="tw c"></span>
-  <span class="tw d"></span><span class="tw e"></span><span class="tw f"></span>
+  <h1 class="hero-title">Prendre soin,<br><span class="brille">ensemble.</span></h1>
+  <p class="lead">Rendre le soin visible, durable et transmissible — pour les proches comme pour le territoire, sous une même Constitution.</p>
+  <div class="hero-cta">
+    <a class="btn" href="https://mana.bzh">Rejoindre MANA →</a>
+    <a class="btn ghost" href="#manifeste">Découvrir la maison</a>
+  </div>
 </section>
 
 <main>
@@ -592,17 +589,17 @@
 <!-- ============ Chatbot Mana — la Déesse (or) ============ -->
 <style>
   #mb-btn{position:fixed;bottom:20px;right:20px;z-index:60;display:flex;align-items:center;gap:12px;
-    background:rgba(23,19,42,.92);backdrop-filter:blur(8px);border:1px solid rgba(228,197,131,.4);
+    background:rgba(20,38,30,.92);backdrop-filter:blur(8px);border:1px solid rgba(228,197,131,.4);
     border-radius:999px;padding:8px 18px 8px 8px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 30px rgba(228,197,131,.15);
     font-family:var(--serif);color:#F4EFE4;transition:box-shadow .2s,transform .2s}
   #mb-btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,0,0,.4),0 0 40px rgba(228,197,131,.28)}
   .mb-orb{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(228,197,131,.6);
-    box-shadow:0 0 18px rgba(228,197,131,.4);flex:none;background:#17132a}
+    box-shadow:0 0 18px rgba(228,197,131,.4);flex:none;background:#14261E}
   #mb-btn .mb-cta{font-size:13px;font-weight:700;line-height:1.15;text-align:left}
   #mb-btn .mb-cta small{display:block;font-weight:400;font-size:11px;color:#E4C583}
   #mb-panel{position:fixed;bottom:92px;right:20px;z-index:60;width:min(92vw,380px);max-height:min(72vh,620px);
     display:none;flex-direction:column;overflow:hidden;border-radius:20px;
-    background:linear-gradient(180deg,#1b1636,#141026);border:1px solid rgba(228,197,131,.35);
+    background:linear-gradient(180deg,#183025,#0F211A);border:1px solid rgba(228,197,131,.35);
     box-shadow:0 24px 70px rgba(0,0,0,.5);font-family:var(--serif);color:#F4EFE4}
   #mb-panel.open{display:flex}
   .mb-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(228,197,131,.2)}
@@ -614,14 +611,14 @@
   .mb-av{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(228,197,131,.55);flex:none}
   .mb-bub{max-width:78%;font-size:13.5px;line-height:1.55;padding:10px 13px;border-radius:16px}
   .mb-row .mb-bub{background:rgba(255,255,255,.06);border:1px solid rgba(228,197,131,.18);border-bottom-left-radius:5px;color:#EFE9DC}
-  .mb-row.me .mb-bub{background:linear-gradient(135deg,#E4C583,#C9A227);color:#17132a;font-weight:600;border-bottom-right-radius:5px}
+  .mb-row.me .mb-bub{background:linear-gradient(135deg,#E4C583,#C9A227);color:#14261E;font-weight:600;border-bottom-right-radius:5px}
   .mb-foot{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(228,197,131,.2)}
   .mb-foot input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(228,197,131,.25);border-radius:999px;
     padding:10px 16px;color:#F4EFE4;font-family:var(--serif);font-size:13.5px;outline:none}
   .mb-foot input::placeholder{color:rgba(244,239,228,.4)}
   .mb-foot input:focus{border-color:#E4C583}
   .mb-send{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;flex:none;
-    background:linear-gradient(135deg,#E4C583,#C9A227);color:#17132a;font-size:15px;display:flex;align-items:center;justify-content:center}
+    background:linear-gradient(135deg,#E4C583,#C9A227);color:#14261E;font-size:15px;display:flex;align-items:center;justify-content:center}
   .mb-send:disabled{opacity:.4;cursor:default}
   .mb-dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#C9A46A;margin:0 1px;animation:mbb 1s infinite}
   .mb-dots span:nth-child(2){animation-delay:.15s}.mb-dots span:nth-child(3){animation-delay:.3s}
