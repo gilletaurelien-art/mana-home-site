@@ -328,7 +328,11 @@
   <span class="eyebrow">Notre promesse</span>
   <h2>Ce que nous protégeons.</h2>
   <figure class="promesse-illu">
-    <img class="zoomable" src="protection.jpg" alt="Une famille entourée d'une bulle protectrice, veillée par des symboles : le cadenas (l'attention), le bouclier au cœur (la dignité), la communauté (les proches), l'esprit (la mémoire) et le sablier (le temps partagé).">
+    <picture>
+      <!-- Mobile : version portrait ; desktop : version paysage -->
+      <source media="(max-width:640px)" srcset="protection-pwa.jpg">
+      <img class="zoomable" src="protection.jpg" alt="Une famille entourée d'une bulle protectrice, veillée par des symboles : le cadenas (l'attention), le bouclier au cœur (la dignité), la communauté (les proches), l'esprit (la mémoire) et le sablier (le temps partagé).">
+    </picture>
   </figure>
   <div class="promesse">
     <div class="prom">
