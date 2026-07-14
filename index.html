@@ -149,22 +149,16 @@
   .hero-frame img{display:block;width:100%;height:auto}
   @media(max-width:560px){.hero-frame{border-radius:18px}}
 
-  /* ===== SECTION 2 — une maison, deux espaces (illustration pleine) ===== */
-  .sec-espaces{text-align:center;background:var(--fond-2)}
+  /* ===== SECTION 2 — le temps de l'entraide (illustration pleine) ===== */
+  .sec-espaces{text-align:center}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
     clip:rect(0 0 0 0);white-space:nowrap;border:0}
-  /* L'illustration complète (maison + les deux espaces), pleine */
-  .maison-pleine{position:relative;margin:0 auto;max-width:1000px;border-radius:26px;overflow:hidden;
-    box-shadow:var(--ombre);border:1px solid var(--filet)}
-  .maison-pleine img{display:block;width:100%;height:auto}
-  @media(max-width:560px){.maison-pleine{border-radius:18px}}
-  /* Zones cliquables : gauche = Les Proches, droite = Le Territoire */
-  .maison-pleine .zone{position:absolute;top:0;bottom:0;width:46%;cursor:pointer;
-    transition:background .2s ease}
-  .maison-pleine .zone-g{left:0}
-  .maison-pleine .zone-d{right:0}
-  .maison-pleine .zone-g:hover{background:rgba(226,122,95,.10)}
-  .maison-pleine .zone-d:hover{background:rgba(62,158,110,.10)}
+  .entraide-illu{margin:0 auto;max-width:1000px;border-radius:26px;overflow:hidden;
+    box-shadow:var(--ombre);border:1px solid var(--filet);transition:transform .3s ease,box-shadow .3s ease}
+  .entraide-illu:hover{transform:translateY(-4px)}
+  .entraide-illu a{display:block}
+  .entraide-illu img{display:block;width:100%;height:auto}
+  @media(max-width:560px){.entraide-illu{border-radius:18px}}
 
   /* ===== SECTION 3 — pourquoi MANA ? (bande ivoire) ===== */
   .pourquoi-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
@@ -296,12 +290,12 @@
 <!-- ===== 2 · UNE MAISON, DEUX ESPACES — pourquoi ça m'intéresse ? ===== -->
 <section id="espaces" class="sec-espaces">
   <div class="wrap">
-    <h2 class="sr-only">Une maison. Deux espaces.</h2>
-    <!-- Illustration complète : la Maison MANA + les deux espaces -->
-    <figure class="maison-pleine">
-      <img class="zoomable" src="manamaison.jpg" alt="Une maison, deux espaces : Les Proches — transmettre, veiller, préserver la mémoire familiale ; et Le Territoire — s'entraider, partager du temps, renforcer son bassin de vie ; autour de la Maison MANA.">
-      <a class="zone zone-g" href="https://mana.bzh/proches" aria-label="Les Proches — entrer"></a>
-      <a class="zone zone-d" href="https://mana.bzh" aria-label="Le Territoire — entrer"></a>
+    <h2 class="sr-only">Le temps de l'entraide devient notre richesse commune.</h2>
+    <!-- La communauté MANA : donner, recevoir, transmettre -->
+    <figure class="entraide-illu">
+      <a href="https://mana.bzh" aria-label="Rejoindre MANA">
+        <img src="hero-ensemble.jpg" alt="La communauté MANA : donner, recevoir, transmettre — le temps de l'entraide devient notre richesse commune. Kiosque MANA, atelier citoyen, missions et le fil de vie sur l'application.">
+      </a>
     </figure>
   </div>
 </section>
