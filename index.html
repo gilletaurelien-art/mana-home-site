@@ -302,7 +302,11 @@
     <!-- La communauté MANA : donner, recevoir, transmettre -->
     <figure class="entraide-illu">
       <a href="https://mana.bzh" aria-label="Rejoindre MANA">
-        <img src="pleinair.jpg" alt="La communauté MANA au grand air : donner, recevoir, transmettre. Kiosque MANA, atelier citoyen, matériel à partager, et le fil de vie sur l'application — « chaque geste compte, 1 seconde donnée = 1 MANA ».">
+        <picture>
+          <!-- Mobile : version portrait ; desktop : version paysage -->
+          <source media="(max-width:640px)" srcset="community-pwa.jpg">
+          <img src="pleinair.jpg" alt="La communauté MANA au grand air : donner, recevoir, transmettre. Kiosque MANA, atelier citoyen, matériel à partager, et le fil de vie sur l'application — « chaque geste compte, 1 seconde donnée = 1 MANA ».">
+        </picture>
       </a>
     </figure>
   </div>
