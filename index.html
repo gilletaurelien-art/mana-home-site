@@ -65,8 +65,8 @@
     --bleu:var(--riviere); --violet:var(--mousse);
     --encre:#3D3122; --texte:#5A4A38; --brume:#8A7A63; --filet:rgba(154,106,68,.16);
     --sous:var(--kaki);
-    /* Canevas clair, respirant */
-    --fond:#FBF7EE; --fond-2:#FFFFFF; --carte:#FFFFFF;
+    /* Canevas blanc, respirant */
+    --fond:#FFFFFF; --fond-2:#FFFFFF; --carte:#FFFFFF;
     --serif:'Philosopher','Iowan Old Style',Georgia,serif;
     --sans:'Philosopher','Iowan Old Style',Georgia,serif;
     --ombre:0 20px 60px rgba(60,45,25,.10);
@@ -81,8 +81,10 @@
 
   /* Conteneur commun — beaucoup d'air */
   .wrap{max-width:1080px;margin:0 auto;padding:0 1.8rem}
-  /* Beaucoup d'air + une coupe nette entre chaque section */
-  section{padding:clamp(6rem,13vw,12rem) 0}
+  /* Chaque section = un écran à part entière, très aéré, nettement coupé */
+  section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(4.5rem,9vw,7.5rem) 0}
+  section > .wrap{width:100%}
   section + section{border-top:1px solid var(--filet)}
   h1,h2{font-family:var(--serif);color:var(--kaki);letter-spacing:-.01em;margin:0}
   h2{font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.12}
@@ -92,8 +94,8 @@
 
   /* Boutons */
   .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.7rem;border-radius:999px;
-    background:linear-gradient(100deg,var(--riviere),var(--mousse));color:#fff;font-weight:700;
-    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(46,125,91,.22);
+    background:linear-gradient(100deg,#556128,#6C7C3C);color:#fff;font-weight:700;
+    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(95,110,50,.25);
     transition:filter .2s,transform .2s}
   .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
   .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(95,110,50,.4);box-shadow:none}
@@ -101,7 +103,7 @@
 
   /* Header — barre fine ; tout est dans le menu, sauf la connexion */
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);
-    background:rgba(251,247,238,.82);border-bottom:1px solid var(--filet)}
+    background:rgba(255,255,255,.82);border-bottom:1px solid var(--filet)}
   body{padding-top:62px}
   .nav{max-width:1120px;margin:0 auto;padding:0 1.8rem;height:62px;display:flex;
     align-items:center;justify-content:space-between;gap:1rem}
@@ -111,8 +113,8 @@
   .nav-actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
   .nav-btn{display:inline-block;padding:.55rem 1.15rem;border-radius:999px;font-size:12.5px;font-weight:700;
     letter-spacing:.02em;white-space:nowrap;text-decoration:none;
-    background:linear-gradient(100deg,var(--riviere),var(--mousse));color:#fff;
-    box-shadow:0 4px 14px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
+    background:linear-gradient(100deg,#556128,#6C7C3C);color:#fff;
+    box-shadow:0 4px 14px rgba(95,110,50,.25);transition:filter .2s,transform .2s}
   .nav-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
   @media(max-width:460px){.nav-btn{padding:.5rem .95rem;font-size:12px}}
   /* Bouton hamburger — présent à toutes les tailles */
@@ -124,7 +126,7 @@
   .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
   .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   /* Menu plein écran */
-  .menu{position:fixed;inset:0;z-index:40;background:rgba(251,247,238,.98);backdrop-filter:blur(16px);
+  .menu{position:fixed;inset:0;z-index:40;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);
     display:flex;align-items:center;justify-content:center;
     opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease}
   .menu.open{opacity:1;visibility:visible}
@@ -136,14 +138,13 @@
   body.menu-open{overflow:hidden}
 
   /* ===== HERO — presque toute la hauteur, très respirant ===== */
-  .hero{min-height:calc(100svh - 62px);display:flex;flex-direction:column;justify-content:center;
-    align-items:center;text-align:center;padding-top:clamp(2rem,5vw,3.5rem);padding-bottom:clamp(2rem,5vw,4rem)}
+  .hero{min-height:calc(100svh - 62px);text-align:center}
   .hero h1{font-family:var(--serif);font-weight:700;color:var(--kaki);
     font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.1rem}
   .hero .sub{max-width:34ch;margin:0 auto 2rem;font-size:clamp(1.15rem,2.2vw,1.4rem);
     line-height:1.55;color:var(--texte)}
   .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
-  .hero-frame{width:100%;max-width:940px;border-radius:26px;overflow:hidden;
+  .hero-frame{width:100%;max-width:940px;margin:0 auto;border-radius:26px;overflow:hidden;
     box-shadow:var(--ombre);border:1px solid var(--filet)}
   .hero-frame img{display:block;width:100%;height:auto}
   @media(max-width:560px){.hero-frame{border-radius:18px}}
@@ -278,27 +279,31 @@
 </script>
 
 <!-- ===== 1 · HERO — qu'est-ce que c'est ? ===== -->
-<section class="hero wrap" aria-label="MANA — prendre soin, ensemble">
-  <h1>Prendre soin,<br>ensemble.</h1>
-  <p class="sub">Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.</p>
-  <div class="hero-cta">
-    <a class="btn" href="https://mana.bzh">Rejoindre gratuitement</a>
-    <a class="btn ghost" href="#espaces">Découvrir MANA</a>
-  </div>
-  <div class="hero-frame">
-    <img class="zoomable" src="hero-ensemble.jpg" alt="Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres — donner, recevoir, transmettre.">
+<section class="hero" aria-label="MANA — prendre soin, ensemble">
+  <div class="wrap">
+    <h1>Prendre soin,<br>ensemble.</h1>
+    <p class="sub">Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.</p>
+    <div class="hero-cta">
+      <a class="btn" href="https://mana.bzh">Rejoindre gratuitement</a>
+      <a class="btn ghost" href="#espaces">Découvrir MANA</a>
+    </div>
+    <div class="hero-frame">
+      <img class="zoomable" src="hero-ensemble.jpg" alt="Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres — donner, recevoir, transmettre.">
+    </div>
   </div>
 </section>
 
 <!-- ===== 2 · UNE MAISON, DEUX ESPACES — pourquoi ça m'intéresse ? ===== -->
-<section id="espaces" class="sec-espaces wrap">
-  <h2 class="sr-only">Une maison. Deux espaces.</h2>
-  <!-- Illustration complète : la Maison MANA + les deux espaces -->
-  <figure class="maison-pleine">
-    <img class="zoomable" src="manamaison.jpg" alt="Une maison, deux espaces : Les Proches — transmettre, veiller, préserver la mémoire familiale ; et Le Territoire — s'entraider, partager du temps, renforcer son bassin de vie ; autour de la Maison MANA.">
-    <a class="zone zone-g" href="https://mana.bzh/proches" aria-label="Les Proches — entrer"></a>
-    <a class="zone zone-d" href="https://mana.bzh" aria-label="Le Territoire — entrer"></a>
-  </figure>
+<section id="espaces" class="sec-espaces">
+  <div class="wrap">
+    <h2 class="sr-only">Une maison. Deux espaces.</h2>
+    <!-- Illustration complète : la Maison MANA + les deux espaces -->
+    <figure class="maison-pleine">
+      <img class="zoomable" src="manamaison.jpg" alt="Une maison, deux espaces : Les Proches — transmettre, veiller, préserver la mémoire familiale ; et Le Territoire — s'entraider, partager du temps, renforcer son bassin de vie ; autour de la Maison MANA.">
+      <a class="zone zone-g" href="https://mana.bzh/proches" aria-label="Les Proches — entrer"></a>
+      <a class="zone zone-d" href="https://mana.bzh" aria-label="Le Territoire — entrer"></a>
+    </figure>
+  </div>
 </section>
 
 <!-- ===== 3 · POURQUOI MANA ? ===== -->
@@ -320,7 +325,8 @@
 </section>
 
 <!-- ===== 4 · NOTRE PROMESSE — puis-je avoir confiance ? ===== -->
-<section id="promesse" class="sec-promesse wrap">
+<section id="promesse" class="sec-promesse">
+  <div class="wrap">
   <span class="eyebrow">Notre promesse</span>
   <h2>Ce que nous protégeons.</h2>
   <div class="promesse">
@@ -342,6 +348,7 @@
     </div>
   </div>
   <a class="btn" href="https://constitution.manahome.org">Lire notre Constitution</a>
+  </div>
 </section>
 
 <!-- ===== 5 · LA TERRE DE MANA ===== -->
@@ -357,7 +364,8 @@
 </section>
 
 <!-- ===== 6 · COMMENCER — comment commencer ? ===== -->
-<section id="commencer" class="sec-commencer wrap">
+<section id="commencer" class="sec-commencer">
+  <div class="wrap">
   <span class="eyebrow">Commencer</span>
   <h2>Comprendre MANA en quinze minutes.</h2>
   <div class="commencer-frame">
@@ -377,6 +385,7 @@
       <a class="plus" href="livre-blanc.html"><b>Mana Family</b><span>Le livre blanc des cercles familiaux</span></a>
       <a class="plus" href="https://manafrance.org/livre-blanc/"><b>Mana France</b><span>L'édition institutionnelle, pour les territoires</span></a>
     </div>
+  </div>
   </div>
 </section>
 
