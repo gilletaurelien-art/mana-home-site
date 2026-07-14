@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MANA — Prendre soin, ensemble</title>
-<meta name="description" content="La maison mère de l'univers Mana : rendre le soin visible, durable et transmissible. Familles, territoires, entraide — sous une même Constitution.">
+<meta name="description" content="Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment. MANA rend le soin visible.">
 <meta property="og:title" content="MANA — Prendre soin, ensemble">
-<meta property="og:description" content="Rendre le soin visible, durable et transmissible. Une famille de mondes, une même Constitution.">
+<meta property="og:description" content="Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MANA">
 <meta property="og:locale" content="fr_FR">
@@ -52,563 +52,375 @@
 </script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MANA — Prendre soin, ensemble">
-<meta name="twitter:description" content="Rendre le soin visible, durable et transmissible. Une famille de mondes, une même Constitution.">
+<meta name="twitter:description" content="Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.">
 <meta name="twitter:image" content="https://manahome.org/og.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mana-wallpaper.css">
 <style>
   :root{
     color-scheme: light; /* le site reste en mode jour, quel que soit le réglage système */
-    /* PALETTE NATURE — vert, sable, terre, eau de rivière, eau de mer.
-       On garde les anciens noms de tokens (--bleu/--violet…) mais on leur donne
-       des valeurs naturelles : tout le site (gradients, boutons, filets) suit. */
-    --mer:#78A6C9;        /* eau de mer — le bleu de la carte (fond) */
-    --mer-profond:#5E8FBA;/* creux de la vague */
-    --riviere:#2FA98C;    /* eau de rivière — turquoise (accents/boutons) */
-    --mousse:#3E9E6E;     /* vert mousse / feuille (accents/boutons) */
-    --sable:#E4D2A8;      /* sable — feuille de fond des encadrés */
-    --terre:#9A6A44;      /* terre / écorce — pourtour des encadrés */
-    --kaki:#6C7A39;       /* vert kaki — les titres */
-    --soleil:#E8A44C;     /* soleil — accent chaud */
-    --corail:#E27A5F;     /* corail — accent secondaire */
-    /* Alias vers l'ancien système de noms */
-    --bleu:var(--riviere); --violet:var(--mousse); --degrade-mi:var(--riviere);
-    --ecume:#EFE6CD; --carte:#F4EBD2;   /* carte = sable pâle (encadrés intérieurs) */
-    --encre:#4A3320; --texte:#5A3E28; --brume:#7C6B52; --filet:#A5764C;
+    /* PALETTE NATURE — vert, sable, terre, eau. On garde les noms de tokens
+       hérités, mais le canevas devient clair et aéré (Apple / Airbnb / Patagonia). */
+    --mer:#78A6C9; --riviere:#2FA98C; --mousse:#3E9E6E;
+    --sable:#E4D2A8; --terre:#9A6A44; --kaki:#5F6E32; --soleil:#E8A44C; --corail:#E27A5F;
+    --bleu:var(--riviere); --violet:var(--mousse);
+    --encre:#3D3122; --texte:#5A4A38; --brume:#8A7A63; --filet:rgba(154,106,68,.16);
     --sous:var(--kaki);
-    --header-bg:rgba(241,232,205,.9);
-    --wp-a:rgb(46 125 91 / 0.07); --wp-b:rgb(154 106 68 / 0.05);
-    --wp-top:#FDFBF4; --wp-grid:rgb(27 58 46 / 0.03);
-    --serif:'Philosopher', 'Iowan Old Style', Georgia, serif;
-    --sans:'Philosopher', 'Iowan Old Style', Georgia, serif;
+    /* Canevas clair, respirant */
+    --fond:#FBF7EE; --fond-2:#FFFFFF; --carte:#FFFFFF;
+    --serif:'Philosopher','Iowan Old Style',Georgia,serif;
+    --sans:'Philosopher','Iowan Old Style',Georgia,serif;
+    --ombre:0 20px 60px rgba(60,45,25,.10);
+    --ombre-douce:0 10px 34px rgba(60,45,25,.07);
   }
   *{box-sizing:border-box} html{scroll-behavior:smooth}
   body{margin:0;font-family:var(--sans);color:var(--texte);line-height:1.7;
-    background:var(--mer);min-height:100vh}
-
-  /* FOND = LA MER DE LA CARTE — bleu #78A6C9 + vagues blanches qui défilent
-     (même motif que mapWaves.ts). On neutralise le wallpaper cosmique. */
-  :root{--wp-bottom:var(--mer)}
-  .mana-wallpaper{background:linear-gradient(180deg,#8FB9D9 0%, var(--mer) 42%, var(--mer-profond) 100%) !important}
-  .mana-wallpaper-orbit,.mana-wallpaper-core,.mana-world-line{display:none !important}
-  .mana-wallpaper::after{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60' viewBox='0 0 120 60'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.3' stroke-linecap='round' opacity='0.45'%3E%3Cpath d='M0 12 Q15 6 30 12 T60 12 T90 12 T120 12'/%3E%3Cpath d='M0 30 Q15 36 30 30 T60 30 T90 30 T120 30'/%3E%3Cpath d='M0 48 Q15 42 30 48 T60 48 T90 48 T120 48'/%3E%3C/g%3E%3C/svg%3E") !important;
-    background-size:200px 100px !important;background-repeat:repeat !important;
-    -webkit-mask-image:none !important;mask-image:none !important;opacity:.55 !important;
-    animation:waveDrift 16s linear infinite}
-  @keyframes waveDrift{from{background-position:0 0}to{background-position:200px 0}}
-  @media(prefers-reduced-motion:reduce){.mana-wallpaper::after{animation:none}}
-  header,main,footer{position:relative;z-index:1}
-  ::selection{background:#BFE3D0;color:#1B3A2E}
+    background:var(--fond);-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  .grad{color:var(--kaki)} /* titres en vert kaki (ex-dégradé) */
+  img{max-width:100%}
+  ::selection{background:#CFE7D6;color:#22331E}
 
-  header{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(10px);background:var(--header-bg);border-bottom:1px solid var(--filet)}
-  body{padding-top:60px} /* compense la barre fixe (hauteur du nav) */
-  .nav{max-width:1080px;margin:0 auto;padding:0 1.4rem;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .mark{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+  /* Conteneur commun — beaucoup d'air */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 1.6rem}
+  section{padding:clamp(4.5rem,10vw,8.5rem) 0}
+  h1,h2{font-family:var(--serif);color:var(--kaki);letter-spacing:-.01em;margin:0}
+  h2{font-weight:400;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.12}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    color:var(--sous);margin:0 0 1.1rem}
+  .lead{font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.6;color:var(--texte)}
+
+  /* Boutons */
+  .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.7rem;border-radius:999px;
+    background:linear-gradient(100deg,var(--riviere),var(--mousse));color:#fff;font-weight:700;
+    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(46,125,91,.22);
+    transition:filter .2s,transform .2s}
+  .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
+  .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(95,110,50,.4);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--kaki);background:rgba(95,110,50,.05)}
+
+  /* Header — barre fine et discrète */
+  header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
+    background:rgba(251,247,238,.82);border-bottom:1px solid var(--filet)}
+  body{padding-top:62px}
+  .nav{max-width:1120px;margin:0 auto;padding:0 1.6rem;height:62px;display:flex;
+    align-items:center;justify-content:space-between;gap:1rem}
+  .mark{display:flex;align-items:center;gap:.7rem;text-decoration:none}
   .mark img{height:28px;width:28px;object-fit:contain}
-  .mark-lines{display:flex;flex-direction:column;line-height:1.15}
   .mark-name{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
-  .nav ul{list-style:none;display:flex;gap:1.75rem;margin:0;padding:0;font-size:13px;letter-spacing:.025em}
-  .nav a{text-decoration:none;color:var(--brume);transition:color .15s;white-space:nowrap}
-  .nav a:hover{color:var(--encre)}
-  @media(max-width:920px){.nav ul{display:none}}
-  /* Actions du nav — les deux portes : l'app (se connecter) et l'extranet partenaire.
-     Hors du <ul> pour rester visibles sur mobile. */
+  .nav ul{list-style:none;display:flex;gap:1.9rem;margin:0;padding:0;font-size:13px}
+  .nav ul a{text-decoration:none;color:var(--brume);transition:color .15s}
+  .nav ul a:hover{color:var(--encre)}
+  @media(max-width:860px){.nav ul{display:none}}
   .nav-actions{display:flex;align-items:center;gap:.55rem;flex-shrink:0}
-  .nav-btn{display:inline-block;padding:.45rem .95rem;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.02em;white-space:nowrap;
-    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff !important;box-shadow:0 4px 14px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
-  .nav-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .nav-btn.ghost{background:none;color:var(--violet) !important;border:1px solid var(--violet);box-shadow:none}
-  @media(max-width:480px){.nav-btn{padding:.4rem .75rem;font-size:11.5px}}
+  .nav-btn{display:inline-block;padding:.5rem 1.05rem;border-radius:999px;font-size:12.5px;font-weight:700;
+    letter-spacing:.02em;white-space:nowrap;text-decoration:none;
+    background:linear-gradient(100deg,var(--riviere),var(--mousse));color:#fff;
+    box-shadow:0 4px 14px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
+  .nav-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+  .nav-btn.ghost{background:none;color:var(--kaki);border:1px solid rgba(95,110,50,.4);box-shadow:none}
+  @media(max-width:460px){.nav-btn{padding:.45rem .8rem;font-size:11.5px}}
 
-  /* HERO — feuille de sable posée sur la mer. L'illustration au cœur. */
-  .hero-nature{position:relative;z-index:1;text-align:center;
-    width:calc(100% - 4rem);max-width:1000px;margin:1.8rem auto 1.4rem;
-    padding:2.4rem 1.6rem 2.6rem;background:var(--sable);
-    border:1.5px solid var(--terre);border-radius:26px;
-    box-shadow:0 20px 50px rgba(20,45,70,.22)}
-  .hero-nature .hero-title{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6vw,4rem);
-    line-height:1.03;letter-spacing:-.015em;color:var(--kaki);margin:1.6rem 0 .9rem}
-  .hero-nature .brille{color:var(--kaki)}
-  .hero-nature .lead{margin:0 auto 1.7rem;max-width:46ch;color:var(--texte)}
-  .hero-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-  /* Le cadre de l'illustration — une fenêtre ouverte sur le dehors */
-  .hero-frame{position:relative;max-width:1000px;margin:0 auto;border-radius:22px;overflow:hidden;
-    border:1.5px solid var(--terre);
-    box-shadow:0 20px 46px rgba(20,45,70,.22)}
+  /* ===== HERO — presque toute la hauteur, très respirant ===== */
+  .hero{min-height:calc(100svh - 62px);display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;padding-top:clamp(2rem,5vw,3.5rem);padding-bottom:clamp(2rem,5vw,4rem)}
+  .hero h1{font-family:var(--serif);font-weight:700;color:var(--kaki);
+    font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.1rem}
+  .hero .sub{max-width:34ch;margin:0 auto 2rem;font-size:clamp(1.15rem,2.2vw,1.4rem);
+    line-height:1.55;color:var(--texte)}
+  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
+  .hero-frame{width:100%;max-width:940px;border-radius:26px;overflow:hidden;
+    box-shadow:var(--ombre);border:1px solid var(--filet)}
   .hero-frame img{display:block;width:100%;height:auto}
-  /* Le bas de l'illustration se fond dans le sable de la feuille */
-  .hero-frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;pointer-events:none;
-    background:linear-gradient(to top, rgba(228,210,168,.85), transparent)}
-  @media(max-width:560px){.hero-frame{border-radius:16px}}
+  @media(max-width:560px){.hero-frame{border-radius:18px}}
 
-  /* MAIN — grande feuille de sable posée sur la mer (pourtour terre) */
-  main{width:calc(100% - 4rem);max-width:1000px;margin:0 auto 1.8rem;
-    padding:1rem 1.8rem 1.6rem;background:var(--sable);
-    border:1.5px solid var(--terre);border-radius:26px;
-    box-shadow:0 20px 50px rgba(20,45,70,.22)}
-  section{padding:4.7rem 0;border-top:1px solid var(--filet)}
-  section:first-of-type{border-top:none}
-  .sur{display:flex;align-items:center;gap:1rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous);margin-bottom:1.2rem}
-  .sur::before{content:"";display:inline-block;width:40px;height:1px;background:var(--bleu);flex:none}
-  .hero .sur{justify-content:flex-start}
-  @media(max-width:820px){.hero .sur{justify-content:center}}
-  h2,#manifeste h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.15;margin:0 0 1.2rem;color:var(--kaki)}
-  /* Second mouvement du manifeste : la grammaire du soin, sous les deux cartes */
-  .grammaire-titre{margin-top:4.5rem}
-  /* La grammaire illustrée — les trois forces en image (cadre terre) */
-  .grammaire-fig{margin:1.8rem 0 0;text-align:center}
-  .grammaire-fig img{display:block;width:100%;max-width:920px;margin:0 auto;border-radius:22px;
-    border:1.5px solid var(--terre);box-shadow:0 20px 46px rgba(20,45,70,.20)}
-  @media(max-width:560px){.grammaire-fig img{border-radius:16px}}
-  .grammaire-fig figcaption{margin:1.1rem auto 0;max-width:46ch;font-family:var(--serif);
-    font-style:italic;color:var(--kaki);font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.5}
-  p{color:var(--texte);font-size:1.125rem;line-height:1.625}
-  .lead{max-width:52ch;font-size:clamp(1.125rem,2vw,1.25rem)}
+  /* ===== SECTION 2 — une maison, deux espaces ===== */
+  .sec-espaces{text-align:center}
+  .sec-espaces h2{margin-bottom:.4rem}
+  .maison-motif{margin:1.6rem auto 2.6rem;display:block}
+  .espaces{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;text-align:left}
+  @media(max-width:760px){.espaces{grid-template-columns:1fr}}
+  .espace{display:flex;flex-direction:column;background:var(--carte);border:1px solid var(--filet);
+    border-radius:24px;padding:clamp(1.8rem,3vw,2.6rem);box-shadow:var(--ombre-douce);
+    text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .espace:hover{transform:translateY(-4px);box-shadow:var(--ombre);border-color:rgba(95,110,50,.3)}
+  .espace-ico{font-size:2.4rem;line-height:1;margin-bottom:1rem}
+  .espace h3{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);
+    color:var(--kaki);margin:0 0 .8rem}
+  .espace .gestes{margin:0 0 1.6rem;font-size:1.15rem;line-height:1.7;color:var(--texte)}
+  .espace .gestes span{display:block}
+  .espace .entrer{margin-top:auto;font-weight:700;color:var(--mousse);font-size:1.02rem}
 
-  /* HERO — texte seul (la déesse vit désormais dans la section applications) */
-  .hero{padding:5rem 0 4rem;border-top:none;text-align:left}
-  @media(max-width:820px){.hero{text-align:center;padding:3.5rem 0 3rem}}
-  .hero h1{font-family:'Philosopher',var(--serif);font-size:clamp(2.7rem,7vw,5.5rem);line-height:1.02;letter-spacing:-.02em;margin:.2rem 0 1.6rem}
-  .hero h1 span{display:block;text-transform:lowercase}
-  .hero h1 .h1-univers{font-weight:400;color:var(--encre)}
-  .hero h1 .h1-mana{font-weight:700}
-  .hero .guide{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.4;color:var(--encre);margin:0 0 2rem;max-width:30ch}
-  .devise{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.45;color:var(--texte);margin:0 0 2rem;max-width:24ch}
-  .hero .bienvenue{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.4rem);color:var(--sous);letter-spacing:.02em;margin:0}
-  @media(max-width:820px){.hero .guide,.hero .devise,.hero .bienvenue{margin-inline:auto}}
-  /* Intro de la section applications : texte à gauche, déesse à droite */
-  .mondes-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center}
-  @media(max-width:820px){.mondes-intro{grid-template-columns:1fr;gap:1.5rem;text-align:center}}
-  @media(max-width:820px){.mondes-intro .scene{order:-1}}
-  .scene{position:relative;justify-self:center;width:min(45vw,315px)}
-  .halo{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(47,169,140,.18),rgba(47,169,140,0) 68%);filter:blur(16px);animation:halo 7s ease-in-out infinite}
-  /* Déesse au trait — teintée vers le vert/eau pour épouser la palette nature */
-  .deesse{position:relative;width:100%;display:block;filter:hue-rotate(210deg) saturate(.7) drop-shadow(0 0 12px rgba(46,125,91,.18));animation:breathe 6.5s ease-in-out infinite}
-  .tw{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation:tw 3s ease-in-out infinite}
-  .tw.a{top:24%;left:56%}.tw.b{top:38%;left:70%;animation-delay:.9s}.tw.c{top:54%;left:62%;animation-delay:1.7s}
-  @keyframes breathe{0%,100%{transform:scale(.99) translateY(2px)}50%{transform:scale(1.03) translateY(-5px)}}
-  @keyframes halo{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1.08)}}
-  @keyframes tw{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
-  @media(prefers-reduced-motion:reduce){.deesse,.halo,.tw{animation:none}}
+  /* ===== SECTION 3 — pourquoi MANA ? ===== */
+  .sec-pourquoi{background:var(--fond-2);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+  .pourquoi-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media(max-width:820px){.pourquoi-grid{grid-template-columns:1fr;gap:2.6rem;text-align:center}}
+  .pourquoi-txt p{font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.5;color:var(--encre);
+    font-family:var(--serif);margin:0 0 .3rem}
+  .pourquoi-txt .compte{color:var(--brume)}
+  .pourquoi-txt .pivot{color:var(--kaki);margin-top:1.4rem}
+  .pourquoi-txt .rend{font-weight:700;color:var(--mousse)}
+  /* Schéma élégant : Présence · Mémoire · Lien */
+  .grammaire{display:block;margin:0 auto;max-width:420px;width:100%}
 
-  /* Piliers */
-  .piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.5rem}
-  .pilier{background:var(--carte);border:1px solid var(--filet);border-radius:16px;padding:1.3rem}
-  .pilier h3{font-family:var(--serif);font-size:1.15rem;margin:0 0 .4rem}
-  .pilier p{font-size:.92rem;color:var(--brume);margin:0}
+  /* ===== SECTION 4 — notre promesse ===== */
+  .sec-promesse{text-align:center}
+  .promesse{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin:2.6rem 0;text-align:left}
+  @media(max-width:640px){.promesse{grid-template-columns:1fr}}
+  .prom{background:var(--carte);border:1px solid var(--filet);border-radius:20px;
+    padding:clamp(1.5rem,2.6vw,2rem);box-shadow:var(--ombre-douce);display:flex;gap:1rem;align-items:flex-start}
+  .prom svg{flex:none;width:26px;height:26px;stroke:var(--mousse);stroke-width:1.7;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;margin-top:.15rem}
+  .prom p{margin:0;font-size:clamp(1.1rem,2vw,1.28rem);line-height:1.4;color:var(--encre);font-family:var(--serif)}
 
-  /* Mondes */
-  .mondes{display:grid;gap:1rem;margin-top:1.5rem}
-  /* Intertitre de la grille : sépare les deux espaces vécus des fondations institutionnelles */
-  .mondes-inter{margin:1.1rem 0 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous)}
-  .monde{display:block;text-decoration:none;background:var(--carte);border:1px solid var(--filet);border-radius:16px;padding:1.4rem 1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s}
-  .monde:hover{border-color:var(--violet);transform:translateY(-2px);box-shadow:0 10px 30px rgba(46,125,91,.08)}
-  .monde-tete{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
-  .monde-nom{font-family:var(--serif);font-size:1.3rem;color:var(--kaki)}
-  .monde-verbe{font-family:var(--serif);font-style:italic;font-size:1.05rem}
-  .monde-etat{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
-  .monde.bientot .monde-etat{color:var(--brume)}
-  .monde p{margin:.5rem 0 0;font-size:.94rem;color:var(--brume)}
-  .monde-plus{display:inline-block;margin:.55rem 0 0 .3rem;font-size:.85rem;color:var(--violet);text-decoration:none;border-bottom:1px dotted var(--filet)}
-  .monde-plus:hover{border-color:var(--violet)}
+  /* ===== SECTION 5 — la Terre de MANA ===== */
+  .sec-terre{text-align:center;background:var(--fond-2);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+  .sec-terre h2{margin-bottom:1.4rem}
+  .terre-txt{max-width:30ch;margin:0 auto 2.2rem;font-family:var(--serif);
+    font-size:clamp(1.2rem,2.3vw,1.55rem);line-height:1.5;color:var(--texte)}
+  .terre-frame{max-width:940px;margin:0 auto 2.4rem;border-radius:26px;overflow:hidden;
+    box-shadow:var(--ombre);border:1px solid var(--filet)}
+  .terre-frame img{display:block;width:100%;height:auto}
+  @media(max-width:560px){.terre-frame{border-radius:18px}}
 
-  /* Schéma écosystème */
-  .schema{margin-top:2rem;text-align:center}
-  /* Racine = l'encadré déesse (la maison mère) */
-  .schema-mere{display:inline-flex;align-items:center;gap:1.1rem;text-align:left;text-decoration:none;
-    background:var(--carte);border:1px solid var(--filet);border-radius:20px;padding:1rem 1.6rem 1rem 1.1rem;
-    box-shadow:0 14px 40px rgba(46,125,91,.13);max-width:460px;transition:border-color .25s,transform .25s}
-  .schema-mere:hover{border-color:var(--violet);transform:translateY(-2px)}
-  .schema-mere-face{width:64px;height:64px;flex:none;border-radius:50%;object-fit:cover;object-position:center;
-    background:linear-gradient(135deg,#EAF6F0,#DCEFE6);border:1px solid rgba(46,125,91,.25);
-    box-shadow:0 0 18px rgba(47,169,140,.25)}
-  .schema-mere-tete{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
-  .schema-mere-nom{font-weight:700;font-size:1rem;letter-spacing:.14em;color:var(--encre)}
-  .schema-mere-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#216B54}
-  .schema-mere-devise{display:block;margin-top:.2rem;font-style:italic;font-size:.88rem;line-height:1.5;
-    background:linear-gradient(110deg,var(--bleu),var(--degrade-mi),var(--violet));
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .schema-fleche{font-size:1.4rem;color:var(--violet);opacity:.6;margin:.6rem 0}
-  .schema-cadre{border:1px dashed rgba(46,125,91,.35);border-radius:20px;padding:1.6rem 1.2rem 1.2rem;position:relative;background:rgba(46,125,91,.02)}
-  .schema-cadre + .schema-cadre{margin-top:1.1rem}
-  .schema-cadre-titre{position:absolute;top:-0.8rem;left:50%;transform:translateX(-50%);background:var(--ecume);
-    padding:0 .9rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
-  .schema-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem}
-  .schema-carte{display:block;text-decoration:none;background:var(--carte);border:1px solid var(--filet);border-radius:14px;
-    padding:1rem .9rem;transition:border-color .25s,transform .25s}
-  .schema-carte:hover{border-color:var(--violet);transform:translateY(-2px)}
-  .schema-icone{display:flex;justify-content:center;margin-bottom:.45rem}
-  .schema-icone svg{width:22px;height:22px;stroke:var(--degrade-mi);stroke-width:1.6;fill:none;
-    stroke-linecap:round;stroke-linejoin:round}
-  .schema-nom{display:block;font-family:var(--serif);font-weight:700;font-size:.98rem;color:var(--kaki)}
-  .schema-role{display:block;font-size:.8rem;color:var(--brume);margin-top:.2rem}
-  /* Charte : MANA/TEMPO gras+MAJ, suffixe normal+minuscules */
-  .mana-suf{font-weight:400;text-transform:lowercase}
+  /* ===== SECTION 6 — commencer ===== */
+  .sec-commencer{text-align:center}
+  .commencer-frame{max-width:820px;margin:1.6rem auto 2.6rem;border-radius:24px;overflow:hidden;
+    box-shadow:var(--ombre-douce);border:1px solid var(--filet)}
+  .commencer-frame img{display:block;width:100%;height:auto}
+  .guide-star{max-width:620px;margin:0 auto;background:var(--carte);border:1px solid var(--filet);
+    border-radius:24px;padding:clamp(2rem,4vw,2.8rem);box-shadow:var(--ombre)}
+  .guide-star h3{font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);
+    color:var(--kaki);margin:0 0 .6rem}
+  .guide-star p{margin:0 auto 1.6rem;max-width:46ch;color:var(--brume);font-size:1.05rem}
+  .guide-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+  .plus-loin{margin-top:3rem}
+  .plus-loin .eyebrow{margin-bottom:1.4rem}
+  .plus-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;max-width:620px;margin:0 auto}
+  @media(max-width:560px){.plus-grid{grid-template-columns:1fr}}
+  .plus{display:block;background:var(--carte);border:1px solid var(--filet);border-radius:16px;
+    padding:1.3rem 1.5rem;text-decoration:none;color:inherit;text-align:left;
+    transition:transform .2s,border-color .2s,box-shadow .2s}
+  .plus:hover{transform:translateY(-2px);border-color:rgba(95,110,50,.3);box-shadow:var(--ombre-douce)}
+  .plus b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--kaki)}
+  .plus span{font-size:.9rem;color:var(--brume)}
 
-  /* Encarts (livre blanc / constitution) */
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
-  .duo.solo{grid-template-columns:1fr;max-width:540px}
-  @media(max-width:700px){.duo{grid-template-columns:1fr}}
-  .encart{background:var(--carte);border:1px solid var(--filet);border-radius:18px;padding:1.6rem}
-  .encart h3{font-family:var(--serif);font-size:1.25rem;margin:0 0 .5rem}
-  .encart p{font-size:.92rem;color:var(--brume);margin:0 0 1.1rem}
-  .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:999px;background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;font-size:.9rem;text-decoration:none;box-shadow:0 6px 18px rgba(46,125,91,.22);transition:filter .2s,transform .2s}
-  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .btn.ghost{background:none;color:var(--violet);border:1px solid var(--violet);box-shadow:none}
-
-  /* OBJET — les deux piliers : Constitution (pourquoi) & Applications (comment) */
-  .objet-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
-  @media(max-width:820px){.objet-duo{grid-template-columns:1fr}}
-  .socle{position:relative;display:flex;flex-direction:column;background:var(--carte);border:1px solid var(--filet);border-radius:22px;padding:2rem;transition:border-color .25s,transform .25s,box-shadow .25s}
-  .socle:hover{border-color:var(--violet);transform:translateY(-3px);box-shadow:0 16px 40px rgba(46,125,91,.10)}
-  .socle-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sous)}
-  /* La couche partenaire (TempoSystem, Alliance, TimeBank) — distincte du récit citoyen */
-  .part-pro{font-size:.85rem;color:var(--brume);border-top:1px dashed var(--filet);padding-top:.9rem;margin-top:.4rem}
-  .part-pro a{color:var(--violet);text-decoration:none;font-weight:600}
-  .part-pro a:hover{text-decoration:underline}
-  .socle h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3vw,2.2rem);margin:.5rem 0 .3rem;color:var(--kaki)}
-  .socle .quoi{font-family:var(--serif);font-style:italic;font-size:1.15rem;margin:0 0 1rem}
-  .socle p{font-size:.98rem;line-height:1.65;color:var(--texte);margin:0 0 1.3rem}
-  .socle .btn{align-self:flex-start;margin-top:auto}
-
-  /* Signataires vivants — chaque membre signe la Constitution à l'onboarding */
-  .signataires{display:flex;align-items:center;gap:.8rem;margin:.2rem 0 1.3rem;padding:.7rem .9rem;border:1px solid var(--filet);border-radius:14px;background:var(--ecume)}
-  .sig-piles{display:flex;flex:none}
-  .sig-piles span{width:26px;height:26px;border-radius:50%;border:2px solid var(--carte);margin-left:-8px;background:linear-gradient(135deg,var(--bleu),var(--violet));box-shadow:0 2px 6px rgba(46,125,91,.25)}
-  .sig-piles span:first-child{margin-left:0}
-  .sig-piles .more{background:var(--carte);color:var(--sous);font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center}
-  .sig-txt{font-size:.82rem;line-height:1.4;color:var(--brume)}
-  .sig-txt b{color:var(--encre);font-size:.95rem}
-  .socle .puce{list-style:none;margin:0 0 1.3rem;padding:0;display:grid;gap:.55rem}
-  .socle .puce li{position:relative;padding-left:1.4rem;font-size:.92rem;color:var(--texte)}
-  .socle .puce li::before{content:"→";position:absolute;left:0;color:var(--violet);font-weight:700}
-
-  /* Contact */
-  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem;margin-top:1.5rem;align-items:start}
-  @media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
-  form{display:grid;gap:.8rem;background:var(--carte);border:1px solid var(--filet);border-radius:18px;padding:1.5rem}
-  label{font-size:.78rem;letter-spacing:.04em;color:var(--brume);text-transform:uppercase}
-  input,textarea{width:100%;border:1px solid var(--filet);border-radius:12px;padding:.7rem .9rem;font-size:.95rem;font-family:var(--sans);color:var(--encre);background:var(--ecume);outline:none;transition:border-color .2s}
-  input:focus,textarea:focus{border-color:var(--violet)}
-  textarea{resize:vertical;min-height:110px}
-  button.submit{border:none;cursor:pointer;padding:.8rem;border-radius:12px;background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;font-size:.95rem}
-  .contact-mot{font-family:var(--serif);font-style:italic;color:var(--brume);max-width:34ch}
-
-  footer{margin-top:.5rem;padding:2.4rem 1.4rem;text-align:center;color:#F3EAD2;font-size:.8rem;text-shadow:0 1px 3px rgba(20,45,70,.4)}
-  footer a{color:#FCEFD2;text-decoration:underline;text-underline-offset:2px}
+  /* ===== FOOTER ===== */
+  footer{background:#20301F;color:#EDE6D4;padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
+  .foot-in{max-width:1080px;margin:0 auto}
+  .foot-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem}
+  .foot-top img{width:30px;height:30px}
+  .foot-top .fn{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em}
+  .foot-links{display:flex;flex-wrap:wrap;gap:.6rem 1.9rem;margin-bottom:2.2rem;
+    padding-bottom:2rem;border-bottom:1px solid rgba(237,230,212,.18)}
+  .foot-links a{color:#D8E4CB;text-decoration:none;font-size:.95rem;transition:color .15s}
+  .foot-links a:hover{color:#fff}
+  .foot-bas{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;
+    font-size:.82rem;color:#A9B69C}
+  .foot-bas .devise{font-family:var(--serif);font-style:italic;color:#C7D2B8}
 </style>
 </head>
 <body>
-
-<div class="mana-wallpaper" aria-hidden="true">
-  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-one"></div>
-  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-two"></div>
-  <div class="mana-wallpaper-orbit mana-wallpaper-orbit-three"></div>
-  <div class="mana-wallpaper-core">
-    <img src="Logo_MANA_Symbol_logo.png" alt="" class="mana-wallpaper-core-logo">
-  </div>
-  <div class="mana-world-line mana-world-line-one"></div>
-  <div class="mana-world-line mana-world-line-two"></div>
-  <div class="mana-world-line mana-world-line-three"></div>
-</div>
 
 <header>
   <nav class="nav">
     <a class="mark" href="#">
       <img src="Logo_MANA_Symbol_logo.png" alt="MANA">
-      <span class="mark-lines">
-        <span class="mark-name">MANA<span style="font-weight:400;text-transform:lowercase">home</span></span>
-      </span>
+      <span class="mark-name">MANA<span style="font-weight:400;text-transform:lowercase">home</span></span>
     </a>
     <ul>
-      <li><a href="#manifeste">Manifeste</a></li>
-      <li><a href="#mondes">L'application</a></li>
-      <li><a href="#guide">Guide fondateur</a></li>
-      <li><a href="#lecture">Livres blancs</a></li>
-      <li><a href="#contact">Nous écrire</a></li>
+      <li><a href="#espaces">L'application</a></li>
+      <li><a href="#pourquoi">Pourquoi</a></li>
+      <li><a href="#commencer">Commencer</a></li>
       <li><a href="https://constitution.manahome.org">Constitution</a></li>
     </ul>
     <div class="nav-actions">
-      <!-- L'extranet partenaire (associations & pros) reste un espace séparé. -->
       <a class="nav-btn ghost" href="https://pro.manafrance.org">Partenaires</a>
-      <!-- La porte citoyenne : un seul geste OTP, inscription ou reconnexion. -->
-      <a class="nav-btn" href="https://mana.bzh">Se connecter / s'inscrire</a>
+      <a class="nav-btn" href="https://mana.bzh">Rejoindre</a>
     </div>
   </nav>
 </header>
 
-<!-- HERO NATURE — prendre soin, ensemble, dehors -->
-<section class="hero-nature" aria-label="MANA — prendre soin, ensemble">
-  <div class="hero-frame">
-    <img class="zoomable" src="hero-ensemble.jpg" alt="MANA — Le temps de l'entraide devient notre richesse commune : donner, recevoir, transmettre. Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres.">
-  </div>
-  <h1 class="hero-title">Prendre soin,<br><span class="brille">ensemble.</span></h1>
-  <p class="lead">Rendre le soin visible, durable et transmissible — pour les proches comme pour le territoire, sous une même Constitution.</p>
+<!-- ===== 1 · HERO — qu'est-ce que c'est ? ===== -->
+<section class="hero wrap" aria-label="MANA — prendre soin, ensemble">
+  <h1>Prendre soin,<br>ensemble.</h1>
+  <p class="sub">Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.</p>
   <div class="hero-cta">
-    <a class="btn" href="https://mana.bzh">Rejoindre MANA →</a>
-    <a class="btn ghost" href="#manifeste">Découvrir la maison</a>
+    <a class="btn" href="https://mana.bzh">Rejoindre gratuitement</a>
+    <a class="btn ghost" href="#espaces">Découvrir MANA</a>
+  </div>
+  <div class="hero-frame">
+    <img class="zoomable" src="hero-ensemble.jpg" alt="Un quartier au grand air, au bord de la mer, où l'on prend soin les uns des autres — donner, recevoir, transmettre.">
   </div>
 </section>
 
-<main>
-  <!-- OBJET — les deux piliers -->
-  <section id="manifeste">
-    <span class="sur">Le manifeste</span>
-    <h1>Une application et une Constitution.</h1>
-    <p class="lead">D'un côté, <strong>la Constitution</strong> : le texte fondateur qui garantit les droits numériques de la personne — attention, dignité, mémoire — et que chaque membre signe à son arrivée. De l'autre, <strong>l'application MANA</strong> : une seule maison pour prendre soin, des proches comme du territoire.</p>
-    <div class="objet-duo">
+<!-- ===== 2 · UNE MAISON, DEUX ESPACES — pourquoi ça m'intéresse ? ===== -->
+<section id="espaces" class="sec-espaces wrap">
+  <h2>Une maison.<br>Deux espaces.</h2>
+  <!-- Motif simple : un toit, deux espaces, un cœur et une feuille -->
+  <svg class="maison-motif" width="120" height="78" viewBox="0 0 120 78" fill="none"
+       stroke="#9A6A44" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 34 L60 8 L108 34"/>
+    <path d="M22 34 V68 H98 V34"/>
+    <path d="M60 34 V68"/>
+    <path d="M41 47c0-4 6-6 6-1 0 5-6 8-6 8s-6-3-6-8c0-5 6-3 6 1z" stroke="#E27A5F"/>
+    <path d="M79 58c-8-2-8-14 0-16 0 8 8 8 0 16z" stroke="#3E9E6E"/>
+  </svg>
+  <div class="espaces">
+    <a class="espace" href="https://mana.bzh/proches">
+      <span class="espace-ico">❤️</span>
+      <h3>Les Proches</h3>
+      <p class="gestes"><span>Transmettre.</span><span>Veiller.</span><span>Préserver la mémoire familiale.</span></p>
+      <span class="entrer">Entrer →</span>
+    </a>
+    <a class="espace" href="https://mana.bzh">
+      <span class="espace-ico">🌿</span>
+      <h3>Le Territoire</h3>
+      <p class="gestes"><span>S'entraider.</span><span>Partager du temps.</span><span>Renforcer son bassin de vie.</span></p>
+      <span class="entrer">Entrer →</span>
+    </a>
+  </div>
+</section>
 
-      <article class="socle">
-        <span class="socle-tag">Le pourquoi</span>
-        <h3 class="grad">La Constitution</h3>
-        <p class="quoi">Protéger votre attention, votre dignité, votre mémoire.</p>
-        <p>«&nbsp;Nous, personnes du numérique&nbsp;»&nbsp;: nos droits, gravés avant la première ligne de code. Une attention qui ne se capte pas, des personnes qui ne se marchandent pas, une mémoire qui ne se rançonne pas. Le socle commun de tous les mondes de MANA.</p>
-        <div class="signataires">
-          <div class="sig-piles">
-            <span></span><span></span><span></span><span></span><span class="more">+</span>
-          </div>
-          <p class="sig-txt"><b>Rejoignez les signataires.</b><br>En arrivant, chaque membre signe la Constitution — et rejoint ce «&nbsp;nous&nbsp;».</p>
-        </div>
-        <a class="btn" href="https://constitution.manahome.org">Lire &amp; signer la Constitution →</a>
-      </article>
-
-      <article class="socle">
-        <span class="socle-tag">Le comment</span>
-        <h3 class="grad">L'application MANA</h3>
-        <p class="quoi">Ce que nous bâtissons sous cette règle.</p>
-        <p>MANA incarne la Constitution, geste après geste — transmettre, relier, reconnaître. Un seul compte, une seule maison, deux espaces&nbsp;:</p>
-        <ul class="puce">
-          <li><b>Les Proches</b> — la famille&nbsp;: transmettre, veiller, garder la mémoire vivante</li>
-          <li><b>Le Territoire</b> — les voisins&nbsp;: s'entraider, reconnaître le temps donné</li>
-        </ul>
-        <p class="part-pro">Pour les partenaires — associations, communes, institutions&nbsp;: <b>TempoSystem</b> orchestre le temps donné en coulisse&nbsp;; <b>Alliance MANA</b> et <b>TimeBank</b> protègent &amp; reconnaissent. <a href="https://pro.manafrance.org">Espace partenaires →</a></p>
-        <a class="btn ghost" href="https://mana.bzh">Entrer dans l'application →</a>
-      </article>
-
+<!-- ===== 3 · POURQUOI MANA ? ===== -->
+<section id="pourquoi" class="sec-pourquoi">
+  <div class="wrap pourquoi-grid">
+    <div class="pourquoi-txt">
+      <span class="eyebrow">Pourquoi MANA&nbsp;?</span>
+      <p class="compte">Nous savons compter l'argent.</p>
+      <p class="compte">Nous savons compter les kilomètres.</p>
+      <p class="compte">Nous savons compter les clics.</p>
+      <p class="pivot">Mais presque jamais le soin.</p>
+      <p style="font-size:1.15rem;font-family:var(--sans);color:var(--texte);line-height:1.6;margin-top:1.4rem">Chaque jour pourtant, ce sont les gestes de soin qui maintiennent notre société debout. <span class="rend">MANA les rend visibles.</span></p>
     </div>
+    <!-- Schéma élégant : Présence · Mémoire · Lien -->
+    <svg class="grammaire" viewBox="0 0 420 210" fill="none" aria-label="Les trois forces du soin : Présence, Mémoire, Lien"
+         font-family="Philosopher, Georgia, serif">
+      <!-- lien discret qui relie les trois -->
+      <path d="M78 78 H210 H342" stroke="#9A6A44" stroke-width="1.2" opacity=".45" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <!-- Présence : un rayonnement -->
+      <g stroke="#5F6E32" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="78" cy="78" r="12" fill="#5F6E32" stroke="none"/>
+        <line x1="78" y1="52" x2="78" y2="60"/><line x1="78" y1="96" x2="78" y2="104"/>
+        <line x1="52" y1="78" x2="60" y2="78"/><line x1="96" y1="78" x2="104" y2="78"/>
+        <line x1="60" y1="60" x2="65" y2="65"/><line x1="91" y1="91" x2="96" y2="96"/>
+        <line x1="96" y1="60" x2="91" y2="65"/><line x1="65" y1="91" x2="60" y2="96"/>
+      </g>
+      <!-- Mémoire : cercles concentriques -->
+      <g stroke="#9A6A44" fill="none">
+        <circle cx="210" cy="78" r="6" fill="#9A6A44" stroke="none"/>
+        <circle cx="210" cy="78" r="14" stroke-width="1.5"/>
+        <circle cx="210" cy="78" r="24" stroke-width="1.2" opacity=".6"/>
+      </g>
+      <!-- Lien : deux boucles nouées -->
+      <g stroke="#3E9E6E" stroke-width="1.8" fill="none" stroke-linecap="round">
+        <path d="M330 78c0-11 18-11 18 0s-18 11-18 0"/>
+        <path d="M354 78c0-11 18-11 18 0s-18 11-18 0"/>
+      </g>
+      <!-- labels -->
+      <text x="78"  y="150" text-anchor="middle" fill="#5F6E32" font-size="19" font-weight="700">Présence</text>
+      <text x="78"  y="172" text-anchor="middle" fill="#8A7A63" font-size="13" font-style="italic">être là</text>
+      <text x="210" y="150" text-anchor="middle" fill="#9A6A44" font-size="19" font-weight="700">Mémoire</text>
+      <text x="210" y="172" text-anchor="middle" fill="#8A7A63" font-size="13" font-style="italic">faire durer</text>
+      <text x="351" y="150" text-anchor="middle" fill="#3E9E6E" font-size="19" font-weight="700">Lien</text>
+      <text x="351" y="172" text-anchor="middle" fill="#8A7A63" font-size="13" font-style="italic">nous relier</text>
+    </svg>
+  </div>
+</section>
 
-    <!-- Second mouvement — la grammaire du soin, les trois forces -->
-    <h2 class="grammaire-titre">La grammaire du soin.</h2>
-    <p class="lead">Partout où l'on prend soin les uns des autres, trois forces sont à l'œuvre — la <strong>Présence</strong>, la <strong>Mémoire</strong>, le <strong>Lien</strong>. L'application MANA les porte dans ses deux espaces, les Proches et le Territoire, chacun à sa manière.</p>
-    <figure class="grammaire-fig">
-      <img class="zoomable" src="grammaire-du-soin.jpg" alt="Les trois forces du soin, en cercles : la Présence (ce qui fait vivre — le geste porté à l'autre, ici et maintenant), la Mémoire (ce qui fait durer — ce que l'on transmet et qui ne s'efface pas), le Lien (ce qui relie — la gravité discrète qui tient l'ensemble), entre Les Proches et Le Territoire.">
-      <figcaption>La Présence fait vivre. La Mémoire fait durer. Le Lien fait tenir. Ensemble, elles nourrissent notre monde.</figcaption>
-    </figure>
-  </section>
-
-  <!-- SCHÉMA — l'écosystème d'un coup d'œil -->
-  <section id="ecosysteme">
-    <span class="sur">La carte</span>
-    <h2>L'écosystème, d'un coup d'œil.</h2>
-    <figure class="grammaire-fig">
-      <img class="zoomable" src="ecosysteme-carte.jpg" alt="L'écosystème MANA d'un coup d'œil : au centre MANAhome.org (l'assistance), à gauche Les Proches (l'espace famille), à droite Le Territoire (l'espace citoyen) ; en bas les partenaires MANAfrance (ancrage territorial), TEMPOsystem (l'orchestre du temps), allianceMANA (gouvernance & principes) et MANAtimebank (reconnaissance du temps donné).">
-      <figcaption>Un même élan : prendre soin les uns des autres, aujourd'hui et pour demain.</figcaption>
-    </figure>
-  </section>
-
-  <!-- LES MONDES -->
-  <section id="mondes">
-    <div class="mondes-intro">
-      <div>
-        <span class="sur">L'application</span>
-        <h2>Une maison, deux espaces</h2>
-        <p class="lead">Prendre soin, c'est <strong>transmettre</strong>, <strong>relier</strong>, <strong>reconnaître</strong>. Une seule application porte ces gestes — un seul compte, une seule porte d'entrée. Et sous le plancher, des fondations qui <strong>orchestrent</strong> et <strong>protègent</strong>, sans jamais se montrer.</p>
-      </div>
-      <div class="scene">
-        <div class="halo"></div>
-        <picture>
-          <img class="deesse" src="deesse-mana.png" alt="Mana, le visage de l'univers">
-        </picture>
-        <span class="tw a"></span><span class="tw b"></span><span class="tw c"></span>
-      </div>
+<!-- ===== 4 · NOTRE PROMESSE — puis-je avoir confiance ? ===== -->
+<section id="promesse" class="sec-promesse wrap">
+  <span class="eyebrow">Notre promesse</span>
+  <h2>Ce que nous protégeons.</h2>
+  <div class="promesse">
+    <div class="prom">
+      <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+      <p>Votre attention n'est jamais vendue.</p>
     </div>
-    <div class="mondes">
-      <div>
-        <a class="monde" href="https://mana.bzh/proches">
-          <span class="monde-tete"><span class="monde-nom">Les Proches</span><span class="monde-verbe grad">Transmettre.</span><span class="monde-etat">Entrer →</span></span>
-          <p>L'espace famille de MANA — les cercles familiaux vivants. On y dépose des souvenirs, on veille les uns sur les autres, on garde la mémoire de la famille vivante — sans flux, sans compteurs, sans injonction. Une lueur douce dit qui a pris soin ; jamais qui ne l'a pas fait. Et pour les plus jeunes, <strong>MANAkids</strong> — un espace tout-doux, à hauteur d'enfant, pour grandir dans le soin.</p>
-        </a>
-        <a class="monde-plus" href="mana-family.html">En savoir plus sur les Proches (MANA Family &amp; MANAkids) →</a>
-      </div>
-      <div>
-        <a class="monde" href="https://mana.bzh">
-          <span class="monde-tete"><span class="monde-nom">Le Territoire</span><span class="monde-verbe grad">Relier.</span><span class="monde-etat">Entrer →</span></span>
-          <p>L'espace citoyen de MANA — l'entraide entre voisins d'un même territoire. Donner une heure, recevoir un coup de main, reconnaître le temps partagé — la solidarité qui circule et renforce le bassin de vie.</p>
-        </a>
-        <a class="monde-plus" href="mana-territoires.html">En savoir plus sur le Territoire (MANA Territoires) →</a>
-      </div>
-      <p class="mondes-inter">Les fondations — pour les partenaires &amp; institutions</p>
-      <a class="monde" href="https://manafrance.org">
-        <span class="monde-tete"><span class="monde-nom">MANA France</span><span class="monde-verbe grad">Porter.</span><span class="monde-etat">L'association →</span></span>
-        <p>L'association loi 1901 qui porte la maison MANA en France — qui nous sommes, ce que nous construisons, et le cadre qui protège la démarche : mécénat, partenariats, ancrage territorial.</p>
-      </a>
-      <a class="monde" href="https://temposystem.fr">
-        <span class="monde-tete"><span class="monde-nom">TempoSystem</span><span class="monde-verbe grad">Orchestrer.</span><span class="monde-etat">En coulisse →</span></span>
-        <p>La partition discrète du temps que les êtres se consacrent. La comptabilité juste des heures données et reçues, l'infrastructure invisible qui fait tourner l'entraide. Elle joue en coulisse ; on ne la voit jamais.</p>
-      </a>
-      <a class="monde" href="https://alliancemana.org">
-        <span class="monde-tete"><span class="monde-nom">Alliance MANA</span><span class="monde-verbe grad">Protéger.</span><span class="monde-etat">Ouvert →</span></span>
-        <p>Le collectif qui défend la Constitution numérique et ses membres. Les signataires, les artisans du numérique qui s'engagent à ne jamais capter, marchander ni presser. La gouvernance de l'écosystème.</p>
-      </a>
-      <a class="monde" href="https://manatimebank.org">
-        <span class="monde-tete"><span class="monde-nom">MANA TimeBank</span><span class="monde-verbe grad">Reconnaître.</span><span class="monde-etat">Ouvert →</span></span>
-        <p>Rendre visible et honorer le temps partagé. La banque de temps où chaque heure offerte est reconnue — un registre de la gratitude qui circule, d'une personne à l'autre, d'une génération à la suivante.</p>
-      </a>
+    <div class="prom">
+      <svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M9 8h4M9 12h6M9 16h6"/></svg>
+      <p>Votre mémoire vous appartient.</p>
     </div>
-  </section>
-  <!-- TERRE DE MANA — le territoire : national (MANAfrance) + régional (mana.bzh) -->
-  <section id="terre">
-    <span class="sur">Le territoire</span>
+    <div class="prom">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
+      <p>Vos proches passent avant les algorithmes.</p>
+    </div>
+    <div class="prom">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+      <p>Le temps partagé mérite d'être reconnu.</p>
+    </div>
+  </div>
+  <a class="btn" href="https://constitution.manahome.org">Lire notre Constitution</a>
+</section>
+
+<!-- ===== 5 · LA TERRE DE MANA ===== -->
+<section id="terre" class="sec-terre">
+  <div class="wrap">
     <h2>La Terre de MANA.</h2>
-    <p class="lead">MANA prend racine quelque part — sur une côte, dans un bassin de vie, autour d'une <strong>Maison Mana</strong>. « Prendre soin les uns des autres » y devient concret : un lieu, des voisins, des gestes. Deux échelles, un même rivage.</p>
-    <figure class="grammaire-fig">
-      <img class="zoomable" src="manasail.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA : une côte accueillante avec un phare, un village et la Maison Mana, des dauphins dans les vagues, au soleil couchant.">
-      <figcaption>Voguer vers la Terre de MANA — le temps partagé, le soin au cœur, la transmission qui relie.</figcaption>
-    </figure>
-    <div class="duo">
-      <div class="encart">
-        <h3 class="grad">MANA France — le cadre national</h3>
-        <p>Le mouvement qui porte la Terre de MANA partout en France : l'association, le cadre qui protège la démarche, les communes et partenaires qui l'accueillent. La vue d'ensemble du pays.</p>
-        <a class="btn" href="https://manafrance.org">Découvrir MANA France →</a>
-      </div>
-      <div class="encart">
-        <h3 class="grad">Mana Bretagne — la première terre</h3>
-        <p>La Terre de MANA incarnée sur un territoire réel, à taille humaine : la Bretagne. C'est ici que l'entraide se vit pour de bon, voisin après voisin — la première région à ouvrir sa Maison Mana.</p>
-        <a class="btn ghost" href="https://mana.bzh">Entrer sur mana.bzh →</a>
-      </div>
+    <p class="terre-txt">Imaginez un territoire où l'entraide redevient naturelle. Des voisins. Des familles. Une Maison MANA. Une côte. Un phare. Un même horizon.</p>
+    <div class="terre-frame">
+      <img class="zoomable" src="manasail.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA : une côte accueillante avec un phare, un village et la Maison Mana, au soleil couchant.">
     </div>
-  </section>
+    <a class="btn" href="https://manafrance.org">Découvrir la Terre de MANA</a>
+  </div>
+</section>
 
-  <!-- COMMENCER ICI — la carte de lecture (Guide + Livres blancs), illustrée -->
-  <section id="lecture-carte">
-    <span class="sur">Pour comprendre</span>
-    <h2>Commencer ici.</h2>
-    <p class="lead">Une invitation de quinze minutes pour comprendre tout l'écosystème — le temps partagé, le soin, la transmission. Sans jargon, sans technique. La porte d'entrée, avant les livres blancs.</p>
-    <figure class="grammaire-fig">
-      <img class="zoomable" src="lecture-panorama.jpg" alt="Le Guide fondateur (le temps partagé, le soin, la transmission) et les Livres blancs — Mana Family et Mana · France — posés dans un paysage, la porte d'entrée avant les textes de référence.">
-      <figcaption>Le temps partagé · Le soin au cœur · La transmission qui relie.</figcaption>
-    </figure>
-  </section>
-
-  <!-- GUIDE FONDATEUR — la porte d'entrée -->
-  <section id="guide">
-    <span class="sur">Commencer ici</span>
-    <h2>Le Guide fondateur.</h2>
-    <p style="max-width:46ch;color:var(--brume);margin:.6rem 0 1.8rem;font-size:1.05rem;line-height:1.65">Une invitation de quinze minutes pour comprendre tout l'écosystème — le temps partagé, le soin, la transmission. Sans jargon, sans technique. La porte d'entrée, avant les livres blancs.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:.8rem">
-      <a class="btn" href="guide-fondateur.html">Lire le Guide fondateur →</a>
+<!-- ===== 6 · COMMENCER — comment commencer ? ===== -->
+<section id="commencer" class="sec-commencer wrap">
+  <span class="eyebrow">Commencer</span>
+  <h2>Comprendre MANA en quinze minutes.</h2>
+  <div class="commencer-frame">
+    <img class="zoomable" src="lecture-panorama.jpg" alt="Le Guide fondateur, posé dans un paysage — la porte d'entrée pour comprendre MANA : le temps partagé, le soin, la transmission.">
+  </div>
+  <div class="guide-star">
+    <h3>Le Guide fondateur</h3>
+    <p>Une invitation, sans jargon ni technique, pour comprendre tout l'univers MANA — le temps partagé, le soin, la transmission.</p>
+    <div class="guide-cta">
+      <a class="btn" href="guide-fondateur.html">Lire le Guide fondateur</a>
       <a class="btn ghost" href="MANA-Guide-fondateur.pdf" download>Télécharger le PDF</a>
     </div>
-  </section>
-  <!-- LECTURE — livre blanc & constitution -->
-  <section id="lecture">
-    <span class="sur">Pour comprendre</span>
-    <h2>Les Livres blancs.</h2>
-    <div class="duo">
-      <div class="encart">
-        <h3 class="grad">MANA Family</h3>
-        <p>La vision complète : d'où vient Mana Family, ce qu'il propose, comment il compte tenir ses promesses. Le texte de référence du monde familial.</p>
-        <a class="btn" href="livre-blanc.html">Lire le Livre blanc Family →</a>
-      </div>
-      <div class="encart">
-        <h3 class="grad">MANA · France — édition institutionnelle</h3>
-        <p>L'écosystème du temps solidaire présenté aux collectivités : le principe, l'offre, la gouvernance, l'impact territorial — et la Constitution en annexe.</p>
-        <a class="btn" href="https://manafrance.org/livre-blanc/">Découvrir l'édition institutionnelle →</a>
-      </div>
+  </div>
+  <div class="plus-loin">
+    <span class="eyebrow">Pour aller plus loin</span>
+    <div class="plus-grid">
+      <a class="plus" href="livre-blanc.html"><b>Mana Family</b><span>Le livre blanc des cercles familiaux</span></a>
+      <a class="plus" href="https://manafrance.org/livre-blanc/"><b>Mana France</b><span>L'édition institutionnelle, pour les territoires</span></a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <span class="sur">Nous écrire</span>
-    <h2>Une question ? Parlons-nous.</h2>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-mot">Mana est un projet ouvert. Écrivez-nous — une idée, une envie de contribuer, une simple curiosité. Nous lisons tout.</p>
-        <p style="margin-top:1rem;font-size:.9rem;color:var(--brume)">Directement : <a href="mailto:contact@manahome.org" style="color:var(--violet)">contact@manahome.org</a></p>
-      </div>
-      <form id="contactForm">
-        <input type="hidden" name="access_key" value="6b87a2f3-2183-40e6-befe-23fd66944144">
-        <input type="hidden" name="subject" value="Nouveau message via manahome.org">
-        <input type="hidden" name="from_name" value="Contact manahome.org">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <div>
-          <label for="c-nom">Votre nom</label>
-          <input id="c-nom" name="name" type="text" required placeholder="Prénom Nom">
-        </div>
-        <div>
-          <label for="c-email">Votre e-mail</label>
-          <input id="c-email" name="email" type="email" required placeholder="vous@exemple.fr">
-        </div>
-        <div>
-          <label for="c-msg">Votre message</label>
-          <textarea id="c-msg" name="message" required placeholder="Bonjour Mana…"></textarea>
-        </div>
-        <button class="submit" type="submit">Envoyer →</button>
-        <p id="c-status" style="font-size:.85rem;margin:.1rem 0 0;min-height:1.2em;color:var(--brume)"></p>
-      </form>
-    </div>
-  </section>
-</main>
-
+<!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 MANA — la maison mère de l'univers Mana ·<a href="https://constitution.manahome.org">Constitution</a> · <a href="mailto:contact@manahome.org">contact@manahome.org</a><br>
-  <span style="font-family:var(--serif);font-style:italic">« Rendre le soin visible, durable et transmissible. »</span>
+  <div class="foot-in">
+    <div class="foot-top">
+      <img src="Logo_MANA_Symbol_logo.png" alt="MANA">
+      <span class="fn">MANA<span style="font-weight:400">home</span></span>
+    </div>
+    <nav class="foot-links" aria-label="L'univers MANA">
+      <a href="https://temposystem.fr">TempoSystem</a>
+      <a href="https://alliancemana.org">Alliance MANA</a>
+      <a href="https://manafrance.org">Mana France</a>
+      <a href="https://manatimebank.org">Mana TimeBank</a>
+      <a href="https://pro.manafrance.org">Partenaires</a>
+      <a href="guide-fondateur.html">Documentation</a>
+      <a href="https://constitution.manahome.org">Constitution</a>
+      <a href="mentions.html">Mentions</a>
+    </nav>
+    <div class="foot-bas">
+      <span>© 2026 MANA — la maison mère de l'univers Mana · <a href="mailto:contact@manahome.org" style="color:#C7D2B8">contact@manahome.org</a></span>
+      <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
+    </div>
+  </div>
 </footer>
 
-<script>
-  (function(){
-    var form = document.getElementById('contactForm');
-    var status = document.getElementById('c-status');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var key = form.querySelector('[name=access_key]').value;
-      if (key === 'VOTRE_CLE_WEB3FORMS') {
-        status.style.color = '#c0392b';
-        status.textContent = "Formulaire pas encore activé (clé Web3Forms manquante).";
-        return;
-      }
-      status.style.color = 'var(--brume)';
-      status.textContent = 'Envoi…';
-      var data = Object.fromEntries(new FormData(form));
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(function(r){ return r.json(); })
-      .then(function(res){
-        if (res.success) {
-          status.style.color = '#1e7d4f';
-          status.textContent = 'Merci ! Votre message est envoyé. 🌱';
-          form.reset();
-        } else {
-          status.style.color = '#c0392b';
-          status.textContent = 'Oups — ' + (res.message || 'une erreur est survenue.');
-        }
-      })
-      .catch(function(){
-        status.style.color = '#c0392b';
-        status.textContent = 'Erreur réseau, réessayez.';
-      });
-    });
-  })();
-</script>
-
-<!-- ============ Lightbox — images cliquables & zoomables (bonne lecture) ============ -->
+<!-- ============ Lightbox — images cliquables & zoomables ============ -->
 <style>
   img.zoomable{cursor:zoom-in;transition:transform .3s ease, box-shadow .3s ease}
-  .grammaire-fig img.zoomable:hover{transform:translateY(-4px);box-shadow:0 28px 60px rgba(20,45,70,.30)}
-  .hero-frame:hover{transform:translateY(-4px)}
-  .hero-frame{transition:transform .3s ease}
+  .hero-frame,.terre-frame,.commencer-frame{transition:transform .3s ease}
+  .hero-frame:hover,.terre-frame:hover,.commencer-frame:hover{transform:translateY(-4px)}
   #lb{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
-    background:rgba(18,38,52,.94);backdrop-filter:blur(5px);padding:2vmin;overflow:auto;overscroll-behavior:contain}
+    background:rgba(24,32,22,.94);backdrop-filter:blur(5px);padding:2vmin;overflow:auto;overscroll-behavior:contain}
   #lb.open{display:flex}
   #lb img{max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:12px;
-    box-shadow:0 24px 70px rgba(0,0,0,.55);border:2px solid rgba(228,197,131,.55);cursor:zoom-in;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);border:2px solid rgba(228,197,131,.45);cursor:zoom-in;
     transition:max-width .25s ease, max-height .25s ease}
   #lb.zoom{align-items:flex-start;justify-content:flex-start}
   #lb.zoom img{max-width:none;max-height:none;cursor:zoom-out}
@@ -649,22 +461,21 @@
 
 <!-- ============ Micro-animation d'entrée des sections au scroll ============ -->
 <style>
-  /* N'est actif que si le JS ajoute .has-reveal → jamais de contenu caché sans JS */
   .has-reveal .reveal{opacity:0;transform:translateY(26px);
     transition:opacity .7s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
   .has-reveal .reveal.in{opacity:1;transform:none}
 </style>
 <script>
 (function(){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; // respect du réglage système
-  var els = document.querySelectorAll('.hero-nature, main > section');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('section');
   if (!els.length) return;
   document.documentElement.classList.add('has-reveal');
   els.forEach(function(el){ el.classList.add('reveal'); });
   if (!('IntersectionObserver' in window)){ els.forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
   els.forEach(function(el){ io.observe(el); });
 })();
 </script>
@@ -733,21 +544,20 @@
       body=document.getElementById('mb-body'), input=document.getElementById('mb-input'),
       send=document.getElementById('mb-send'), closeBtn=panel.querySelector('.mb-close');
 
-  // Moteur de DÉMONSTRATION — voix de Mana (la Déesse). À brancher sur l'IA plus tard.
   function reply(q){
     var t=q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
     var h=function(){for(var i=0;i<arguments.length;i++){if(t.indexOf(arguments[i])>-1)return true;}return false;};
     if(h('bonjour','salut','coucou','bonsoir','hello')) return "Salutations. Je suis Mana, la voix de la maison mère. Ici veille une famille de mondes citoyens. Dites-moi ce que vous cherchez — je vous guide.";
-    if(h('mondes','application','sites','univers','ecosysteme','famille de mondes')) return "Notre famille compte plusieurs mondes : MANA France (les territoires), Mana Bretagne, Mana Family (les cercles familiaux), TEMPOSYSTEM (le moteur), Mana Time Bank et Alliance MANA. Lequel vous appelle ?";
-    if(h('constitution','droit','ethique','serment','donnee','rgpd')) return "Avant toute chose, il y a un serment : la Constitution des droits numériques de la personne. Elle protège votre dignité et vos données. Chaque membre la signe à son arrivée.";
-    if(h('soin','care','aidant','prendre soin','entraide','solidarite')) return "Prendre soin, ensemble : voilà notre raison d'etre. Rendre visible le temps donné, relier les proches et les aidants. C'est le cœur battant de notre maison.";
-    if(h('family','famille','proche','memoire','cercle')) return "Mana Family réunit vos cercles — présence, mémoire, entraide. Je peux vous y conduire : manafamily.org.";
-    if(h('france','territoire','commune','association','collectivite','maire')) return "MANA France porte l'univers vers les territoires et les collectivités : manafrance.org.";
-    if(h('rejoindre','participer','comment','commencer','inscrire')) return "Chaque monde a sa porte. Dites-moi ce qui vous touche — les territoires, la famille, l'entraide — et je vous oriente vers le bon seuil.";
-    if(h('mana','qui es','c est quoi','cest quoi','quoi')) return "MANA rend le soin visible, durable et transmissible. Une famille de mondes citoyens, réunis sous une même Constitution. Ici, la maison mère.";
+    if(h('proche','famille','family','memoire','cercle','transmettre')) return "Les Proches, c'est l'espace famille : veiller les uns sur les autres, garder la mémoire vivante, transmettre ce qui compte. Je peux vous y conduire — entrez par mana.bzh.";
+    if(h('territoire','voisin','entraide','solidarite','commune','benevole')) return "Le Territoire, c'est l'entraide entre voisins d'un même bassin de vie : donner une heure, recevoir un coup de main, reconnaître le temps partagé.";
+    if(h('constitution','droit','ethique','serment','donnee','rgpd','confiance','vendu')) return "Votre attention n'est jamais vendue, votre mémoire vous appartient. C'est la Constitution des droits numériques — chaque membre la signe à son arrivée.";
+    if(h('soin','care','aidant','prendre soin')) return "Prendre soin, ensemble : voilà notre raison d'etre. Rendre visible le temps donné, relier les proches et les voisins. C'est le cœur battant de notre maison.";
+    if(h('commencer','guide','comprendre','decouvrir','comment')) return "Le meilleur point de départ, c'est le Guide fondateur — quinze minutes, sans jargon, pour tout comprendre. Vous le trouverez plus bas sur cette page.";
+    if(h('rejoindre','inscrire','compte','gratuit','participer')) return "Rejoindre MANA est gratuit. Un seul geste depuis mana.bzh, et vous entrez — les Proches ou le Territoire, selon ce qui vous touche.";
+    if(h('mana','qui es','c est quoi','cest quoi','quoi')) return "MANA rend le soin visible, durable et transmissible. Une seule application, deux espaces : les Proches et le Territoire. Ici, la maison mère.";
     if(h('merci','super','genial','parfait','bravo')) return "C'est un honneur de vous accompagner. Revenez quand vous le souhaitez — la maison est toujours ouverte.";
     if(h('au revoir','aurevoir','bye','a bientot','ciao')) return "Que le soin vous accompagne. À bientôt, sous la même Constitution.";
-    return "Belle quête. Je veille sur tout ce qui touche au soin, aux mondes de MANA et à notre Constitution. Reformulez votre question, et je vous éclaire.";
+    return "Belle quête. Je veille sur tout ce qui touche au soin, aux deux espaces de MANA et à notre Constitution. Reformulez votre question, et je vous éclaire.";
   }
 
   function scroll(){ body.scrollTop=body.scrollHeight; }
