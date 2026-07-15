@@ -138,16 +138,18 @@
   body.menu-open{overflow:hidden}
 
   /* ===== HERO — presque toute la hauteur, très respirant ===== */
-  .hero{min-height:calc(100svh - 62px);text-align:center}
+  /* Hero pleine largeur : l'illustration bord à bord sous le header, texte dessous */
+  .hero{min-height:auto;display:block;text-align:center;padding:0 0 clamp(4rem,8vw,6.5rem)}
   .hero h1{font-family:var(--serif);font-weight:700;color:var(--kaki);
     font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.1rem}
   .hero .sub{max-width:34ch;margin:0 auto 2rem;font-size:clamp(1.15rem,2.2vw,1.4rem);
     line-height:1.55;color:var(--texte)}
-  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
-  .hero-frame{width:100%;max-width:940px;margin:0 auto clamp(2rem,4vw,3rem);border-radius:26px;overflow:hidden;
-    box-shadow:var(--ombre);border:1px solid var(--filet)}
+  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+  .hero-frame{width:100%;max-width:none;margin:0 0 clamp(2.2rem,4.5vw,3.4rem);overflow:hidden;
+    border:none;border-radius:0;box-shadow:none}
+  .hero-frame:hover{transform:none}
   .hero-frame img{display:block;width:100%;height:auto}
-  @media(max-width:560px){.hero-frame{border-radius:18px}}
+  .hero-text{padding-top:clamp(.5rem,2vw,1.5rem)}
 
   /* ===== SECTION 2 — le temps de l'entraide (illustration pleine) ===== */
   .sec-espaces{text-align:center}
@@ -278,14 +280,14 @@
 
 <!-- ===== 1 · HERO — qu'est-ce que c'est ? ===== -->
 <section class="hero" aria-label="MANA — prendre soin, ensemble">
-  <div class="wrap">
-    <div class="hero-frame">
-      <picture>
-        <!-- Mobile : version portrait ; desktop : version paysage -->
-        <source media="(max-width:640px)" srcset="maison-mana-pwa.jpg">
-        <img class="zoomable" src="manamaison.jpg" alt="Une maison, deux espaces : Les Proches — veiller et transmettre — et Le Territoire — s'entraider — autour de la Maison MANA.">
-      </picture>
-    </div>
+  <div class="hero-frame">
+    <picture>
+      <!-- Mobile : version portrait ; desktop : version paysage, pleine largeur -->
+      <source media="(max-width:640px)" srcset="manahomehero-pwa.jpg">
+      <img class="zoomable" src="manahomehero.jpg" alt="Une maison, deux espaces : MANAfamily — Les proches — et MANAfrance — Le territoire — autour de la Maison MANA.">
+    </picture>
+  </div>
+  <div class="wrap hero-text">
     <h1>Prendre soin,<br>ensemble.</h1>
     <p class="sub">Une seule application pour veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment.</p>
     <div class="hero-cta">
