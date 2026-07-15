@@ -148,6 +148,7 @@
   .hero-frame{width:100%;max-width:none;margin:0 0 clamp(2.2rem,4.5vw,3.4rem);overflow:hidden;
     border:none;border-radius:0;box-shadow:none}
   .hero-frame:hover{transform:none}
+  .hero-frame a{display:block}
   .hero-frame img{display:block;width:100%;height:auto}
   .hero-text{padding-top:clamp(.5rem,2vw,1.5rem)}
 
@@ -281,11 +282,14 @@
 <!-- ===== 1 · HERO — qu'est-ce que c'est ? ===== -->
 <section class="hero" aria-label="MANA — prendre soin, ensemble">
   <div class="hero-frame">
-    <picture>
-      <!-- Mobile : version portrait ; desktop : version paysage, pleine largeur -->
-      <source media="(max-width:640px)" srcset="manahomehero-pwa.jpg">
-      <img class="zoomable" src="manahomehero.jpg" alt="Une maison, deux espaces : MANAfamily — Les proches — et MANAfrance — Le territoire — autour de la Maison MANA.">
-    </picture>
+    <!-- Toute l'illustration mène à l'application -->
+    <a href="https://app.manafrance.org" aria-label="Entrer dans MANA">
+      <picture>
+        <!-- Mobile : version portrait ; desktop : version paysage, pleine largeur -->
+        <source media="(max-width:640px)" srcset="manahomehero-pwa.jpg">
+        <img src="manahomehero.jpg" alt="Une maison, deux espaces : MANAfamily — Les proches — et MANAfrance — Le territoire — autour de la Maison MANA.">
+      </picture>
+    </a>
   </div>
   <div class="wrap hero-text">
     <h1>Prendre soin,<br>ensemble.</h1>
