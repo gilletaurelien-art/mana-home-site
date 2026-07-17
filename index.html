@@ -439,6 +439,11 @@
       <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
     </div>
   </div>
+  <!-- propulsé par TEMPOsystem (badge commun univers MANA) -->
+  <style>@keyframes ptBlink{50%{opacity:0}}</style>
+  <div style="width:100vw;margin-left:calc(50% - 50vw);margin-top:2rem;padding:40px 20px 30px;display:flex;justify-content:center;box-sizing:border-box">
+    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#d6704a,#f2a73b,#e7b441);color:#171310;text-decoration:none;box-shadow:0 14px 30px -15px rgba(214,112,74,.55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#171310"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#171310;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
+  </div>
 </footer>
 
 <!-- ============ Lightbox — images cliquables & zoomables ============ -->
@@ -669,5 +674,8 @@
 })();
 </script>
 
+<script>
+(function(){var segs=[['propulsé par ','SF Mono',400,13],['TEMPO','Philosopher',700,15],['system','SF Mono',400,13]];var full=segs.reduce(function(a,s){return a+s[0];},'');var line=document.querySelector('.pt-line');var caret=document.querySelector('.pt-caret');if(!line)return;function fnt(f){return f==='Philosopher'?"'Philosopher',Georgia,serif":"'SF Mono',ui-monospace,'SFMono-Regular',Menlo,monospace";}function render(n){var out='',c=0;for(var k=0;k<segs.length;k++){var t=segs[k][0];if(c>=n)break;var take=Math.min(t.length,n-c);out+='<span style="font-family:'+fnt(segs[k][1])+';font-weight:'+segs[k][2]+';font-size:'+segs[k][3]+'px">'+t.slice(0,take)+'</span>';c+=take;}line.innerHTML=out;}if(matchMedia('(prefers-reduced-motion: reduce)').matches){render(full.length);if(caret)caret.style.display='none';return;}var i=0;setTimeout(function tick(){i++;render(i);if(i<full.length)setTimeout(tick,62);else if(caret){caret.style.animation='none';caret.style.transition='opacity .5s ease .8s';caret.style.opacity='0';}},450);})();
+</script>
 </body>
 </html>
