@@ -158,21 +158,19 @@
   .hero .sub.large{max-width:46ch}
   .hero .sub strong{color:var(--kaki)}
 
-  /* ≥760px : le texte se pose en overlay, en bas à droite de l'illustration */
+  /* ≥760px : le texte devient un bandeau centré en haut de l'illustration */
   @media(min-width:760px){
     .hero{padding-bottom:0}
     .hero-frame{margin-bottom:0}
-    .hero-text{position:absolute;z-index:2;text-align:left;
-      right:clamp(1.5rem,4vw,3.2rem);bottom:clamp(1.5rem,4vw,3.2rem);
-      width:min(46ch,52%);padding:clamp(1.4rem,2.4vw,2rem) clamp(1.5rem,2.6vw,2.2rem);
-      background:rgba(6,6,8,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.14);border-radius:20px;
-      box-shadow:0 24px 70px rgba(0,0,0,.5);color:#fff}
-    .hero-text h1{color:#fff;font-size:clamp(2.2rem,3.6vw,3.4rem);margin:0 0 .7rem}
-    .hero-text .sub{color:#e9e9ec;margin:0 0 1.4rem;max-width:none;font-size:clamp(1rem,1.4vw,1.18rem)}
+    .hero-text{position:absolute;z-index:2;top:0;left:0;right:0;text-align:center;
+      padding:clamp(1.6rem,3.2vw,2.8rem) clamp(1.5rem,5vw,3rem) clamp(2.8rem,5vw,4rem);
+      background:linear-gradient(to bottom,rgba(6,6,8,.78) 0%,rgba(6,6,8,.5) 55%,rgba(6,6,8,0) 100%);
+      color:#fff}
+    .hero-text h1{color:#fff;font-size:clamp(2.2rem,4.4vw,3.6rem);margin:0 0 .6rem}
+    .hero-text .sub{color:#eaeaee;margin:0 auto 1.3rem;max-width:60ch;font-size:clamp(1rem,1.5vw,1.2rem)}
     .hero-text .sub strong{color:#fff}
-    .hero-text .hero-cta{justify-content:flex-start}
-    /* Boutons contrastés sur le panneau sombre */
+    .hero-text .hero-cta{justify-content:center}
+    /* Boutons contrastés sur le bandeau sombre */
     .hero-text .btn{background:#ffffff;color:#000000;box-shadow:0 8px 24px rgba(0,0,0,.45)}
     .hero-text .btn:hover{filter:none;background:#ededed}
     .hero-text .btn.ghost{background:none;color:#ffffff;border:1.5px solid rgba(255,255,255,.55)}
@@ -231,6 +229,18 @@
   @keyframes manafamily-lumiere{0%{background-position:130% 0}100%{background-position:-30% 0}}
   @keyframes etincelle-mana{0%,100%{opacity:.15;transform:scale(.6) rotate(0deg)}50%{opacity:1;transform:scale(1.15) rotate(90deg)}}
   @media(prefers-reduced-motion:reduce){.mf-logo{animation:none;background-position:50% 0}.mf-logo::before,.mf-logo::after{animation:none;opacity:.7}}
+  /* Mot doré réutilisable (effet MANAfamily) — ex. « Lire notre Constitution » */
+  .or-vivant{position:relative;font-family:'Philosopher',var(--serif);font-weight:700;text-transform:none;text-decoration:none;
+    background:linear-gradient(100deg,#c49a30 0%,#e5b842 26%,#fff7e0 46%,#ffffff 50%,#fff7e0 54%,#e5b842 74%,#c49a30 100%);
+    background-size:240% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    filter:drop-shadow(0 0 8px rgba(229,184,66,.45));animation:manafamily-lumiere 5s ease-in-out infinite}
+  .or-vivant::before,.or-vivant::after{content:'✦';position:absolute;font-size:.4em;color:#e5b842;-webkit-text-fill-color:#e5b842;
+    text-shadow:0 0 6px rgba(229,184,66,.85);animation:etincelle-mana 2.6s ease-in-out infinite;pointer-events:none}
+  .or-vivant::before{top:-.1em;left:-.5em}
+  .or-vivant::after{bottom:-.05em;right:-.5em;animation-delay:1.3s}
+  .lire-constitution{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.75rem);color:var(--texte);margin:1.6rem 0 0}
+  .lire-constitution .or-vivant{font-size:1.12em}
+  @media(prefers-reduced-motion:reduce){.or-vivant{animation:none;background-position:50% 0}.or-vivant::before,.or-vivant::after{animation:none;opacity:.7}}
   .sec-soin .lead{max-width:40ch;margin:0 auto 2.2rem;color:#c9d3df}
   /* Boutons inversés sur fond nuit */
   .sec-soin .btn{background:#ffffff;color:#000000;box-shadow:0 8px 26px rgba(0,0,0,.5)}
@@ -370,7 +380,7 @@
 </script>
 
 <!-- ===== 1 · HERO — La Terre de MANA ===== -->
-<section class="hero" aria-label="La Terre de MANA">
+<section class="hero" aria-label="MANA.bzh">
   <div class="hero-frame">
     <!-- Toute l'illustration mène à mana.bzh -->
     <a href="https://mana.bzh" aria-label="Rejoindre la Terre de MANA">
@@ -381,11 +391,11 @@
       </picture>
     </a>
     <div class="hero-text">
-      <h1>La Terre de MANA.</h1>
-      <p class="sub large"><strong>Tout commence en Finistère.</strong> MANA arrive en Bretagne : en Penn&nbsp;Ar&nbsp;Bed, ce territoire où l'entraide est toute naturelle. Des voisins. Des familles. Des associations. Une Maison MANA. Un même horizon.</p>
+      <h1 class="mf-logo">MANA.bzh</h1>
+      <p class="sub large">MANA arrive en Bretagne : ce territoire où l'entraide est toute naturelle.</p>
       <div class="hero-cta">
         <a class="btn" href="https://mana.bzh">Rejoindre mana.bzh</a>
-        <a class="btn ghost" href="#soin">Découvrir MANA</a>
+        <a class="btn ghost" href="#soin">Découvrir MANAfamily</a>
       </div>
     </div>
   </div>
@@ -433,7 +443,7 @@
       <p>Le temps partagé mérite d'être reconnu.</p>
     </div>
   </div>
-  <a class="btn" href="https://constitution.manahome.org">Lire notre Constitution</a>
+  <p class="lire-constitution">Lire notre <a class="or-vivant" href="https://constitution.manahome.org">Constitution</a></p>
   <div class="plus-loin">
     <span class="eyebrow">Pour aller plus loin</span>
     <div class="plus-grid">
@@ -452,10 +462,10 @@
       <span class="fn">MANA<span style="font-weight:400">home</span></span>
     </div>
     <nav class="foot-links" aria-label="L'univers MANA">
-      <a href="https://temposystem.fr">TempoSystem</a>
-      <a href="https://alliancemana.org">Alliance MANA</a>
-      <a href="https://manafrance.org">Mana France</a>
-      <a href="https://manatimebank.org">Mana TimeBank</a>
+      <a class="or-vivant" href="https://temposystem.fr">TEMPOsystem</a>
+      <a class="or-vivant" href="https://alliancemana.org">Alliance MANA</a>
+      <a class="or-vivant" href="https://manafrance.org">MANAfrance</a>
+      <a class="or-vivant" href="https://manatimebank.org">MANAtimebank</a>
       <a href="https://pro.manafrance.org">Partenaires</a>
       <a href="guide-fondateur.html">Guide Fondateur</a>
       <a href="documentation.html">Documentation</a>
