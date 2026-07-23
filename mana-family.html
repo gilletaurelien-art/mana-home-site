@@ -13,24 +13,24 @@
 <style>
   :root{
     /* Tokens de la référence manafrance.org */
-    --bleu:#2B3FC7; --violet:#C040E8; --degrade-mi:#8B35D6;
-    --ecume:#F7F8FA; --carte:#FFFFFF;
-    --encre:#0B1220; --texte:#3A4466; --brume:#6B7280; --filet:#E8EAF0;
-    --sous:#2234B0;
-    --header-bg:rgba(255,255,255,.95);
-    --wp-a:rgb(43 63 199 / 0.08); --wp-b:rgb(192 64 232 / 0.06);
-    --wp-top:#FFFFFF; --wp-grid:rgb(11 18 32 / 0.035);
+    --bleu:#454545; --violet:#676767; --degrade-mi:#535353;
+    --ecume:#f8f8f8; --carte:#ffffff;
+    --encre:#121212; --texte:#444444; --brume:#727272; --filet:#eaeaea;
+    --sous:#393939;
+    --header-bg:rgba(255, 255, 255, .95);
+    --wp-a:rgb(69 69 69 / 0.08); --wp-b:rgb(103 103 103 / 0.06);
+    --wp-top:#ffffff; --wp-grid:rgb(18 18 18 / 0.035);
     --serif:'Philosopher', 'Iowan Old Style', Georgia, serif;
     --sans:'Philosopher', 'Iowan Old Style', Georgia, serif;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --ecume:#0B1220; --carte:#121A2C;
-      --encre:#EDF1F6; --texte:#B9C2D8; --brume:#9CA3AF; --filet:rgba(148,163,255,.16);
-      --sous:#C0C8F8;
-      --header-bg:rgba(11,18,32,.85);
-      --wp-a:rgb(43 63 199 / 0.18); --wp-b:rgb(192 64 232 / 0.12);
-      --wp-top:#0E1526; --wp-grid:rgb(237 241 246 / 0.04);
+      --ecume:#121212; --carte:#1a1a1a;
+      --encre:#f1f1f1; --texte:#c2c2c2; --brume:#a2a2a2; --filet:rgba(166, 166, 166, .16);
+      --sous:#cacaca;
+      --header-bg:rgba(18, 18, 18, .85);
+      --wp-a:rgb(69 69 69 / 0.18); --wp-b:rgb(103 103 103 / 0.12);
+      --wp-top:#151515; --wp-grid:rgb(241 241 241 / 0.04);
     }
   }
   *{box-sizing:border-box} html{scroll-behavior:smooth}
@@ -45,16 +45,16 @@
      le background) au lieu du disque blanc éclatant. Un souffle très doux
      garde le logo présent sans qu'il brille. */
   .mana-wallpaper-core{
-    border-color:rgb(192 64 232 / .12);
+    border-color:rgb(103 103 103 / .12);
     background:
-      radial-gradient(circle, rgb(192 64 232 / .10) 0 42%, rgb(43 63 199 / .06) 62%, transparent 74%),
+      radial-gradient(circle, rgb(103 103 103 / .10) 0 42%, rgb(69 69 69 / .06) 62%, transparent 74%),
       var(--ecume);
-    box-shadow:0 0 60px rgb(43 63 199 / .08), 0 0 120px rgb(192 64 232 / .06);
+    box-shadow:0 0 60px rgb(69 69 69 / .08), 0 0 120px rgb(103 103 103 / .06);
   }
   .mana-wallpaper-core-logo{opacity:.34}
 
   header,main,footer{position:relative;z-index:1}
-  ::selection{background:#C0C8F8;color:#0B1220}
+  ::selection{background:#cacaca;color:#121212}
   a{color:inherit}
   .grad{background:linear-gradient(110deg,var(--bleu) 0%,var(--degrade-mi) 50%,var(--violet) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -67,16 +67,16 @@
     color:var(--violet);text-decoration:none;
     border:1px solid var(--violet);border-radius:999px;padding:.34rem .9rem;
     transition:background .3s ease,color .3s ease}
-  .nav .entrer:hover{background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;border-color:transparent}
+  .nav .entrer:hover{background:linear-gradient(90deg,var(--bleu),var(--violet));color:#ffffff;border-color:transparent}
 
   main{max-width:680px;margin:0 auto;padding:3rem 1.4rem 4rem;text-align:center}
 
   /* La déesse — à l'entrée. Un halo respire derrière elle (le repos, 24 s). */
   .astre-scene{position:relative;width:min(82vw,460px);margin:1.4rem auto 2rem;display:flex;align-items:center;justify-content:center}
   .astre-halo{position:absolute;width:min(74vw,400px);height:min(74vw,400px);border-radius:50%;
-    background:radial-gradient(circle, rgba(124,77,255,.20) 0%, rgba(124,77,255,0) 68%);
+    background:radial-gradient(circle, rgba(100, 100, 100, .20) 0%, rgba(100, 100, 100, 0) 68%);
     filter:blur(20px);animation:respiration 24s ease-in-out infinite}
-  .deesse{position:relative;z-index:1;width:min(80vw,440px);height:auto;filter:drop-shadow(0 0 12px rgba(90,60,230,.18))}
+  .deesse{position:relative;z-index:1;width:min(80vw,440px);height:auto;filter:drop-shadow(0 0 12px rgba(79, 79, 79, .18))}
   @keyframes respiration{0%,100%{opacity:.25;transform:scale(.95)}50%{opacity:.65;transform:scale(1.08)}}
   @media (prefers-reduced-motion:reduce){.astre-halo{animation:none}}
 
@@ -87,9 +87,9 @@
 
   .actions{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;align-items:center;margin-bottom:1.2rem}
   .btn{display:inline-block;padding:.8rem 2rem;border-radius:999px;
-    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#fff;font-weight:600;text-decoration:none;
+    background:linear-gradient(90deg,var(--bleu),var(--violet));color:#ffffff;font-weight:600;text-decoration:none;
     letter-spacing:.03em;font-size:.95rem;
-    box-shadow:0 6px 18px rgba(90,60,230,.22);transition:filter .2s,transform .2s}
+    box-shadow:0 6px 18px rgba(79, 79, 79, .22);transition:filter .2s,transform .2s}
   .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
   .btn-doux{display:inline-block;padding:.8rem 1.4rem;
     color:var(--brume);text-decoration:none;font-size:.9rem;
@@ -126,10 +126,10 @@
   .grande-citation{font-family:var(--serif);font-size:1.25rem;font-style:italic;line-height:1.6;
     color:var(--encre);text-align:center;
     padding:2.4rem 1rem;
-    border-top:1px solid rgba(43,63,199,.3);
-    border-bottom:1px solid rgba(43,63,199,.3);
+    border-top:1px solid rgba(69, 69, 69, .3);
+    border-bottom:1px solid rgba(69, 69, 69, .3);
     margin:3rem 0}
-  .grande-citation::before{content:'✦';display:block;font-style:normal;color:var(--violet);font-size:.8rem;margin-bottom:1rem;text-shadow:0 0 12px rgba(192,64,232,.5)}
+  .grande-citation::before{content:'✦';display:block;font-style:normal;color:var(--violet);font-size:.8rem;margin-bottom:1rem;text-shadow:0 0 12px rgba(103, 103, 103, .5)}
 
   footer{max-width:960px;margin:0 auto;
     padding:2rem 1.4rem 2.6rem;
@@ -264,7 +264,7 @@
   <!-- propulsé par TEMPOsystem (badge commun univers MANA) -->
   <style>@keyframes ptBlink{50%{opacity:0}}</style>
   <div style="width:100vw;margin-left:calc(50% - 50vw);margin-top:2rem;padding:40px 20px 30px;display:flex;justify-content:center;box-sizing:border-box">
-    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#d6704a,#f2a73b,#e7b441);color:#171310;text-decoration:none;box-shadow:0 14px 30px -15px rgba(214,112,74,.55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#171310"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#171310;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
+    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#838383,#afafaf,#b7b7b7);color:#141414;text-decoration:none;box-shadow:0 14px 30px -15px rgba(131, 131, 131, .55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#141414"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#141414;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
   </div>
 </footer>
 

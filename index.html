@@ -62,24 +62,24 @@
     color-scheme: light; /* le site reste en mode jour, quel que soit le réglage système */
     /* PALETTE NATURE — vert, sable, terre, eau. On garde les noms de tokens
        hérités, mais le canevas devient clair et aéré (Apple / Airbnb / Patagonia). */
-    --mer:#78A6C9; --riviere:#2FA98C; --mousse:#3E9E6E;
-    --sable:#E4D2A8; --terre:#9A6A44; --kaki:#5F6E32; --soleil:#E8A44C; --corail:#E27A5F;
+    --mer:#9f9f9f; --riviere:#8d8d8d; --mousse:#868686;
+    --sable:#d3d3d3; --terre:#717171; --kaki:#666666; --soleil:#acacac; --corail:#8e8e8e;
     --bleu:var(--riviere); --violet:var(--mousse);
-    --encre:#3D3122; --texte:#5A4A38; --brume:#8A7A63; --filet:rgba(154,106,68,.16);
+    --encre:#323232; --texte:#4c4c4c; --brume:#7c7c7c; --filet:rgba(113, 113, 113, .16);
     --sous:var(--kaki);
     /* Canevas blanc, respirant */
-    --fond:#FFFFFF; --fond-2:#FFFFFF; --carte:#FFFFFF;
+    --fond:#ffffff; --fond-2:#ffffff; --carte:#ffffff;
     --serif:'Philosopher','Iowan Old Style',Georgia,serif;
     --sans:'Philosopher','Iowan Old Style',Georgia,serif;
-    --ombre:0 20px 60px rgba(60,45,25,.10);
-    --ombre-douce:0 10px 34px rgba(60,45,25,.07);
+    --ombre:0 20px 60px rgba(47, 47, 47, .10);
+    --ombre-douce:0 10px 34px rgba(47, 47, 47, .07);
   }
   *{box-sizing:border-box} html{scroll-behavior:smooth}
   body{margin:0;font-family:var(--sans);color:var(--texte);line-height:1.7;
     background:var(--fond);-webkit-font-smoothing:antialiased}
   a{color:inherit}
   img{max-width:100%}
-  ::selection{background:#CFE7D6;color:#22331E}
+  ::selection{background:#e1e1e1;color:#2e2e2e}
 
   /* Conteneur commun — beaucoup d'air */
   .wrap{max-width:1080px;margin:0 auto;padding:0 1.8rem}
@@ -96,16 +96,16 @@
 
   /* Boutons */
   .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.7rem;border-radius:999px;
-    background:linear-gradient(100deg,#556128,#6C7C3C);color:#fff;font-weight:700;
-    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(95,110,50,.25);
+    background:linear-gradient(100deg,#5a5a5a,#747474);color:#ffffff;font-weight:700;
+    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(102, 102, 102, .25);
     transition:filter .2s,transform .2s}
   .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
-  .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(95,110,50,.4);box-shadow:none}
-  .btn.ghost:hover{border-color:var(--kaki);background:rgba(95,110,50,.05)}
+  .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(102, 102, 102, .4);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--kaki);background:rgba(102, 102, 102, .05)}
 
   /* Header — barre fine ; tout est dans le menu, sauf la connexion */
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);
-    background:rgba(255,255,255,.82);border-bottom:1px solid var(--filet)}
+    background:rgba(255, 255, 255, .82);border-bottom:1px solid var(--filet)}
   body{padding-top:62px}
   .nav{max-width:1120px;margin:0 auto;padding:0 1.8rem;height:62px;display:flex;
     align-items:center;justify-content:space-between;gap:1rem}
@@ -115,8 +115,8 @@
   .nav-actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
   .nav-btn{display:inline-block;padding:.55rem 1.15rem;border-radius:999px;font-size:12.5px;font-weight:700;
     letter-spacing:.02em;white-space:nowrap;text-decoration:none;
-    background:linear-gradient(100deg,#556128,#6C7C3C);color:#fff;
-    box-shadow:0 4px 14px rgba(95,110,50,.25);transition:filter .2s,transform .2s}
+    background:linear-gradient(100deg,#5a5a5a,#747474);color:#ffffff;
+    box-shadow:0 4px 14px rgba(102, 102, 102, .25);transition:filter .2s,transform .2s}
   .nav-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
   @media(max-width:460px){.nav-btn{padding:.5rem .95rem;font-size:12px}}
   /* Bouton hamburger — présent à toutes les tailles */
@@ -128,7 +128,7 @@
   .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
   .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   /* Menu plein écran */
-  .menu{position:fixed;inset:0;z-index:40;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);
+  .menu{position:fixed;inset:0;z-index:40;background:rgba(255, 255, 255, .98);backdrop-filter:blur(16px);
     display:flex;align-items:center;justify-content:center;
     opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease}
   .menu.open{opacity:1;visibility:visible}
@@ -164,7 +164,7 @@
   .sec-soin .lead{max-width:40ch;margin:0 auto 2.2rem}
   .sec-soin .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
   .soin-illus{max-width:840px;margin:clamp(2.4rem,5vw,3.6rem) auto 0;border-radius:22px;
-    overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.45)}
+    overflow:hidden;box-shadow:0 30px 70px -30px rgba(0, 0, 0, .45)}
   .soin-illus img{display:block;width:100%;height:auto}
 
   /* ===== SECTION 2 — le temps de l'entraide (illustration pleine) ===== */
@@ -234,23 +234,23 @@
   .plus{display:block;background:var(--carte);border:1px solid var(--filet);border-radius:16px;
     padding:1.3rem 1.5rem;text-decoration:none;color:inherit;text-align:left;
     transition:transform .2s,border-color .2s,box-shadow .2s}
-  .plus:hover{transform:translateY(-2px);border-color:rgba(95,110,50,.3);box-shadow:var(--ombre-douce)}
+  .plus:hover{transform:translateY(-2px);border-color:rgba(102, 102, 102, .3);box-shadow:var(--ombre-douce)}
   .plus b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--kaki)}
   .plus span{font-size:.9rem;color:var(--brume)}
 
   /* ===== FOOTER ===== */
-  footer{background:#20301F;color:#EDE6D4;padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
+  footer{background:#2b2b2b;color:#e6e6e6;padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
   .foot-in{max-width:1080px;margin:0 auto}
   .foot-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem}
   .foot-top img{width:30px;height:30px}
   .foot-top .fn{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em}
   .foot-links{display:flex;flex-wrap:wrap;gap:.6rem 1.9rem;margin-bottom:2.2rem;
-    padding-bottom:2rem;border-bottom:1px solid rgba(237,230,212,.18)}
-  .foot-links a{color:#D8E4CB;text-decoration:none;font-size:.95rem;transition:color .15s}
-  .foot-links a:hover{color:#fff}
+    padding-bottom:2rem;border-bottom:1px solid rgba(230, 230, 230, .18)}
+  .foot-links a{color:#e0e0e0;text-decoration:none;font-size:.95rem;transition:color .15s}
+  .foot-links a:hover{color:#ffffff}
   .foot-bas{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;
-    font-size:.82rem;color:#A9B69C}
-  .foot-bas .devise{font-family:var(--serif);font-style:italic;color:#C7D2B8}
+    font-size:.82rem;color:#b1b1b1}
+  .foot-bas .devise{font-family:var(--serif);font-style:italic;color:#cecece}
 </style>
 </head>
 <body>
@@ -449,14 +449,14 @@
       <a href="mentions.html">Mentions</a>
     </nav>
     <div class="foot-bas">
-      <span>© 2026 MANA — la maison mère de l'univers Mana · <a href="mailto:contact@manahome.org" style="color:#C7D2B8">contact@manahome.org</a></span>
+      <span>© 2026 MANA — la maison mère de l'univers Mana · <a href="mailto:contact@manahome.org" style="color:#cecece">contact@manahome.org</a></span>
       <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
     </div>
   </div>
   <!-- propulsé par TEMPOsystem (badge commun univers MANA) -->
   <style>@keyframes ptBlink{50%{opacity:0}}</style>
   <div style="width:100vw;margin-left:calc(50% - 50vw);margin-top:2rem;padding:40px 20px 30px;display:flex;justify-content:center;box-sizing:border-box">
-    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#d6704a,#f2a73b,#e7b441);color:#171310;text-decoration:none;box-shadow:0 14px 30px -15px rgba(214,112,74,.55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#171310"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#171310;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
+    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#838383,#afafaf,#b7b7b7);color:#141414;text-decoration:none;box-shadow:0 14px 30px -15px rgba(131, 131, 131, .55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#141414"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#141414;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
   </div>
 </footer>
 
@@ -466,20 +466,20 @@
   .hero-frame,.terre-frame,.commencer-frame{transition:transform .3s ease}
   .hero-frame:hover,.terre-frame:hover,.commencer-frame:hover{transform:translateY(-4px)}
   #lb{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
-    background:rgba(24,32,22,.94);backdrop-filter:blur(5px);padding:2vmin;overflow:auto;overscroll-behavior:contain}
+    background:rgba(30, 30, 30, .94);backdrop-filter:blur(5px);padding:2vmin;overflow:auto;overscroll-behavior:contain}
   #lb.open{display:flex}
   #lb img{max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:12px;
-    box-shadow:0 24px 70px rgba(0,0,0,.55);border:2px solid rgba(228,197,131,.45);cursor:zoom-in;
+    box-shadow:0 24px 70px rgba(0, 0, 0, .55);border:2px solid rgba(199, 199, 199, .45);cursor:zoom-in;
     transition:max-width .25s ease, max-height .25s ease}
   #lb.zoom{align-items:flex-start;justify-content:flex-start}
   #lb.zoom img{max-width:none;max-height:none;cursor:zoom-out}
-  #lb-close{position:fixed;top:14px;right:18px;z-index:81;background:rgba(0,0,0,.4);color:#fff;border:0;
+  #lb-close{position:fixed;top:14px;right:18px;z-index:81;background:rgba(0, 0, 0, .4);color:#ffffff;border:0;
     width:44px;height:44px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer;
     display:flex;align-items:center;justify-content:center}
-  #lb-close:hover{background:rgba(0,0,0,.6)}
+  #lb-close:hover{background:rgba(0, 0, 0, .6)}
   #lb-hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:81;
-    color:rgba(255,255,255,.85);font-family:var(--serif);font-size:12.5px;letter-spacing:.03em;
-    background:rgba(0,0,0,.35);padding:.4rem .9rem;border-radius:999px;pointer-events:none;white-space:nowrap}
+    color:rgba(255, 255, 255, .85);font-family:var(--serif);font-size:12.5px;letter-spacing:.03em;
+    background:rgba(0, 0, 0, .35);padding:.4rem .9rem;border-radius:999px;pointer-events:none;white-space:nowrap}
   @media(max-width:520px){#lb-hint{font-size:11px}}
 </style>
 <div id="lb" role="dialog" aria-label="Illustration en grand" aria-modal="true">
