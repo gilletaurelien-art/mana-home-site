@@ -63,9 +63,9 @@
     /* PALETTE NATURE — vert, sable, terre, eau. On garde les noms de tokens
        hérités, mais le canevas devient clair et aéré (Apple / Airbnb / Patagonia). */
     --mer:#9f9f9f; --riviere:#8d8d8d; --mousse:#868686;
-    --sable:#d3d3d3; --terre:#717171; --kaki:#666666; --soleil:#acacac; --corail:#8e8e8e;
+    --sable:#d3d3d3; --terre:#717171; --kaki:#000000; --soleil:#acacac; --corail:#8e8e8e;
     --bleu:var(--riviere); --violet:var(--mousse);
-    --encre:#323232; --texte:#4c4c4c; --brume:#7c7c7c; --filet:rgba(113, 113, 113, .16);
+    --encre:#000000; --texte:#111111; --brume:#3d3d3d; --filet:rgba(0, 0, 0, .18);
     --sous:var(--kaki);
     /* Canevas blanc, respirant */
     --fond:#ffffff; --fond-2:#ffffff; --carte:#ffffff;
@@ -79,7 +79,7 @@
     background:var(--fond);-webkit-font-smoothing:antialiased}
   a{color:inherit}
   img{max-width:100%}
-  ::selection{background:#e1e1e1;color:#2e2e2e}
+  ::selection{background:#000000;color:#ffffff}
 
   /* Conteneur commun — beaucoup d'air */
   .wrap{max-width:1080px;margin:0 auto;padding:0 1.8rem}
@@ -96,12 +96,12 @@
 
   /* Boutons */
   .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.7rem;border-radius:999px;
-    background:linear-gradient(100deg,#5a5a5a,#747474);color:#ffffff;font-weight:700;
-    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(102, 102, 102, .25);
+    background:linear-gradient(100deg,#181818,#000000);color:#ffffff;font-weight:700;
+    font-size:1rem;text-decoration:none;box-shadow:0 8px 22px rgba(0, 0, 0, .30);
     transition:filter .2s,transform .2s}
-  .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
-  .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(102, 102, 102, .4);box-shadow:none}
-  .btn.ghost:hover{border-color:var(--kaki);background:rgba(102, 102, 102, .05)}
+  .btn:hover{filter:brightness(1.6);transform:translateY(-2px)}
+  .btn.ghost{background:none;color:var(--kaki);border:1.5px solid rgba(0, 0, 0, .55);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--kaki);background:rgba(0, 0, 0, .06)}
 
   /* Header — barre fine ; tout est dans le menu, sauf la connexion */
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);
@@ -111,13 +111,14 @@
     align-items:center;justify-content:space-between;gap:1rem}
   .mark{display:flex;align-items:center;gap:.7rem;text-decoration:none}
   .mark img{height:28px;width:28px;object-fit:contain}
+  header .mark img{filter:grayscale(1)}
   .mark-name{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
   .nav-actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
   .nav-btn{display:inline-block;padding:.55rem 1.15rem;border-radius:999px;font-size:12.5px;font-weight:700;
     letter-spacing:.02em;white-space:nowrap;text-decoration:none;
-    background:linear-gradient(100deg,#5a5a5a,#747474);color:#ffffff;
-    box-shadow:0 4px 14px rgba(102, 102, 102, .25);transition:filter .2s,transform .2s}
-  .nav-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+    background:linear-gradient(100deg,#181818,#000000);color:#ffffff;
+    box-shadow:0 4px 14px rgba(0, 0, 0, .28);transition:filter .2s,transform .2s}
+  .nav-btn:hover{filter:brightness(1.35);transform:translateY(-1px)}
   @media(max-width:460px){.nav-btn{padding:.5rem .95rem;font-size:12px}}
   /* Bouton hamburger — présent à toutes les tailles */
   .burger{width:42px;height:42px;border:0;background:none;cursor:pointer;padding:0;
@@ -157,11 +158,21 @@
   .hero .sub.large{max-width:46ch}
   .hero .sub strong{color:var(--kaki)}
 
-  /* ===== SECTION 2 — Prendre soin, ensemble (accroche produit) ===== */
-  .sec-soin{text-align:center}
+  /* ===== SECTION 2 — MANAfamily (fond nuit, à l'image de manafamily.org) ===== */
+  .sec-soin{text-align:center;
+    background:radial-gradient(ellipse at 50% 42%, #15151b 0%, #000000 72%);
+    color:#f2f2f2}
   .sec-soin h2{font-family:var(--serif);font-weight:700;color:var(--kaki);
     font-size:clamp(2.4rem,6vw,4rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 1.2rem}
-  .sec-soin .lead{max-width:40ch;margin:0 auto 2.2rem}
+  .sec-soin h2.mf-title{margin:0 0 1.4rem;line-height:0}
+  /* le wordmark (fond noir étoilé) se fond dans la section : le noir devient transparent */
+  .mf-wordmark{display:inline-block;width:min(90vw,560px);height:auto;mix-blend-mode:screen}
+  .sec-soin .lead{max-width:40ch;margin:0 auto 2.2rem;color:#d8d8d8}
+  /* Boutons inversés sur fond noir */
+  .sec-soin .btn{background:#ffffff;color:#000000;box-shadow:0 8px 26px rgba(0,0,0,.5)}
+  .sec-soin .btn:hover{filter:none;background:#eaeaea}
+  .sec-soin .btn.ghost{background:none;color:#ffffff;border:1.5px solid rgba(255,255,255,.5)}
+  .sec-soin .btn.ghost:hover{border-color:#ffffff;background:rgba(255,255,255,.08)}
   .sec-soin .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
   .soin-illus{max-width:840px;margin:clamp(2.4rem,5vw,3.6rem) auto 0;border-radius:22px;
     overflow:hidden;box-shadow:0 30px 70px -30px rgba(0, 0, 0, .45)}
@@ -273,9 +284,8 @@
 <!-- Menu plein écran — tout, sauf la connexion -->
 <div id="menu" class="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <nav class="menu-nav">
-    <a href="#espaces">L'application</a>
-    <a href="#pourquoi">Pourquoi MANA</a>
-    <a href="#commencer">Commencer</a>
+    <a href="#soin">L'application</a>
+    <a href="#promesse">Notre promesse</a>
     <a href="https://constitution.manahome.org">Constitution</a>
     <a href="https://pro.manafrance.org">Partenaires</a>
   </nav>
@@ -320,54 +330,16 @@
 <!-- ===== 2 · PRENDRE SOIN, ENSEMBLE — accroche produit ===== -->
 <section id="soin" class="sec-soin">
   <div class="wrap">
-    <h2>Prendre soin,<br>ensemble.</h2>
-    <p class="lead">Une seule application pour veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment.</p>
+    <h2 class="mf-title"><img class="mf-wordmark" src="manafamily.jpeg" alt="MANAfamily"></h2>
+    <p class="lead">Une application pour veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment.</p>
     <div class="hero-cta">
-      <a class="btn" href="https://app.manafrance.org">Rejoindre gratuitement</a>
-      <a class="btn ghost" href="#espaces">Découvrir MANA</a>
-    </div>
-    <div class="soin-illus">
-      <img src="manahome.png" alt="Une famille réunie autour de la Maison MANA — veiller sur ses proches, s'entraider, transmettre" loading="lazy">
+      <a class="btn" href="https://app.manafrance.org">Rejoindre MANAfamily</a>
+      <a class="btn ghost" href="#promesse">Découvrir MANA</a>
     </div>
   </div>
 </section>
 
-<!-- ===== 3 · UNE MAISON, DEUX ESPACES — pourquoi ça m'intéresse ? ===== -->
-<section id="espaces" class="sec-espaces">
-  <div class="wrap">
-    <h2 class="sr-only">Le temps de l'entraide devient notre richesse commune.</h2>
-    <!-- La communauté MANA : donner, recevoir, transmettre -->
-    <figure class="entraide-illu">
-      <a href="https://mana.bzh" aria-label="Rejoindre MANA">
-        <picture>
-          <!-- Mobile : version portrait ; desktop : version paysage -->
-          <source media="(max-width:640px)" srcset="community-pwa.jpg">
-          <img src="pleinair.jpg" alt="La communauté MANA au grand air : donner, recevoir, transmettre. Kiosque MANA, atelier citoyen, matériel à partager, et le fil de vie sur l'application — « chaque geste compte, 1 seconde donnée = 1 MANA ».">
-        </picture>
-      </a>
-    </figure>
-  </div>
-</section>
-
-<!-- ===== 3 · POURQUOI MANA ? ===== -->
-<section id="pourquoi" class="sec-pourquoi">
-  <div class="wrap pourquoi-grid">
-    <div class="pourquoi-txt">
-      <span class="eyebrow">Pourquoi MANA&nbsp;?</span>
-      <p class="compte">Nous savons compter l'argent.</p>
-      <p class="compte">Nous savons compter les kilomètres.</p>
-      <p class="compte">Nous savons compter les clics.</p>
-      <p class="pivot">Mais presque jamais le soin.</p>
-      <p style="font-size:1.15rem;font-family:var(--sans);color:var(--texte);line-height:1.6;margin-top:1.4rem">Chaque jour pourtant, ce sont les gestes de soin qui maintiennent notre société debout. <span class="rend">MANA les rend visibles.</span></p>
-    </div>
-    <!-- Les trois forces du soin : Présence · Mémoire · Lien -->
-    <figure class="grammaire">
-      <img class="zoomable" src="grammaire-soin.jpg" alt="Les trois forces du soin : la Présence (être là), la Mémoire (faire durer) et le Lien (nous relier), reliées entre elles.">
-    </figure>
-  </div>
-</section>
-
-<!-- ===== 4 · NOTRE PROMESSE — puis-je avoir confiance ? ===== -->
+<!-- ===== NOTRE PROMESSE — puis-je avoir confiance ? ===== -->
 <section id="promesse" class="sec-promesse">
   <div class="wrap">
   <span class="eyebrow">Notre promesse</span>
@@ -398,34 +370,11 @@
     </div>
   </div>
   <a class="btn" href="https://constitution.manahome.org">Lire notre Constitution</a>
-  </div>
-</section>
-
-<!-- ===== 5 · COMMENCER — comment commencer ? ===== -->
-<section id="commencer" class="sec-commencer">
-  <div class="wrap">
-  <span class="eyebrow">Commencer</span>
-  <h2>Comprendre MANA en quinze minutes.</h2>
-  <div class="commencer-frame">
-    <picture>
-      <!-- Mobile : version portrait ; desktop : version paysage -->
-      <source media="(max-width:640px)" srcset="commencer-pwa.jpg">
-      <img class="zoomable" src="lecture-panorama.jpg" alt="Le Guide fondateur, posé dans un paysage — la porte d'entrée pour comprendre MANA : le temps partagé, le soin, la transmission.">
-    </picture>
-  </div>
-  <div class="guide-star">
-    <h3>Le Guide fondateur</h3>
-    <p>Une invitation, sans jargon ni technique, pour comprendre tout l'univers MANA — le temps partagé, le soin, la transmission.</p>
-    <div class="guide-cta">
-      <a class="btn" href="guide-fondateur.html">Lire le Guide fondateur</a>
-      <a class="btn ghost" href="MANA-Guide-fondateur.pdf" download>Télécharger le PDF</a>
-    </div>
-  </div>
   <div class="plus-loin">
     <span class="eyebrow">Pour aller plus loin</span>
     <div class="plus-grid">
-      <a class="plus" href="livre-blanc.html"><b>Mana Family</b><span>Le livre blanc des cercles familiaux</span></a>
-      <a class="plus" href="https://manafrance.org/livre-blanc/"><b>Mana France</b><span>L'édition institutionnelle, pour les territoires</span></a>
+      <a class="plus" href="https://www.mana.bzh/livre-blanc"><b>Territoire · MANA.bzh</b><span>Document de référence</span></a>
+      <a class="plus" href="livre-blanc.html"><b>Famille · MANAfamily.org</b><span>Le livre blanc des cercles familiaux</span></a>
     </div>
   </div>
   </div>
