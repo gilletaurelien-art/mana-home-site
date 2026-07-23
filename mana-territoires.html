@@ -12,10 +12,10 @@
 <style>
   :root{
     /* Tokens de la référence manafrance.org */
-    --bleu:#454545; --violet:#676767; --degrade-mi:#535353;
+    --bleu:#000000; --violet:#1a1a1a; --degrade-mi:#0d0d0d;
     --ecume:#f8f8f8; --carte:#ffffff;
-    --encre:#121212; --texte:#444444; --brume:#727272; --filet:#eaeaea;
-    --sous:#393939;
+    --encre:#000000; --texte:#111111; --brume:#3d3d3d; --filet:#e0e0e0;
+    --sous:#000000;
     --header-bg:rgba(255, 255, 255, .95);
     --wp-a:rgb(69 69 69 / 0.08); --wp-b:rgb(103 103 103 / 0.06);
     --wp-top:#ffffff; --wp-grid:rgb(18 18 18 / 0.035);
@@ -45,6 +45,7 @@
   .nav{max-width:1080px;margin:0 auto;padding:0 1.4rem;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
   .mark{display:flex;align-items:center;gap:.8rem;text-decoration:none}
   .mark img{height:28px;width:28px;object-fit:contain}
+  header .mark img{filter:grayscale(1)}
   .mark span{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:var(--encre)}
   .nav .entrer{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
     color:var(--violet);text-decoration:none;
