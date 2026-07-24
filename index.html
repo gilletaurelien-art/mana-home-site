@@ -174,26 +174,17 @@
     text-shadow:0 0 6px rgba(229,184,66,.85);animation:etincelle-mana 2.6s ease-in-out infinite;pointer-events:none}
   .or-vivant::before{top:-.1em;left:-.5em}
   .or-vivant::after{bottom:-.05em;right:-.5em;animation-delay:1.3s}
-  .lire-constitution{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.75rem);color:var(--texte);margin:1.6rem 0 0}
-  .lire-constitution .or-vivant{font-size:1.12em}
+  .lire-constitution{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.2rem);color:var(--brume);margin:2rem 0 0;line-height:1.2}
+  .lire-constitution .or-vivant{display:block;font-size:clamp(2.8rem,7vw,4.8rem);line-height:1.05;margin-top:.15rem}
   @media(prefers-reduced-motion:reduce){.or-vivant{animation:none;background-position:50% 0}.or-vivant::before,.or-vivant::after{animation:none;opacity:.7}}
-  /* ===== OFFRES — MANA.bzh & MANAfamily : sections premium en zig-zag (fond blanc) ===== */
-  .offre-section{min-height:auto;text-align:left}
-  .offre-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-  .offre-section.alt .offre-media{order:2}
-  .offre-media{margin:0;border-radius:24px;overflow:hidden;box-shadow:var(--ombre);border:1px solid var(--filet);
-    transition:transform .35s ease,box-shadow .35s ease}
-  .offre-media:hover{transform:translateY(-4px)}
+  /* ===== OFFRES — illustrations pleine largeur (bord à bord) + texte centré dessous ===== */
+  .offre-section{min-height:auto;text-align:center;padding:clamp(2.6rem,5vw,4.5rem) 0 clamp(3.4rem,7vw,6rem)}
+  .offre-media{width:100%;margin:0 0 clamp(1.8rem,3.6vw,3rem);overflow:hidden}
   .offre-media img{display:block;width:100%;height:auto}
-  .offre-txt .eyebrow{margin:0 0 .9rem}
-  .offre-txt .mf-logo{font-size:clamp(2.6rem,6vw,4.4rem);margin:0 0 .3rem;line-height:1.02}
-  .offre-txt .lead{margin:0 0 1.9rem;max-width:42ch}
-  @media(max-width:820px){
-    .offre-grid{grid-template-columns:1fr;gap:1.8rem;text-align:center}
-    .offre-section.alt .offre-media{order:0}
-    .offre-txt{display:flex;flex-direction:column;align-items:center}
-    .offre-txt .lead{max-width:52ch}
-  }
+  .offre-txt{max-width:60ch}
+  .offre-txt .eyebrow{margin:0 0 .8rem}
+  .offre-txt .mf-logo,.sec-partenaires .mf-logo,.sec-promesse .mf-logo{font-size:clamp(2.8rem,7vw,4.8rem);margin:0 0 .4rem;line-height:1.02}
+  .offre-txt .lead{margin:0 auto 1.9rem;max-width:52ch}
   /* Sections épurées Alliance & Partenaires */
   .sec-partenaires{text-align:center}
   .sec-partenaires .lead{max-width:54ch;margin:0 auto 1.4rem}
@@ -223,10 +214,9 @@
 
   /* ===== SECTION 4 — notre promesse (bande blanche) ===== */
   .sec-promesse{text-align:center;background:var(--fond-2)}
-  .promesse-illu{margin:clamp(2rem,4vw,3rem) auto clamp(2.4rem,5vw,3.4rem);max-width:820px;
-    border-radius:26px;overflow:hidden;box-shadow:var(--ombre);border:1px solid var(--filet)}
+  .promesse-illu{width:100%;margin:clamp(2rem,4vw,3rem) 0 clamp(2.4rem,5vw,3.4rem);
+    border-radius:0;overflow:hidden;box-shadow:none;border:none}
   .promesse-illu img{display:block;width:100%;height:auto}
-  @media(max-width:560px){.promesse-illu{border-radius:18px}}
   .promesse{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin:0 0 clamp(2.4rem,5vw,3.4rem);text-align:left}
   @media(max-width:640px){.promesse{grid-template-columns:1fr}}
   .prom{background:var(--carte);border:1px solid var(--filet);border-radius:20px;
@@ -328,54 +318,48 @@
 
 <!-- ===== MANA.bzh — le territoire ===== -->
 <section id="bzh" class="offre-section">
-  <div class="wrap offre-grid">
-    <figure class="offre-media">
-      <picture>
-        <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
-        <source media="(display-mode: standalone), (max-width: 640px)" srcset="voilier-pwa.jpg">
-        <img src="hero-bzh.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA — côte, phare, village et Maison Mana au soleil couchant." loading="eager">
-      </picture>
-    </figure>
-    <div class="offre-txt">
-      <span class="eyebrow">Le territoire</span>
-      <h1 class="mf-logo">MANA.bzh</h1>
-      <p class="lead">Tout commence en Finistère, MANA débarque en Bretagne, ce territoire où l'entraide est toute naturelle.</p>
-      <a class="btn" href="https://mana.bzh">Rejoindre mana.bzh</a>
-    </div>
+  <figure class="offre-media">
+    <picture>
+      <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
+      <source media="(display-mode: standalone), (max-width: 640px)" srcset="voilier-pwa.jpg">
+      <img src="hero-bzh.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA — côte, phare, village et Maison Mana au soleil couchant." loading="eager">
+    </picture>
+  </figure>
+  <div class="wrap offre-txt">
+    <span class="eyebrow">Le territoire</span>
+    <h1 class="mf-logo">MANA.bzh</h1>
+    <p class="lead">Tout commence en Finistère, MANA débarque en Bretagne, ce territoire où l'entraide est toute naturelle.</p>
+    <a class="btn" href="https://mana.bzh">Rejoindre mana.bzh</a>
   </div>
 </section>
 
 <!-- ===== MANAfamily — la famille ===== -->
-<section id="family" class="offre-section alt">
-  <div class="wrap offre-grid">
-    <figure class="offre-media">
-      <picture>
-        <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
-        <source media="(display-mode: standalone), (max-width: 640px)" srcset="hero-family-pwa.jpg">
-        <img src="hero-family.jpg" alt="Un ciel étoilé où une constellation dessine une famille, au-dessus d'un livre ouvert « Notre histoire cosmique »." loading="lazy">
-      </picture>
-    </figure>
-    <div class="offre-txt">
-      <span class="eyebrow">La famille</span>
-      <h2 class="mf-logo">MANAfamily</h2>
-      <p class="lead">Veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment — la présence qui fait vivre, la mémoire qui fait durer.</p>
-      <a class="btn" href="https://app.manafrance.org">Rejoindre MANAfamily</a>
-    </div>
+<section id="family" class="offre-section">
+  <figure class="offre-media">
+    <picture>
+      <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
+      <source media="(display-mode: standalone), (max-width: 640px)" srcset="hero-family-pwa.jpg">
+      <img src="hero-family.jpg" alt="Un ciel étoilé où une constellation dessine une famille, au-dessus d'un livre ouvert « Notre histoire cosmique »." loading="lazy">
+    </picture>
+  </figure>
+  <div class="wrap offre-txt">
+    <span class="eyebrow">La famille</span>
+    <h2 class="mf-logo">MANAfamily</h2>
+    <p class="lead">Veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment — la présence qui fait vivre, la mémoire qui fait durer.</p>
+    <a class="btn" href="https://app.manafrance.org">Rejoindre MANAfamily</a>
   </div>
 </section>
 
 <!-- ===== ALLIANCE MANA ===== -->
 <section id="alliance" class="offre-section">
-  <div class="wrap offre-grid">
-    <figure class="offre-media">
-      <img src="hero-alliance.jpg" alt="Alliance MANA : l'emblème au centre, une famille et une communauté reliées, et le livre « Constitution du bien commun » — confiance, transparence, sobriété, éthique, transmission." loading="lazy">
-    </figure>
-    <div class="offre-txt">
-      <span class="eyebrow">L'alliance</span>
-      <h2>Alliance MANA</h2>
-      <p class="lead">Le cercle qui relie associations, communes et citoyens autour de principes communs&nbsp;: le temps donné se reconnaît sans jamais s'acheter, l'attention ne se vend pas, la générosité fait le statut. Une gouvernance au service du lien.</p>
-      <a class="btn" href="https://alliancemana.org">Découvrir l'Alliance</a>
-    </div>
+  <figure class="offre-media">
+    <img src="hero-alliance.jpg" alt="Alliance MANA : l'emblème au centre, une famille et une communauté reliées, et le livre « Constitution du bien commun » — confiance, transparence, sobriété, éthique, transmission." loading="lazy">
+  </figure>
+  <div class="wrap offre-txt">
+    <span class="eyebrow">L'alliance</span>
+    <h2 class="mf-logo">Alliance MANA</h2>
+    <p class="lead">Le cercle qui relie associations, communes et citoyens autour de principes communs&nbsp;: le temps donné se reconnaît sans jamais s'acheter, l'attention ne se vend pas, la générosité fait le statut. Une gouvernance au service du lien.</p>
+    <a class="btn" href="https://alliancemana.org">Découvrir l'Alliance</a>
   </div>
 </section>
 
@@ -383,7 +367,7 @@
 <section id="partenaires" class="sec-partenaires">
   <div class="wrap">
     <span class="eyebrow">Partenaires</span>
-    <h2>Accès partenaires</h2>
+    <h2 class="mf-logo">Accès partenaires</h2>
     <p class="lead">Communes, associations et institutions pilotent leurs missions, leurs bénévoles et leur soutien depuis leur espace dédié, sur MANAfrance.</p>
     <a class="btn" href="https://pro.manafrance.org">Accès partenaires</a>
   </div>
@@ -393,7 +377,8 @@
 <section id="promesse" class="sec-promesse">
   <div class="wrap">
   <span class="eyebrow">Notre promesse</span>
-  <h2>Ce que nous protégeons.</h2>
+  <h2 class="mf-logo">Ce que nous protégeons.</h2>
+  </div>
   <figure class="promesse-illu">
     <picture>
       <!-- Mobile : version portrait ; desktop : version paysage -->
@@ -401,6 +386,7 @@
       <img class="zoomable" src="protection.jpg" alt="Une famille entourée d'une bulle protectrice, veillée par des symboles : le cadenas (l'attention), le bouclier au cœur (la dignité), la communauté (les proches), l'esprit (la mémoire) et le sablier (le temps partagé).">
     </picture>
   </figure>
+  <div class="wrap">
   <div class="promesse">
     <div class="prom">
       <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
