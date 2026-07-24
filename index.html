@@ -184,6 +184,12 @@
   .offre-txt{max-width:60ch}
   .offre-txt .eyebrow{margin:0 0 .8rem}
   .offre-txt .mf-logo,.sec-partenaires .mf-logo,.sec-promesse .mf-logo{font-size:clamp(2.8rem,7vw,4.8rem);margin:0 0 .4rem;line-height:1.02}
+  /* Masthead — « MANAhome × TEMPOsystem » + devise, aligné à gauche */
+  .masthead{text-align:center;padding:clamp(.3rem,1vw,.55rem) clamp(1.5rem,4vw,2.4rem) clamp(.2rem,.6vw,.35rem)}
+  .masthead-brand{margin:0;font-size:clamp(1.15rem,2.8vw,1.9rem);line-height:1}
+  .masthead-brand .mf-logo,.masthead-brand .or-vivant{font-size:1em;margin:0;line-height:1;text-decoration:none}
+  .masthead-brand .mh-x{color:#000000;font-family:var(--serif);font-weight:700;padding:0 .3em}
+  .masthead-devise{margin:0;color:#000000;font-family:var(--serif);font-style:italic;font-size:clamp(.82rem,1.4vw,1rem)}
   .offre-txt .lead{margin:0 auto 1.9rem;max-width:52ch}
   /* Sections épurées Alliance & Partenaires */
   .sec-partenaires{text-align:center}
@@ -275,6 +281,13 @@
 </style>
 </head>
 <body>
+
+<header class="masthead">
+  <p class="masthead-brand">
+    <a href="/" class="mf-logo" aria-label="MANA">MANA</a><span class="mh-x">×</span><a href="https://temposystem.fr" class="or-vivant" title="TEMPOsystem — l'infrastructure du temps donné">TEMPOsystem</a>
+  </p>
+  <p class="masthead-devise">« Rendre le soin visible, durable et transmissible. »</p>
+</header>
 
 <!-- ===== MANA.bzh — le territoire ===== -->
 <section id="bzh" class="offre-section">
