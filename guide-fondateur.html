@@ -31,9 +31,9 @@
     --ink-faint:  #939393;
     --hair:       #e1e1e1;   /* filets */
     --hair-2:     #eaeaea;
-    --gold:       #7e7e7e;   /* or institutionnel, sourd */
-    --gold-soft:  #9c9c9c;
-    --gold-wash:  #eeeeee;
+    --gold:       #c49a30;   /* or institutionnel */
+    --gold-soft:  #d8b354;
+    --gold-wash:  #f4ecd6;
 
     --display: "Philosopher","Hoefler Text","Palatino Linotype","Georgia",serif;
     --serif: "Philosopher","Hoefler Text","Palatino Linotype","Georgia",serif;
@@ -147,7 +147,15 @@
     letter-spacing:.14em;
     line-height:1;
     margin-left:.14em;
+    background:linear-gradient(100deg,#a97e1e 0%,#c49a30 26%,#e8c96a 46%,#f6e6b0 50%,#e8c96a 54%,#c49a30 74%,#a97e1e 100%);
+    background-size:240% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    filter:drop-shadow(0 1px 1px rgba(160,120,20,.22));
+    animation:or-lumiere 5.5s ease-in-out infinite;
   }
+  @keyframes or-lumiere{0%{background-position:130% 0}100%{background-position:-30% 0}}
+  @media(prefers-reduced-motion:reduce){.wordmark{animation:none;background-position:50% 0}}
   .cover-sub{
     font-family:var(--display);
     font-size:clamp(1.15rem,3vw,1.55rem);
@@ -348,7 +356,8 @@
 
   /* ---------- Images réelles (logo) ---------- */
   .img{ background-position:center; background-repeat:no-repeat; background-size:contain; }
-  .cover-logo{ width:58px; height:58px; background-image:var(--img-logo); opacity:.92; filter:grayscale(1); }
+  .cover-logo{ width:58px; height:58px; background-image:var(--img-logo); opacity:.92;
+    filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(3deg) brightness(1.05); }
 
   /* ---------- Spirale : le fil conducteur ---------- */
   .spiral{ fill:none; stroke:var(--gold); stroke-width:1.4; stroke-linecap:round; }
@@ -453,9 +462,16 @@
     font-family:var(--display); font-weight:400;
     font-size:clamp(2rem,6.2vw,3.6rem); line-height:1.1; letter-spacing:-.018em;
     text-wrap:balance; max-width:18ch; margin:0;
+    background:linear-gradient(100deg,#a97e1e 0%,#c49a30 26%,#e8c96a 46%,#f6e6b0 50%,#e8c96a 54%,#c49a30 74%,#a97e1e 100%);
+    background-size:240% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    filter:drop-shadow(0 1px 1px rgba(160,120,20,.18));
+    animation:or-lumiere 6.5s ease-in-out infinite;
   }
   .scene.center .say-xl{ margin-inline:auto; }
-  .say-xl em{ font-style:italic; color:var(--gold); }
+  .say-xl em{ font-style:italic; -webkit-text-fill-color:transparent; color:transparent; }
+  @media(prefers-reduced-motion:reduce){.say-xl{animation:none;background-position:50% 0}}
   .say{
     font-family:var(--display); font-size:clamp(1.25rem,3vw,1.7rem);
     line-height:1.42; color:var(--ink-soft); max-width:30ch; margin:1.7rem 0 0;
