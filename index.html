@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MANA — Prendre soin, ensemble</title>
 <link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<!-- PWA : installable + mode standalone (visuels portrait) -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MANAHOME">
 <meta name="description" content="Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment. MANA rend le soin visible.">
 <meta property="og:title" content="MANA — Prendre soin, ensemble">
 <meta property="og:description" content="Une seule application pour veiller sur ses proches, s'entraider entre voisins et transmettre ce qui compte vraiment.">
@@ -140,77 +147,6 @@
   .menu-nav a:hover{color:var(--mousse);transform:translateY(-2px)}
   body.menu-open{overflow:hidden}
 
-  /* ===== HERO — presque toute la hauteur, très respirant ===== */
-  /* Hero pleine largeur : l'illustration bord à bord sous le header, texte dessous */
-  .hero{min-height:auto;display:block;text-align:center;padding:0 0 clamp(4rem,8vw,6.5rem)}
-  .hero h1{font-family:var(--serif);font-weight:700;color:var(--kaki);
-    font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.1rem}
-  .hero .sub{max-width:34ch;margin:0 auto 2rem;font-size:clamp(1.15rem,2.2vw,1.4rem);
-    line-height:1.55;color:var(--texte)}
-  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
-  .hero-frame{position:relative;width:100%;max-width:none;margin:0 0 clamp(2.2rem,4.5vw,3.4rem);overflow:hidden;
-    border:none;border-radius:0;box-shadow:none}
-  .hero-frame:hover{transform:none}
-  .hero-frame a{display:block}
-  .hero-frame img{display:block;width:100%;height:auto}
-  .hero-text{padding-top:clamp(.5rem,2vw,1.5rem)}
-  /* Hero « Terre de MANA » : le texte d'accroche est plus long, on l'élargit */
-  .hero .sub.large{max-width:46ch}
-  .hero .sub strong{color:var(--kaki)}
-
-  /* ≥760px : le texte devient un bandeau centré en haut de l'illustration */
-  @media(min-width:760px){
-    .hero{padding-bottom:0}
-    .hero-frame{margin-bottom:0}
-    .hero-text{position:absolute;z-index:2;top:0;left:0;right:0;text-align:center;
-      padding:clamp(1.6rem,3.2vw,2.8rem) clamp(1.5rem,5vw,3rem) clamp(2.8rem,5vw,4rem);
-      background:linear-gradient(to bottom,rgba(6,6,8,.78) 0%,rgba(6,6,8,.5) 55%,rgba(6,6,8,0) 100%);
-      color:#fff}
-    .hero-text h1{color:#fff;font-size:clamp(2.2rem,4.4vw,3.6rem);margin:0 0 .6rem}
-    .hero-text .sub{color:#eaeaee;margin:0 auto 1.3rem;max-width:60ch;font-size:clamp(1rem,1.5vw,1.2rem)}
-    .hero-text .sub strong{color:#fff}
-    .hero-text .hero-cta{justify-content:center}
-    /* Boutons contrastés sur le bandeau sombre */
-    .hero-text .btn{background:#ffffff;color:#000000;box-shadow:0 8px 24px rgba(0,0,0,.45)}
-    .hero-text .btn:hover{filter:none;background:#ededed}
-    .hero-text .btn.ghost{background:none;color:#ffffff;border:1.5px solid rgba(255,255,255,.55)}
-    .hero-text .btn.ghost:hover{border-color:#ffffff;background:rgba(255,255,255,.10)}
-  }
-
-  /* ===== SECTION 2 — MANAfamily : logo « or vivant » + ciel étoilé (copié de manafamily.org) ===== */
-  .sec-soin{text-align:center;color:#edf1f6;
-    background-color:#04030a;
-    background-image:
-      radial-gradient(ellipse 55% 42% at 72% 12%, rgba(96,66,168,.20), transparent 62%),
-      radial-gradient(ellipse 48% 40% at 20% 82%, rgba(44,52,132,.18), transparent 64%),
-      radial-gradient(1.6px 1.6px at 12% 18%, #ffffff, transparent),
-      radial-gradient(1.4px 1.4px at 27% 62%, rgba(255,255,255,0.9), transparent),
-      radial-gradient(1.2px 1.2px at 8% 84%, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1.6px 1.6px at 44% 22%, #ffffff, transparent),
-      radial-gradient(1px 1px at 38% 47%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1.4px 1.4px at 55% 73%, rgba(255,255,255,0.85), transparent),
-      radial-gradient(1.2px 1.2px at 63% 34%, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1.6px 1.6px at 78% 55%, #ffffff, transparent),
-      radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1.3px 1.3px at 92% 78%, rgba(255,255,255,0.85), transparent),
-      radial-gradient(1px 1px at 72% 88%, rgba(255,255,255,0.65), transparent),
-      radial-gradient(1.5px 1.5px at 33% 8%, #ffffff, transparent),
-      radial-gradient(1px 1px at 50% 52%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1.2px 1.2px at 18% 40%, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1px 1px at 60% 12%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1.4px 1.4px at 88% 42%, #ffffff, transparent),
-      radial-gradient(1px 1px at 5% 55%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1.2px 1.2px at 47% 92%, rgba(255,255,255,0.75), transparent),
-      radial-gradient(1px 1px at 68% 66%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1.3px 1.3px at 24% 28%, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1.5px 1.5px at 95% 60%, #ffffff, transparent),
-      radial-gradient(1px 1px at 15% 68%, rgba(255,255,255,0.65), transparent),
-      radial-gradient(1.2px 1.2px at 80% 8%, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1px 1px at 57% 58%, rgba(255,255,255,0.55), transparent),
-      radial-gradient(1.3px 1.3px at 30% 90%, rgba(255,255,255,0.75), transparent),
-      radial-gradient(1px 1px at 66% 46%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1.4px 1.4px at 10% 32%, #ffffff, transparent)}
   /* Logo texte MANAfamily — effet « or vivant » + étincelles (identité manafamily.org) */
   .mf-logo{position:relative;display:inline-block;margin:0 0 1.6rem;
     font-family:'Philosopher',var(--serif);font-weight:700;text-transform:none;
@@ -241,16 +177,26 @@
   .lire-constitution{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.75rem);color:var(--texte);margin:1.6rem 0 0}
   .lire-constitution .or-vivant{font-size:1.12em}
   @media(prefers-reduced-motion:reduce){.or-vivant{animation:none;background-position:50% 0}.or-vivant::before,.or-vivant::after{animation:none;opacity:.7}}
-  .sec-soin .lead{max-width:40ch;margin:0 auto 2.2rem;color:#c9d3df}
-  /* Boutons inversés sur fond nuit */
-  .sec-soin .btn{background:#ffffff;color:#000000;box-shadow:0 8px 26px rgba(0,0,0,.5)}
-  .sec-soin .btn:hover{filter:none;background:#eaeaea}
-  .sec-soin .btn.ghost{background:none;color:#ffffff;border:1.5px solid rgba(255,255,255,.5)}
-  .sec-soin .btn.ghost:hover{border-color:#ffffff;background:rgba(255,255,255,.08)}
-  .sec-soin .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
-  .soin-illus{max-width:840px;margin:clamp(2.4rem,5vw,3.6rem) auto 0;border-radius:22px;
-    overflow:hidden;box-shadow:0 30px 70px -30px rgba(0, 0, 0, .45)}
-  .soin-illus img{display:block;width:100%;height:auto}
+  /* ===== OFFRES — MANA.bzh & MANAfamily : sections premium en zig-zag (fond blanc) ===== */
+  .offre-section{min-height:auto;text-align:left}
+  .offre-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .offre-section.alt .offre-media{order:2}
+  .offre-media{margin:0;border-radius:24px;overflow:hidden;box-shadow:var(--ombre);border:1px solid var(--filet);
+    transition:transform .35s ease,box-shadow .35s ease}
+  .offre-media:hover{transform:translateY(-4px)}
+  .offre-media img{display:block;width:100%;height:auto}
+  .offre-txt .eyebrow{margin:0 0 .9rem}
+  .offre-txt .mf-logo{font-size:clamp(2.6rem,6vw,4.4rem);margin:0 0 .3rem;line-height:1.02}
+  .offre-txt .lead{margin:0 0 1.9rem;max-width:42ch}
+  @media(max-width:820px){
+    .offre-grid{grid-template-columns:1fr;gap:1.8rem;text-align:center}
+    .offre-section.alt .offre-media{order:0}
+    .offre-txt{display:flex;flex-direction:column;align-items:center}
+    .offre-txt .lead{max-width:52ch}
+  }
+  /* Sections épurées Alliance & Partenaires */
+  .sec-partenaires{text-align:center}
+  .sec-partenaires .lead{max-width:54ch;margin:0 auto 1.4rem}
 
   /* ===== SECTION 2 — le temps de l'entraide (illustration pleine) ===== */
   .sec-espaces{text-align:center}
@@ -324,18 +270,18 @@
   .plus span{font-size:.9rem;color:var(--brume)}
 
   /* ===== FOOTER ===== */
-  footer{background:#000000;color:#e6e6e6;padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
+  footer{background:#ffffff;color:var(--texte);border-top:1px solid var(--filet);padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
   .foot-in{max-width:1080px;margin:0 auto}
   .foot-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem}
   .foot-top img{width:30px;height:30px}
-  .foot-top .fn{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em}
+  .foot-top .fn{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em;color:var(--encre)}
   .foot-links{display:flex;flex-wrap:wrap;gap:.6rem 1.9rem;margin-bottom:2.2rem;
-    padding-bottom:2rem;border-bottom:1px solid rgba(230, 230, 230, .18)}
-  .foot-links a{color:#e0e0e0;text-decoration:none;font-size:.95rem;transition:color .15s}
-  .foot-links a:hover{color:#ffffff}
+    padding-bottom:2rem;border-bottom:1px solid var(--filet)}
+  .foot-links a{color:var(--texte);text-decoration:none;font-size:.95rem;transition:color .15s}
+  .foot-links a:hover{color:#000000}
   .foot-bas{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;
-    font-size:.82rem;color:#b1b1b1}
-  .foot-bas .devise{font-family:var(--serif);font-style:italic;color:#cecece}
+    font-size:.82rem;color:var(--brume)}
+  .foot-bas .devise{font-family:var(--serif);font-style:italic;color:var(--brume)}
 </style>
 </head>
 <body>
@@ -358,7 +304,8 @@
 <!-- Menu plein écran — tout, sauf la connexion -->
 <div id="menu" class="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <nav class="menu-nav">
-    <a href="#soin">L'application</a>
+    <a href="#alliance">Alliance</a>
+    <a href="#partenaires">Partenaires</a>
     <a href="#promesse">Notre promesse</a>
     <a href="https://constitution.manahome.org">Constitution</a>
     <a href="https://pro.manafrance.org">Partenaires</a>
@@ -379,37 +326,66 @@
 })();
 </script>
 
-<!-- ===== 1 · HERO — La Terre de MANA ===== -->
-<section class="hero" aria-label="MANA.bzh">
-  <div class="hero-frame">
-    <!-- Toute l'illustration mène à mana.bzh -->
-    <a href="https://mana.bzh" aria-label="Rejoindre la Terre de MANA">
+<!-- ===== MANA.bzh — le territoire ===== -->
+<section id="bzh" class="offre-section">
+  <div class="wrap offre-grid">
+    <figure class="offre-media">
       <picture>
-        <!-- Mobile : version portrait ; desktop : version paysage, pleine largeur -->
-        <source media="(max-width:640px)" srcset="voilier-pwa.jpg">
-        <img src="manasail.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA : une côte accueillante avec un phare, un village et la Maison Mana, au soleil couchant.">
+        <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
+        <source media="(display-mode: standalone), (max-width: 640px)" srcset="voilier-pwa.jpg">
+        <img src="hero-bzh.jpg" alt="Une famille sur un voilier MANA vogue vers la Terre de MANA — côte, phare, village et Maison Mana au soleil couchant." loading="eager">
       </picture>
-    </a>
-    <div class="hero-text">
+    </figure>
+    <div class="offre-txt">
+      <span class="eyebrow">Le territoire</span>
       <h1 class="mf-logo">MANA.bzh</h1>
-      <p class="sub large">MANA arrive en Bretagne : ce territoire où l'entraide est toute naturelle.</p>
-      <div class="hero-cta">
-        <a class="btn" href="https://mana.bzh">Rejoindre mana.bzh</a>
-        <a class="btn ghost" href="#soin">Découvrir MANAfamily</a>
-      </div>
+      <p class="lead">Tout commence en Finistère, MANA débarque en Bretagne, ce territoire où l'entraide est toute naturelle.</p>
+      <a class="btn" href="https://mana.bzh">Rejoindre mana.bzh</a>
     </div>
   </div>
 </section>
 
-<!-- ===== 2 · PRENDRE SOIN, ENSEMBLE — accroche produit ===== -->
-<section id="soin" class="sec-soin">
-  <div class="wrap">
-    <h2 class="mf-logo">MANAfamily</h2>
-    <p class="lead">Une application pour veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment.</p>
-    <div class="hero-cta">
+<!-- ===== MANAfamily — la famille ===== -->
+<section id="family" class="offre-section alt">
+  <div class="wrap offre-grid">
+    <figure class="offre-media">
+      <picture>
+        <!-- En PWA (standalone) ou sur mobile : visuel portrait plein écran -->
+        <source media="(display-mode: standalone), (max-width: 640px)" srcset="hero-family-pwa.jpg">
+        <img src="hero-family.jpg" alt="Un ciel étoilé où une constellation dessine une famille, au-dessus d'un livre ouvert « Notre histoire cosmique »." loading="lazy">
+      </picture>
+    </figure>
+    <div class="offre-txt">
+      <span class="eyebrow">La famille</span>
+      <h2 class="mf-logo">MANAfamily</h2>
+      <p class="lead">Veiller sur ses proches, s'entraider et transmettre ce qui compte vraiment — la présence qui fait vivre, la mémoire qui fait durer.</p>
       <a class="btn" href="https://app.manafrance.org">Rejoindre MANAfamily</a>
-      <a class="btn ghost" href="#promesse">Découvrir MANA</a>
     </div>
+  </div>
+</section>
+
+<!-- ===== ALLIANCE MANA ===== -->
+<section id="alliance" class="offre-section">
+  <div class="wrap offre-grid">
+    <figure class="offre-media">
+      <img src="hero-alliance.jpg" alt="Alliance MANA : l'emblème au centre, une famille et une communauté reliées, et le livre « Constitution du bien commun » — confiance, transparence, sobriété, éthique, transmission." loading="lazy">
+    </figure>
+    <div class="offre-txt">
+      <span class="eyebrow">L'alliance</span>
+      <h2>Alliance MANA</h2>
+      <p class="lead">Le cercle qui relie associations, communes et citoyens autour de principes communs&nbsp;: le temps donné se reconnaît sans jamais s'acheter, l'attention ne se vend pas, la générosité fait le statut. Une gouvernance au service du lien.</p>
+      <a class="btn" href="https://alliancemana.org">Découvrir l'Alliance</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 · ACCÈS PARTENAIRES → MANAfrance ===== -->
+<section id="partenaires" class="sec-partenaires">
+  <div class="wrap">
+    <span class="eyebrow">Partenaires</span>
+    <h2>Accès partenaires</h2>
+    <p class="lead">Communes, associations et institutions pilotent leurs missions, leurs bénévoles et leur soutien depuis leur espace dédié, sur MANAfrance.</p>
+    <a class="btn" href="https://pro.manafrance.org">Accès partenaires</a>
   </div>
 </section>
 
@@ -473,14 +449,14 @@
       <a href="mentions.html">Mentions</a>
     </nav>
     <div class="foot-bas">
-      <span>© 2026 MANA — la maison mère de l'univers Mana · <a href="mailto:contact@manahome.org" style="color:#cecece">contact@manahome.org</a></span>
+      <span>© 2026 MANA — la maison mère de l'univers Mana · <a href="mailto:contact@manahome.org" style="color:#111111">contact@manahome.org</a></span>
       <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
     </div>
   </div>
   <!-- propulsé par TEMPOsystem (badge commun univers MANA) -->
   <style>@keyframes ptBlink{50%{opacity:0}}</style>
   <div style="width:100vw;margin-left:calc(50% - 50vw);margin-top:2rem;padding:40px 20px 30px;display:flex;justify-content:center;box-sizing:border-box">
-    <a href="https://temposystem.fr" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#838383,#afafaf,#b7b7b7);color:#141414;text-decoration:none;box-shadow:0 14px 30px -15px rgba(131, 131, 131, .55);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#141414"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#141414;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
+    <a href="https://temposystem.eu" target="_blank" rel="noopener noreferrer" aria-label="propulsé par TEMPOsystem" style="display:inline-flex;align-items:center;min-height:38px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#e5b842,#c49a30);color:#141414;text-decoration:none;box-shadow:0 14px 30px -15px rgba(196, 154, 48, .6);white-space:nowrap;letter-spacing:.02em;line-height:1"><span class="pt-line" style="color:#141414"></span><span class="pt-caret" aria-hidden="true" style="display:inline-block;width:2px;height:1em;margin-left:1px;background:#141414;vertical-align:-.1em;animation:ptBlink 1s steps(1) infinite"></span></a>
   </div>
 </footer>
 
