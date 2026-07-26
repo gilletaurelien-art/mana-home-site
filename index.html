@@ -92,7 +92,7 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 1.8rem}
   /* Chaque section = un écran à part entière, très aéré, nettement coupé */
   section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:clamp(4.5rem,9vw,7.5rem) 0}
+    padding:0 0 clamp(4.5rem,9vw,7.5rem)}
   section > .wrap{width:100%}
   section + section{border-top:1px solid var(--filet)}
   h1,h2{font-family:var(--serif);color:var(--kaki);letter-spacing:-.01em;margin:0}
@@ -181,12 +181,14 @@
   @media(prefers-reduced-motion:reduce){.or-vivant{animation:none;background-position:50% 0}.or-vivant::before,.or-vivant::after{animation:none;opacity:.7}}
   /* ===== HERO — MANA ID · le passeport de l'univers MANA (fond noir) ===== */
   .hero-id{text-align:center;background:#000000;overflow:hidden;
+    justify-content:flex-start;padding-top:clamp(4.8rem,9vw,5.8rem);
     background-image:radial-gradient(120% 80% at 50% -10%,rgba(229,184,66,.14),transparent 60%)}
   .hero-id .eyebrow{color:rgba(255,255,255,.62)}
   .hero-id .mf-logo{font-size:clamp(3.4rem,13vw,7rem);margin:0 0 1.4rem}
   .hero-id .lead{max-width:44ch;margin:0 auto;color:rgba(255,255,255,.86)}
-  .id-tagline{font-family:var(--serif);font-style:italic;color:#ffffff;
-    font-size:clamp(1.25rem,2.4vw,1.7rem);margin:1.8rem 0 0}
+  .hero-id .id-cta{margin-top:1.9rem;background:linear-gradient(135deg,#e5b842,#c49a30);
+    color:#141414;box-shadow:0 14px 32px -12px rgba(196,154,48,.72)}
+  .hero-id .id-cta:hover{filter:brightness(1.08);transform:translateY(-2px)}
   .id-worlds{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;
     margin:2.2rem auto 0;max-width:40ch;font-size:.9rem;color:rgba(255,255,255,.5)}
   .id-worlds span{white-space:nowrap}
@@ -251,18 +253,24 @@
   section.noir .btn.ghost:hover{border-color:#ffffff;background:rgba(255,255,255,.08)}
 
   /* ===== OFFRES — illustrations pleine largeur (bord à bord) + texte centré dessous ===== */
-  .offre-section{min-height:auto;text-align:center;padding:clamp(2.6rem,5vw,4.5rem) 0 clamp(3.4rem,7vw,6rem)}
+  .offre-section{min-height:auto;text-align:center;padding:0 0 clamp(3.4rem,7vw,6rem)}
   .offre-media{width:100%;margin:0 0 clamp(1.8rem,3.6vw,3rem);overflow:hidden}
   .offre-media img{display:block;width:100%;height:auto}
   .offre-txt{max-width:60ch}
   .offre-txt .eyebrow{margin:0 0 .8rem}
   .offre-txt .mf-logo,.sec-partenaires .mf-logo,.sec-promesse .mf-logo{font-size:clamp(2.8rem,7vw,4.8rem);margin:0 0 .4rem;line-height:1.02}
   /* Masthead — « MANAhome × TEMPOsystem » + devise, aligné à gauche */
-  .masthead{text-align:center;padding:clamp(.3rem,1vw,.55rem) clamp(1.5rem,4vw,2.4rem) clamp(.2rem,.6vw,.35rem)}
+  .masthead{position:fixed;top:0;left:0;right:0;z-index:60;text-align:center;
+    padding:clamp(.5rem,1.3vw,.8rem) clamp(1.5rem,4vw,2.4rem) clamp(.45rem,.9vw,.6rem);
+    background:linear-gradient(180deg,#2b2b2b 0%,#0c0c0c 58%,#000000 100%);
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.7),
+      inset 0 1px 0 rgba(255,255,255,.14),
+      inset 0 -1px 0 rgba(0,0,0,.7);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
   .masthead-brand{margin:0;font-size:clamp(1.15rem,2.8vw,1.9rem);line-height:1}
   .masthead-brand .mf-logo,.masthead-brand .or-vivant{font-size:1em;margin:0;line-height:1;text-decoration:none}
-  .masthead-brand .mh-x{color:#000000;font-family:var(--serif);font-weight:700;padding:0 .3em}
-  .masthead-devise{margin:0;color:#000000;font-family:var(--serif);font-style:italic;font-size:clamp(.82rem,1.4vw,1rem)}
+  .masthead-brand .mh-x{color:rgba(255,255,255,.82);font-family:var(--serif);font-weight:700;padding:0 .3em}
+  .masthead-devise{margin:0;color:rgba(255,255,255,.66);font-family:var(--serif);font-style:italic;font-size:clamp(.82rem,1.4vw,1rem)}
   .offre-txt .lead{margin:0 auto 1.9rem;max-width:52ch}
   /* Sections épurées Alliance & Partenaires */
   .sec-partenaires{text-align:center}
@@ -338,6 +346,31 @@
   .plus b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--kaki)}
   .plus span{font-size:.9rem;color:var(--brume)}
 
+  /* ===== CONTACT — écrire à MANA (fond noir, illustration déesse) ===== */
+  .sec-contact{min-height:auto;background:#000000;padding:clamp(3.5rem,7vw,6rem) 0}
+  .contact-grid{display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:clamp(1.4rem,3.5vw,2.4rem)}
+  .contact-illu{margin:0}
+  .contact-illu img{display:block;width:100%;max-width:300px;height:auto;margin:0 auto;
+    -webkit-mask-image:radial-gradient(circle at 50% 42%,#000 56%,transparent 80%);
+    mask-image:radial-gradient(circle at 50% 42%,#000 56%,transparent 80%)}
+  .contact-head{width:100%}
+  .contact-head .eyebrow{color:rgba(255,255,255,.62)}
+  .contact-head h2{color:#ffffff;margin:0 0 .7rem}
+  .contact-head .lead{color:rgba(255,255,255,.82);margin:0 auto 1.6rem;max-width:52ch}
+  .contact-form{display:flex;flex-direction:column;gap:.7rem;text-align:left;max-width:480px;margin:0 auto}
+  .contact-form input,.contact-form textarea{width:100%;border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;padding:.8rem .95rem;font-size:.95rem;font-family:var(--sans);
+    color:#ffffff;background:rgba(255,255,255,.05);outline:none;transition:border-color .2s}
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.45)}
+  .contact-form input:focus,.contact-form textarea:focus{border-color:#e5b842}
+  .contact-form textarea{resize:vertical}
+  .contact-form .btn{margin-top:.3rem;justify-content:center;
+    background:linear-gradient(135deg,#e5b842,#c49a30);color:#141414;
+    box-shadow:0 14px 32px -12px rgba(196,154,48,.72)}
+  .contact-form .btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
+  .contact-status{font-size:.88rem;margin:.2rem 0 0;color:rgba(255,255,255,.7)}
+
   /* ===== FOOTER ===== */
   footer{background:#000000;color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.14);padding:clamp(3rem,6vw,4.5rem) 1.6rem 2.6rem}
   .foot-in{max-width:1080px;margin:0 auto}
@@ -348,9 +381,14 @@
     padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.14)}
   .foot-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.95rem;transition:color .15s}
   .foot-links a:hover{color:#ffffff}
-  .foot-bas{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;
+  .foot-bas{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem;
     font-size:.82rem;color:rgba(255,255,255,.6)}
+  .foot-deesse{height:clamp(74px,13vw,104px);width:auto;flex:none;
+    -webkit-mask-image:radial-gradient(circle at 50% 46%,#000 50%,transparent 76%);
+    mask-image:radial-gradient(circle at 50% 46%,#000 50%,transparent 76%)}
+  .foot-bas-txt{display:flex;flex-direction:column;gap:.35rem;text-align:right;margin-left:auto}
   .foot-bas .devise{font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.6)}
+  @media(max-width:560px){.foot-bas{justify-content:center}.foot-bas-txt{text-align:center;margin-left:0}}
 </style>
 </head>
 <body>
@@ -368,7 +406,7 @@
     <span class="eyebrow">Le passeport de l'univers MANA</span>
     <h1 class="mf-logo">MANA ID</h1>
     <p class="lead">Un seul compte pour tout l'univers MANA. Une identité que vous possédez&nbsp;: vos mondes se reconnaissent, vos données restent cloisonnées.</p>
-    <p class="id-tagline">« Se connecter avec MANA »</p>
+    <a class="btn id-cta" href="https://id.manahome.org">id.manahome.org</a>
 
     <!-- Le passeport de la déesse MANA — vitrine du produit MANA ID -->
     <div class="id-passport" role="img" aria-label="Passeport MANA — l'identité souveraine de la déesse MANA, titulaire n°0001">
@@ -402,7 +440,6 @@
     <div class="id-worlds" aria-label="Les mondes reliés par MANA ID">
       <span>MANA.bzh</span><span>MANAfamily</span><span>Alliance MANA</span><span>MANAfrance</span><span>MANAtimebank</span><span>TEMPOsystem</span>
     </div>
-    <span class="id-soon">Bientôt · id.manahome.org</span>
   </div>
 </section>
 
@@ -511,6 +548,31 @@
   </div>
 </section>
 
+<!-- ===== CONTACT — écrire à MANA ===== -->
+<section id="contact" class="sec-contact">
+  <div class="wrap contact-grid">
+    <figure class="contact-illu">
+      <img src="mana-deesse-portrait.png" alt="La déesse MANA veille sur vos messages" loading="lazy">
+    </figure>
+    <div class="contact-head">
+      <span class="eyebrow">Contact</span>
+      <h2>Écrire à <span class="or-vivant">MANA</span></h2>
+      <p class="lead">Une question, l'envie de rejoindre l'aventure ou de nous soutenir&nbsp;? Laissez-nous un mot — nous vous répondons.</p>
+      <form class="contact-form" id="mana-contact">
+        <input type="hidden" name="access_key" value="6b87a2f3-2183-40e6-befe-23fd66944144">
+        <input type="hidden" name="subject" value="Message via manahome.org">
+        <input type="hidden" name="from_name" value="Contact manahome.org">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input name="name" required placeholder="Votre nom">
+        <input name="email" type="email" required placeholder="Votre e-mail">
+        <textarea name="message" required rows="4" placeholder="Votre message"></textarea>
+        <button type="submit" class="btn">Envoyer →</button>
+        <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="foot-in">
@@ -528,8 +590,11 @@
       <a href="documentation.html" title="Documentation — les livres blancs et la Constitution de l'univers MANA">Documentation</a>
     </nav>
     <div class="foot-bas">
-      <span>© 2026 TEMPOsystem · <a href="mentions.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Mentions légales</a></span>
-      <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
+      <img class="foot-deesse" src="mana-deesse-portrait.png" alt="La déesse MANA" loading="lazy">
+      <div class="foot-bas-txt">
+        <span>© 2026 TEMPOsystem · <a href="mentions.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Mentions légales</a></span>
+        <span class="devise">« Rendre le soin visible, durable et transmissible. »</span>
+      </div>
     </div>
   </div>
   <!-- propulsé par TEMPOsystem (badge commun univers MANA) -->
@@ -605,6 +670,29 @@
     entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
   els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<!-- ============ Formulaire de contact — Web3Forms → contact@manahome.org ============ -->
+<script>
+(function(){
+  var f=document.getElementById('mana-contact'); if(!f) return;
+  var s=document.getElementById('contact-status');
+  f.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn=f.querySelector('button[type="submit"]');
+    s.style.color='rgba(255,255,255,.7)'; s.textContent='Envoi…'; btn.disabled=true;
+    try{
+      var data=Object.fromEntries(new FormData(f).entries());
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',
+        headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify(data)});
+      var r=await res.json();
+      if(r.success){ s.style.color='#8fe3b0'; s.textContent='Merci ! Votre message est envoyé. 🌱'; f.reset(); }
+      else { s.style.color='#e79a9a'; s.textContent='Oups — une erreur est survenue, réessayez.'; }
+    }catch(_){ s.style.color='#e79a9a'; s.textContent='Oups — une erreur est survenue, réessayez.'; }
+    finally{ btn.disabled=false; }
+  });
 })();
 </script>
 
