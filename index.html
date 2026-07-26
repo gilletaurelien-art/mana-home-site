@@ -443,7 +443,11 @@
 <!-- ===== ALLIANCE MANA ===== -->
 <section id="alliance" class="offre-section">
   <figure class="offre-media">
-    <img src="hero-alliance.jpg" alt="Alliance MANA : l'emblème au centre, une famille et une communauté reliées, et le livre « Constitution du bien commun » — confiance, transparence, sobriété, éthique, transmission." loading="lazy">
+    <picture>
+      <!-- En PWA (standalone) : visuel portrait plein écran -->
+      <source media="(display-mode: standalone)" srcset="alliance-pwa.jpg">
+      <img src="hero-alliance.jpg" alt="Alliance MANA : l'emblème au centre, une famille et une communauté reliées, et le livre « Constitution du bien commun » — confiance, transparence, sobriété, éthique, transmission." loading="lazy">
+    </picture>
   </figure>
   <div class="wrap offre-txt">
     <span class="eyebrow">L'alliance</span>
