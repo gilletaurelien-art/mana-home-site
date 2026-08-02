@@ -184,7 +184,11 @@
     font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--granit)}
 
   /* ── MANA, son aura et ses anneaux ── */
-  .deesse-stage{position:relative;aspect-ratio:1;width:min(470px,80vw);
+  /* 34vw, pas une largeur fixe : les `fr` de la grille ne peuvent pas réduire
+     une colonne sous la taille de son contenu. À 470 px fixes, MANA occupait
+     55 % de la grille dès 940 px et étranglait le texte — « Prendre soin, » se
+     coupait après « Prendre ». Le plafond 470 px reprend la main dès 1382 px. */
+  .deesse-stage{position:relative;aspect-ratio:1;width:min(470px,34vw);
     margin:0 auto;display:grid;place-items:center}
   @media(max-width:939px){
     .deesse-stage{order:-1;width:min(310px,64vw);margin-bottom:-14px}
