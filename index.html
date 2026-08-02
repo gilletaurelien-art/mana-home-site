@@ -268,7 +268,8 @@
   /* ═══ 3. MANA ID ═══ */
   #mana-id{background:var(--du)}
   .id-grid{display:grid;gap:clamp(38px,6vw,72px);align-items:center;margin-top:8px}
-  @media(min-width:900px){.id-grid{grid-template-columns:1.05fr .95fr}}
+  /* 940 px comme le seuil : les deux grilles basculent au même instant */
+  @media(min-width:940px){.id-grid{grid-template-columns:1.05fr .95fr}}
   .id-txt h2{font-size:clamp(30px,4.6vw,46px);margin-bottom:16px}
   .id-txt .lead{margin-bottom:26px}
   .id-worlds{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;
